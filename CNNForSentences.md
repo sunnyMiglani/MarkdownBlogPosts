@@ -151,3 +151,21 @@ But we keep the local information (order of "amazing not" vs "not amazing") in t
 ### Channels:
 Channels in images are things like RGB values, which can provide various layers of informtion for the neural net to consider. In the cases of NLP, we can use these channels to represent different embeddings (word2vec & GloVe), or even have the same sentence represented in different languages or phrased in different ways.
 
+
+# Applications of NLP Convo Neural Nets
+
+The natural fit for CNNs is classification tasks such as Sentiment Analysis, Spam Detection and Topic Categoriszation. 
+
+This is because the pooling operations may lose the global location, however we don't always care about these details. However, if the need exists, it's possible to fit it into the architecture.
+
+## Sentiment Analysis and Topic Categorization Task:
+
+1. Input layer is a sentence of concatenated word2vec embeddings.
+2. Followed by convolution layers with multiple filters
+3. Followed by a max-pooling layer
+4. With a Softmax classifier.
+
+The input also uses multiple layers, such as using a static and dynamic word embedding, where one is changed as the network runs and one remains the same.
+
+
+
