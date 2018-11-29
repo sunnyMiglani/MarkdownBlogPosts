@@ -81,11 +81,8 @@ Co-Occurances are great in understanding meaning, but phrases like "it is" would
 
 
 
-
-
-
-
 # Text Classification Pipeline:
+[Some Ref](https://medium.com/jatana/report-on-text-classification-using-cnn-rnn-han-f0e887214d5f)
 
 1. Training Text: Input text which is used for learning to predict the classes
 2. Feature Vector: A vector that has information describing the characteristics of the input data
@@ -94,5 +91,31 @@ Co-Occurances are great in understanding meaning, but phrases like "it is" would
 5. Predictive model: The model we create taht can perform label predictions
 
 
-    
+# Yet Another CNN Explanatation for NLP
 
+[This is based on a different resource though](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
+
+**Obvious note**: The weights talked about in an NN are actually the matrices applied as the convolution (the filter's values = weights = thing being changed)
+
+Two aspects of the computation in a multi layer convolutional neural network are:
+1. **Local Invariance**: Doesn't matter where an object is in an image, just that it's present.
+2. **Compositionality**: each big object is _composed_ of smaller objects, i.e a structure will be composed of smaller shapes from edges and pixels.
+
+## Text Embeddings:
+The text is embedded using GloVe or word2vec, or even one-hot vectors that index the word in the vocabulary. These are represented using an n dimensional embedding, so k words would have a KxN sized matrix as the input into a NN.
+
+This is our "image".
+
+## Filters:
+In images, the filters will slide over local patches ofan image, however in NLP they slide over full rows of the matrix. This means that the width of the filters is the same as the word embedding (n).
+
+The height of the filters (or region size) which represents the number of words together would vary, but the width will always be the same.
+
+## Why CNN's
+
+So, looking at the local invariance and the compositionality aspects of image processing / analysis using CNNs one could question why do we need these properties for words?
+You'd imagine that we _really_ care where a word shows up in a sentence, and how it affects the words around it. 
+
+Thing is CNN's are VERY fast for analysis, and can create a much better representation for a large number of words, than something like a BoW or an n-gram system could. CNN's are built to run on GPUs and work super fast as well.
+
+Convolutional filters learn good representations for low level and high level without needing to represent the whole vocabulary to the system.
