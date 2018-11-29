@@ -11,10 +11,11 @@ By the end of the document, hopefully everyone reading (and me writing) would've
 ## N-Grams and Bag of Words
 
 N-Gram is a contiguous sequence of n words:
-    - " Dog that barks does not bite"
-    - Unigram: Dog, that, barks, does, not, bite.
-    - BiGram: Dog that, that barks, barks does, does not, not bite...
-    
+- " Dog that barks does not bite"
+- Unigram: Dog, that, barks, does, not, bite.
+- BiGram: Dog that, that barks, barks does, does not,
+not bite...
+
 Bag-of-Words: Method of representing the data using n-grams, usually unigrams.
   **It does not keep track of the order of the text**
   
