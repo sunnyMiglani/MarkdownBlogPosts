@@ -1,4 +1,14 @@
-# N-Grams and Bag of Words
+# Notes on Convolutional Neural Nets for Sentences
+This file will have some notes that I create while learning and reading up for a Deep Learning module presentation at the University of Bristol
+
+It's obtained from a lot of different sources, which means it's not directly my own material but instead a word dump of related reading and topics, just "summed up".
+
+This _should_ function as a quick read for someone looking through a window into NLP and NNs, but I assume knowledge of the key "buzzwords" of NNs, but will define NLP stuff as I go along.
+
+By the end of the document, hopefully everyone reading (and me writing) would've reached the end understanding how a Convolutional Neural Net is beneficial for NLP.
+
+
+## N-Grams and Bag of Words
 
 N-Gram is a contiguous sequence of n words:
     - " Dog that barks does not bite"
