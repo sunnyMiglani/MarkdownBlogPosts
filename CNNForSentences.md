@@ -66,6 +66,10 @@ Now we look at how these statistics of co-occurance affect the words themselves.
 Example given in [the paper blog i'm using to understand this](http://mlexplained.com/2018/04/29/paper-dissected-glove-global-vectors-for-word-representation-explained/) is that you can expect "ice" and "steam" to be related, and "ice" to be more often seen with "solid" than "gas"and neither to be seen related very much to "fashion".
 
 
+Co-Occurances are great in understanding meaning, but phrases like "it is" would dominate the loss function, which means we don't want the representation to be too heavily based on just frequency. This is handled using a fancy equation mentioned in the link above.
+
+
+
 
 
 
