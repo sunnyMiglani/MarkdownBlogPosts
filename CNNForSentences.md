@@ -119,3 +119,35 @@ You'd imagine that we _really_ care where a word shows up in a sentence, and how
 Thing is CNN's are VERY fast for analysis, and can create a much better representation for a large number of words, than something like a BoW or an n-gram system could. CNN's are built to run on GPUs and work super fast as well.
 
 Convolutional filters learn good representations for low level and high level without needing to represent the whole vocabulary to the system.
+
+
+## Convolution NN's in Depth (Hyperparameters)
+
+### Narrow vs Wide convolution:
+Applying filters inside the matrix is okay, but how do we apply them to the edge cases?
+
+We can use zero-padding on the elements, and get a larger or equally sized output into the next layer. 
+**Adding zero-padding is called Wide Convolution**
+
+If you didn't use zero padding, **you would get narrow convolutions**
+
+### Stride Sizes:
+The standard stride size is 1, however using a larger stride would give you a similar effect to that of an RNN, via the fact that it creates a tree system.
+
+### Pooling Layers:
+Pooling layers are a good way to force values to have some relation. They bring down the dimensionality of the input, and force the NN to find relations at higher levels in the values. This enforces a fixed size output matrix which is often required for classification.
+
+
+In NLP **often we just apply max pooling to the whole filter** meaning that if we have 1000 filters, we can have a 1000 dimensional output.
+
+Pooling also reduces the output dimensionality, but usually keeps the most salient information. An example to think of is that a filter may contain the notion that there is a negation such as "not amazing" in a sentence, and if this phrase occurs in a part of the sentence, we will get a HIGH value there, and a low value (from this filter) everywehre else. 
+
+By performing the max operation, you're keeping whether or not this phrase was present in the sentence by pushing down the smaller values, but as a side effect we lose the information about where exactly it appeared.
+
+But we keep the local information (order of "amazing not" vs "not amazing") in the neural net which is quite important to the understanding of the system.
+
+> "not amazing" would be high valued by this filter, however "amazing not" _should_ be lower valued as the order matters, whereas "amazing not bad", if selected "not bad" would still give us a high value.
+
+### Channels:
+Channels in images are things like RGB values, which can provide various layers of informtion for the neural net to consider. In the cases of NLP, we can use these channels to represent different embeddings (word2vec & GloVe), or even have the same sentence represented in different languages or phrased in different ways.
+
