@@ -54,6 +54,35 @@ n words represent context, and the output is known as the target word.
 The model reverse the use of target and context word. The target word is fed as the input, and the context is the expected output. 
 It would produce n vectors for each input word, which means you'd expect multiple layers of output, that are sized N(dimension of vector). 
 
+# Word2Vec Explained in more depth:
+[I use this as the main resource for this section tbh](https://www.knime.com/blog/word-embedding-word2vec-explained)
+
+word2vec is based on a classical feed-forward, fully conencted architecture.
+
+Given a pairing of "(context, target word)", we can have two different methods of approaching this.
+1. **CBOW**: Continous Bag of Words which says GIVEN a context, PREDICT the target word 
+2. **Skip-Gram**: GIVEN a target word, PREDICT the context it came from
+
+
+For a context size of **c = 1**:
+
+If a fully connected NN is used, with one hidden layer, we end up with an architecture where the input and output patterns are one-hot encoded vectors. With a dimensionality of 1xV where V is the vocabulary size.
+
+
+In the CBOW strategy, the one-hot context word feeds in the input and the output word is a one-hot vector of the target word.
+
+In the case of skip-gram, the one hot encoded missing word feeds the input, where the output tries to produce the one hot encoded context.
+
+To ensure a probability based value, **we use a softmax function in the output layer**
+
+The hidden layer output's actually have a smaller dimensionality in comparison to the output layer, and therefore **the hidden neuron outputs provide the word embedding, this word representation being much more compact than one-hot produces a much less sparse representation**.
+
+For a context size of **c= 3**:
+We need to change the network structure. For CBOW approach, we need C input layers of V size to collect C one-hot encoded word vectors, and the hidden layer then provides C word embeddings, each of N size.
+
+
+
+
 # GloVe: Word Embedding
 
 ### word2vec problems
