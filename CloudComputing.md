@@ -813,4 +813,104 @@ Here's a summary of that summary
 7. Giraph: Graph database, and runs mapReduce jobs to process graphs. Used for more social media / connection focused jobs
 8. Spark: High performance analytics engine, think of this as a way to replace MapReduce (MP), it's a lot faster and has more features than MP.
 
+# Lecture 17: NoSQL Databases
+
+There are 4 main classes of a NoSQL DB:
+1. Key-Value DBs: DynamoDB
+2. Document DB: MongoDB
+3. Column Family DB: HBase
+4. Graph DBs : Giraph
+
+
+Relational Databases was great when you wanted to keep _relations_ (suprise suprise) between the data and easily access them based on these relations.
+
+Relational databases are great for **ACID**: **Atomicity, Consistency, Isolation and Durability**
+
+But, this isn't what we always want, 
+sometimes we want **CRUD: Create/Read/Update/Delete**
+
+Also RDBMS (Relational) are not scalable. They become more and more expensive as they get bigger and bigger. 
+They're hard to scale down if the need dies out, therefore they end up having a long term permanently rising cost
+
+
+## Key-Value DBs:
+
+Think of them as an associative array (or a dictionary). Where each `key` has an associated `value`.
+
+Keys are unique in a particular K-V namespace
+
+Values can be almost any digital object, and usually the DB will put it's own constraints on the data.
+
+KV DB's restricitons very much depend on the system being used, they may or may not provide auto indexing or generate keys.
+Most of them **will use hashing** for quick access
+
+
+### Examples of DBs
+
+##### Amazon SimpleDB:
+
+- Reliable storage
+- language that allows you to Store, Modify, Query and Retrieve data sets
+- Automatic indexing of all your data
+
+SimpleDB has 3 main resources
+
+1. `Domains`: High level **containers** for related data `items`. The searches only search through one `domain`.
+2. `Items`: Named collection of `attributes` that represent a data object. Items have a unique name in the `domains`. They can be created/modified/deleted and manipulated.
+3. `Attributes`: Individual category of information in the items, and have unique names for that item. It has one ore more text string's associated with the name.
+
+The data is stored **in a "tree like" structure** not a table.
+SimpleDB **only stores text**
+
+
+##### GAE's Datastore (Google's version)
+
+GAE's approach is a cloud style scale _out_ not up system. Basically this means as it's easier to scale _out_, it makes more sense for it to be automated. 
+
+- GAE Datasores holds data as `entities`
+- Each entity has one ore more `properties`
+- Each property has a `name`, with one or more `values`
+- `Entities` belong to a `kind`, a unique `key` within the kind.
+
+GQL is the language used to interact with GAE, and it's used in a similar fashion to SQL queries.
+
+It allows for filtering based on property values, returning in a sorted order and can sort/filter keys too.
+
+GAE like services 
+1. Memcache - Short term key/value storage serivce, that uses RAM and not disk and is therefore faster. It's not persistent though.
+2. Blobstore - Store large items like videos and images
+3. URL fetch - HTTP reqs to other servers on the internet.
+
+##### Document DB (AWS DynamoDB)
+
+Document DBs manage more complex data structures than KeyValue datastores.
+
+They don't rrquire you to define a common structure for all records in the data store
+
+They **DONT** store electronic documents like MS Word files. A `document` is a structured object, it contains information not only about what is being stored, but how it is being stored.
+
+A Document example is a JSON file.
+
+Exampls of DocumentDBs: 
+1. MongoDB
+2. Couch (Apache open source based)
+
+
+### Columnar DBs
+
+- These are also known as Wide-Column DBs
+- Great for "Big Data", technical term is VeryLargeDBs (VLDBs)
+- RDBMSs can scale up to VLDBs, but the costs increase a lot and it gets insane
+- KeyValue DBs scale nicely, but aren't the best for organising data like needed for Big Data
+- While DocDBs can scale like this if not better, they're again not great for querying.
+
+ColumnDbs come from the fact that groups of _related_ columns, which are frequently used together can be arranged in groups called `families`. The columns of a `family` are kept together on a disk to reduce access times.
+
+Data modelers using Column DBs can implement their own `families` when defining the structure, but devs can add onto it as needed.
+
+Examples:
+1. Cassandra-  V famous, used in apple, netflix, reddit uber etc.
+2. HBase - Part of hadoop, used by airbnb, netflix, pintrest, spotify etc.
+
+
 
