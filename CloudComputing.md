@@ -913,4 +913,112 @@ Examples:
 2. HBase - Part of hadoop, used by airbnb, netflix, pintrest, spotify etc.
 
 
+# Lecture 18 (Graph Processing and Graph DBs)
 
+Networks are represented using Graphs in CS. 
+1. Fully Connected - Each node is connected to all other nodes directly
+2. Clique is a **sub-graph** that is complete
+3. Path is a sequence of edges connecting nodes
+4. Cycle is a closed path.
+
+Number of ways to arrive or leave a node is a node's **degree*.
+
+This is equivalent to counting a node's neighbours.
+
+1. An "in-degree" is **ways to arrive AT it**
+2. An "out-degree" is **ways to leave it**
+3. Undirected Graph implied in-degree=out-degree.
+4. Regular Path : All nodes in the network have the same degree.
+
+**Definition: Adjacency Matrix**
+
+    - Basically a matrix representation that shows how a graph is connected
+    - Colums and rows label's are both matrix nodes
+    - A_ij represents teh number of edges from node i to node j. 
+    - Sum of **rows** = Out-degree of i
+    - sum of **columns** = In-degree of j
+    
+If you square an adjacency matrix, the values in the graph show you how many connections of **LENGTH = 2** does it take to get from A to B.
+Connections that used to be true for length = 1 will now show 0
+
+_NB: I recommend looking at the slides for this, since that makes more sense_
+
+
+#### Case Study - Web Pages
+
+How do you see how important a web page is?
+- If there's `a` link from `b` to `a`, then `a` must be important
+- If `b` is important and links to `a` then `a` must be VERY important
+- if `b` only links to `a` few pages, one of them being `a` then `a` is super important
+
+That's the main logic behind page rank!
+
+(Look at page rank example on slides):
+Essentially the matrices give us a good way to look at the ranking and connections between web pages,
+
+however there exists the problem when you have a "dangling node". These dangling nodes have incoming connection but no outgoing ones.
+
+This can cause problems as they will accumulate a high score but never distribute it.
+
+A **fix** for this is to teleport the surfers to random pages. Damping the pages imposes transitions between all nodes.
+
+
+## Graph Processing
+
+Google developed **Pregel**, a framework for running network analysis using graph processing.
+
+It provides
+1. High Scalability
+2. Fault-Tolerance
+3. Flexibility in arbitrary graph algorithms
+
+Facebook developed **Giraph** (now Apache Giraph) to solve a similar problem.
+
+Both the algorithms above have the same model
+- Concurrent Computation: Computation is local to each node.
+- Communication: There is messaging between nodes
+- Barrier Synchronisation: Checkpoints that globally block nodes before processing.
+
+Essentially this means run everything in parallel for processing, where each node does the computation for the related nodes nearby, but make sure to synchronise at some point before running the next iteration of the processing.
+
+Pregel operates over a directed graph
+- Each vertex is associated with a modifiable user-defined value
+- Each edge has a value, and links a source vertex to a destination vertex
+
+It runs a sequence of "supersteps" that's similar to MapReduce rounds
+- Each vertex runs a user defined function
+- It takes input from the last function run and gives output for the next function to run
+- It can also change the surrounding topology by modifying it's outgoing edges.
+
+The algorithm terminates based on the nodes voting to halt
+- Initially every node is active
+- All active nodes participate in the computation of a "superstep"
+- Node deactivates itself by voting to halt
+- Node can return to the active state if it gets the appropriate message 
+
+### Execution of a "Pregel" program:
+
+- There is a master worker across all the workers
+- The master worker is in charge of partitioning the graph and assigning the workers some respective partitions
+- The master coordinates the running and communication and then couns the inactive vertices after each step and singals workers if there is an incoming message.
+
+Master is also incharge of
+- Keeping track of failed workers (via pings)
+- Keeping track of superstep and sync steps
+- Failed workers' work is reassinged to other workers, and the step is restarted
+
+## Examples of other graph based applications
+
+1. Neo4j Graph DB - 
+ - GraphDB in Java
+ - Associative Data Sets (nodes with edges)
+ - Clustred 
+ - Uses a query language
+ - Works fast on connected data
+ 
+2. Cypher Query Language 
+
+- Declerative
+- Matches a pattern
+
+**NOTE: Understand page rank algorithm better, because there's an 8 mark example question**
