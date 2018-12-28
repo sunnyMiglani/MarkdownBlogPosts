@@ -732,5 +732,51 @@ However, the problem arrises when the traitors send different messages to differ
     Byzantine generals can achieve consensuss when n > 3*m + 1 
     To do so, they must engage in m+1 rounds of message passing
 
-### Solution??? (simplified)
+### Solution to a simplied version of the problem
 
+##### If there are 3 armies, 1 traitor
+
+1. If the commander is the traitor: Then the lieutenants cannot tell the difference and will not reach a consensus
+2. If one of the lieutenants is the traitor, they still cannot reach consensus because they cannot tell which is true.
+
+##### Now if there are 9 armies and only 1 traitor
+Problem becomes relatively straightfoward.
+
+1. The commander being a traitor: No matter how he splits it, there will always be a consensus in the system, and they will always reach the same consensus. They might even be able to identify that the commander is a traitor
+2. If **one** of the lieutenants is a traitor, then everyone else will be able to spot it out or ignore him as there would be only 1 person going against the general "gossip"
+3. If there are **two traitors** amongst 10 lieutenants, then one level of gossip wouldn't be enough to solve the problem, so you need something like "L1 told me that C said that .. ".
+
+### Actual Algorithm "Oral Message Algorithm": OM(m)
+
+If OM(M) & M>0:
+
+    1. The commander sends a vote `v_i` to n-1 lieutenants
+    2. Each lieutenant, `i` acts as a Commander for a new call OM(m-1), sending `v_i`  to the other n-2 lieutenants. 
+    3. If `V_i` is the set of the values that Lieutenant `i` receives during the above step, then Lieutenant `i` uses the value majority (`V_i`)
+    
+If OM(0):
+    
+    1. The commander sends a vote `v_i` to each lieutenant, i.
+    2. Each Lieutenant `i` uses the vote received from the Commander.
+    
+m being the number of adversaries.
+
+### Solving the BG problem with traitors
+
+So we need to spot traitors as the main focus in this kind of problem, as once traitors have been removed we can proceed easily (here traitors can be broken / faulty servers remember that).
+
+To solve this, the BG problem uses the ideas of _"gossip chains"_, which simply is
+
+> L2 and L3 speaking, L2 says "L1 said attack!", L3 says "L1 said retreat!"
+
+This helps spot traitors, however traitors may not always gossip truthfully, and it may take `m+1` rounds to spot `m` traitors. (Need a cycle to spot fake news?)
+
+The easier way to solve this might be to use longer chains, like L3 telling L4 that "L2 told me that L1 told her to Attack!"
+
+This could include all `m+1` conversatiosn in one chain, and if chains are shared between honest parties then the solution can be to reach mini consensus about who the traitors are.
+
+**However**, that could get out of hand quite quickly, as the chains will get big quite fast.
+
+Which means that finding a consensus could take longer as gossip chains get longer. If we have too many traitors `3m+1 > n`, then it breaks
+
+This is because we'd never reach consensus as the number of votes required would never reach majority
