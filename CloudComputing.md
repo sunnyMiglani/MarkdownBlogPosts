@@ -1,6 +1,6 @@
 # Cloud Computing 
 at University of Bristol, 4th year MEng unit.
-Author: Sunny Miglani
+
 
 
 
@@ -658,4 +658,57 @@ For each attempt to agree on a `value`, Paxos must ensure that
 **Paxos doesn't guarantee a pick on the oldest, or best, it just says a valid value**
 
 
+## So, how does this damn Paxos actually work???
 
+There are a set of `replicas` tha handle a series of synchronus requests that deal with **the same resource**. We remember that a `value` can be {reading, writing, roll-backs or commits}.  
+
+There are three main roles a `replica` or `process` can play:
+- `Proposers`: Learn values that are already accepted; propose those values
+- `Acceptors`: Let proposers knows already-accepted-values; accept or reject values they propose, and reach a consensus on choosing a particular proposal or value.
+- `Learners`: Become aware of the chosen proposal/value and _act on it_.
+
+
+Replicas can play **more than one** of these roles at different times. Often a replica is _elected_ to be a priviliged learner and or proposer. This means that they're the ONLY one allowed to play the role.
+
+ 
+### -- FLOW: -- 
+
+#### Proposer:
+P asks some majority of acceptors to prepare for a proposal N. A "majority" is asked to get ready for the proposal and not all the players as if a majority of replicas agree on `V`, then a different majority CANNOT agree on another proposal `V'`. We also say majority **because not all acceptors could be in easy contact**
+
+(Note, that P hasn't offered a value yet, and the acceptors can sign up whether or not they want to listen to the proposal)
+
+#### Acceptor:
+An acceptor A, gets a `prepare please` message from P with an ID `N`.
+Acceptor has these possible options
+
+    1. A promises to ignore future proposals with ID lesser than `N`
+    2. A has already accepted a proposal P, and then sends the value to P with the ID of the last proposal that was accepted. 
+    3. If N is too low, (N is behind the last ID she accepted), then acceptor can reject the `prepare please` message.
+
+#### Interaction once Acceptors prepare:
+
+- If P gets majority of acceptors, P can set a `value v`.
+- If the acceptors sent a value `v'` as their accepted values, she an shoose `v` associated with the highest proposal ID number, if not, P can set the value herself.
+- She requests that the acceptors accept `N.v` with N propsal number v value.
+- They HAVE to accept unless P was too slow and they accepted a higher proposal number. (ID_of_new > N)
+- If they accept, they can register a proposal with **learners** who take action on the value **if the majority of accepters accept the same proposal**
+
+
+#### How does an acceptor choose a value?
+    
+    1. Acceptor will accept the first proposal it sees
+    2. Acceptor will accept the proposal with the highest ID number it sees
+    3. A majority of acceptors must accept the same value.
+    4. Once a value is chosen, all proposals with a higher ID coose to recommend the same chosen value. 
+
+
+
+    
+
+
+
+
+
+ 
+ 
