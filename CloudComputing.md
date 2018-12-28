@@ -1022,3 +1022,152 @@ Master is also incharge of
 - Matches a pattern
 
 **NOTE: Understand page rank algorithm better, because there's an 8 mark example question**
+
+# Lecture 19: NewSQL and Stream Processing
+
+NewSQL is a class of modern RDBMSs that want to provide the same scalability of the NoSQL systems but still maintaining the ACID guarantees of a traditional RDBMs system.
+
+
+reCAPping CAP: 
+- Consistency
+- Availability
+- Parition Tolerance
+
+NoSQL offerings grew in comparison to the other two because the requirement of Partial Tolerance grew as the internet did. Partial tolerance being a core factor in web dev.
+
+#### Challenges with NoSQL
+ 
+Lack of strong ACID consistency, this adds complication for developers (imagine multiple transactions?)
+ 
+Theres limitations with what SQL support is available, and there's very few systems that have robust management tools.
+
+### NewSQL:
+
+It's a DBS that delivers the **scalability** and **flexibility** of NoSQL while retaining the support for SQL queries / ACID.
+
+- SQL is the primary interface
+- ACID support exists
+- Non-Locking concurrency control (no mutex)
+- High per node performance
+- Parallel architecture
+
+## Case Study : Google AdWords / Ads
+
+The workflow of the application used to be 
+- Do a content based list of ads to display
+- take £££ related to it by the advertisers
+- Set rules for the ads (time, location)
+- Incorporate any rules and quota limitations
+- If there's an ad click, then record the transaction for billing purposes.
+
+The limitations it faced tho
+- Availablity : There was downtime for updating the schema and replicating the data
+- Scaling : Since it used a shared MySQL Db, rebalancing was difficult as you added nodes
+- Functionality: Couldn't do sharing accross apps for the data
+
+New version that happened in 2011:
+- Architecure: It uses shared servers, it has a stateless server to deal with data. Worker pools are used for distributed SQL execution
+- It has a relational schema, with consistent indexes and extensions for rich data types
+- It uses MULTIPLE INTERFACES, like MapReduce, Key-Value, SQL etc.
+- Can change the values in this.
+
+
+It's used in GCP, Google Photos, Adwords!
+
+## Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)
+
+The google spanner universe has 
+1. `Zonemaster`: Assigns data to span servers
+2. `Spanserver:` serves data to clients
+3. `Location Proxies`: Used to locate spanservers with accurate data
+4. `Universe master`: Only one exists, owns everything
+5. `Placement Driver`: handles data movement for replication and load balancing
+
+### SpanServers:
+
+Each Spanserver contains
+1. Colossus: Distributed FileSystem
+2. Tablet: a bag of key/value timestamps. the State of this is tracked
+3. Paxos state machine: it maintains consistency amongst replicas
+4. Participant leader: Coordinates Paxos, maintains a transaction manager for distributed transactions
+
+Application Data Model:
+
+- Data is stored on atleast 3 replicas
+- Schematised, and is semi-relational
+- Supports UNILIMITED tables and DBs
+- Supports SQL and transactions
+- Not actually relational, i.e. all tables ahve primary keys etc.
+
+### Google TrueTime:
+
+It's an API that tells you  what the time is
+Specifically, that it can GUARANTEE that if time T has been given out, then the next call will only give T' > T, which is IMPORTANT AS HECK for transactions.
+
+Each google data centre has an atomic clock, accurate to < 10ms
+
+Clients can poll the TimeMaster, and they use "Marzullo's algorithm" which can detect liars and reach consensus in noisy conditions.
+
+
+### Google F1 (F-one) Deployment Structure:
+
+- Five replicas needed for High Availability
+- Geography-> it's spread accross the world to survive regional natural distasters, approx 100ms apart
+- Performance: High commit latency, have high throughput (bandwidth kinda)
+
+
+#### How does G-F1 deal with high latency?
+
+- Preferred Transaction structure
+    - One read phase
+    - Read in async
+    - Buffer writes in client, uses RPC
+- Use coarse schema 
+- Use bulk operations, but do small transactions in parallel for high throughput
+
+## Real Time Event Streaming
+
+Where would you need this?
+- Large Haldron Collider
+- Network monitoring
+- Fraud detection
+- Marketing
+
+What do i need?
+- Data arrives in real time (as close)
+- High throughput
+- Low latency
+- Fault tolerance
+- Straggler tolerant
+
+
+### Case Study: Apache Storm
+It's great to process unboudned streams of data
+
+Good for realtime processing.
+
+Good for low latency passing
+
+#### Structure of Apache Storm:
+- Define nodes and their roles
+- Create a graph of computation
+
+The structure work with `Streams` which is a sequence of tuples.
+
+There are also `Spouts` and `Bolts`.
+
+Spout may be connected to APIs to stream values, such as tweets.
+
+Bolts use 1 or more input streams to process, and emit new streams if need be. Imagine a way of collating info.
+
+For each node in the topology, several instances can exist that run in parallel.
+
+Apache storm provides an **atleast once** processing guarantee, such that each data point has been touched on atleast once.
+
+It cannot guarantee a **Only once** system, because they may be done in parallel and no way of telling.
+
+
+It cannot provide consistency in the nodes, as they're hard to reason about. This is because the nodes process messages as they come.
+
+
+** TBC **
