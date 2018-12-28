@@ -703,12 +703,34 @@ Acceptor has these possible options
     4. Once a value is chosen, all proposals with a higher ID coose to recommend the same chosen value. 
 
 
+## Byzantine Generals or Byzantine Fault Tolerance (BFT)
 
-    
+BFT is the dependability of a fault tolerant computer system, where components may fail and there is imperfect information whether it has failed.
+
+In a Byzantine failure, a component can inconsistently appear both failed and functioning to failure-detection systems, presenting different symptoms to different observers.
+
+It's difficult for other components to declare it failed and shut it out of the network, as they first need to reach a consensus regarding which component has failed.  This is derived from the Byzantine Generals' problem where the "actors" need to agree on a stategy to avoid a system failure, but some of the "actors" are malicious.
+
+It's **focused on consistency in a distributed system**.
+
+Byzantine General's problem:
+
+- N allied generals must decide on a plan of attack
+- They must all follow the SAME consensus plan
+- But `m` of the generals are **traitors** (DUN, DUN, DUNNN) trying to prevent this. 
+- --- What is the largest value of `m` that the loyal generals can cope with and why?
+
+(`m` here refers to broken / failing components)
+
+If we look at simple majority vote of the generals, if there's any traitors, they basically vote the opposite. But the loyal generals will always reach a consensus.
+
+However, the problem arrises when the traitors send different messages to different generals, not allowing them to reach a consensus.
 
 
+### Results of the Byzantine Generals:
 
+    Byzantine generals can achieve consensuss when n > 3*m + 1 
+    To do so, they must engage in m+1 rounds of message passing
 
+### Solution??? (simplified)
 
- 
- 
