@@ -780,3 +780,37 @@ This could include all `m+1` conversatiosn in one chain, and if chains are share
 Which means that finding a consensus could take longer as gossip chains get longer. If we have too many traitors `3m+1 > n`, then it breaks
 
 This is because we'd never reach consensus as the number of votes required would never reach majority
+
+# Lecture 15: Hadoop and Related Technologies (Hadoop ecosystem)
+
+[Vimeo link!](https://vimeo.com/303507914)
+
+Hadoop's history
+- Hadoop was built to do open source MapReduce
+- But now they needed a file system to handle it, like Google File System, so they built HDFS 
+- Now they needed a DB system to handle this, so built Apache HBase like Google BigTable
+
+The above three {Hadoop, HDFS, HBase} became Hadoop Core
+
+
+Apache Pig Latin was developed to create functions that can be MapReduced by Hadoop. 
+
+`Hive` was created to build a SQL-like query language for Hadoop core // HBase
+
+`YARN` was built as a method to deal with interacting HDFS2 layer, when MapReduce/Hadoop became too big
+
+
+Literally the best understanding you'll get from this lecture is to read the "one slide summary" that Dave's put up.
+
+Here's a summary of that summary
+
+1. Pig : Platform for understanding and writing MapReduce/Sparkable code, uses `Pig Latin` as the main language
+2. Hive: Another language / data warehousing software, makes it easy to write code that can handle large data sets in an SQL Like language
+3. YARN: API that handles the job scheduling, in the HDFS of Hadoop infrastrucutre
+4. Mahout: Basically a scalable ML platform, it provides tools for Hadoop to work on large data sets
+5. Hoya/HBase: The actual No-sql relational DB that is used in hadoop
+6. Storm: Great for stream processing, will go into detail later. It was made by twitter and is now used by most people. It's based on async graph stuff
+7. Giraph: Graph database, and runs mapReduce jobs to process graphs. Used for more social media / connection focused jobs
+8. Spark: High performance analytics engine, think of this as a way to replace MapReduce (MP), it's a lot faster and has more features than MP.
+
+
