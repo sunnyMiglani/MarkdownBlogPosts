@@ -9,7 +9,7 @@ Author: Sunny Miglani
 # Table of Contents
 - [Cloud Computing](#cloud-computing)
 - [Lecture 1:](#lecture-1-)
-  * [*AAS abreviations:](#-aas-abreviations-)
+  * [*AAS abreviations:](#aas-abreviations-)
 - [Lecture 3 : Economics of Cloud](#lecture-3---economics-of-cloud)
   * [Technical side of scaling a warehouse of computers](#technical-side-of-scaling-a-warehouse-of-computers)
 - [Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)](#lecture-5--public-clouds--infrastructure-and-platform--iaas--paas-)
