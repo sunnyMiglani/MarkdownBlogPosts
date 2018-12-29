@@ -1,113 +1,110 @@
-# Cloud Computing 
+# Cloud Computing
+
 at University of Bristol, 4th year MEng unit.
 
 Author: Sunny Miglani
 
-
 **I wrote this from the slides, didn't watch the lectures unless it was needed! So this may not have _all_ the information**
 
 # Table of Contents
+
 - [Cloud Computing](#cloud-computing)
-- [Lecture 1:](#lecture-1-)
-  * [*AAS abreviations:](#aas-abreviations-)
+- [Lecture 1:](#lecture-1)
+  - [\*AAS abreviations:](#aas-abreviations)
 - [Lecture 3 : Economics of Cloud](#lecture-3---economics-of-cloud)
-  * [Technical side of scaling a warehouse of computers](#technical-side-of-scaling-a-warehouse-of-computers)
-- [Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)](#lecture-5--public-clouds--infrastructure-and-platform--iaas--paas-)
-  * [How is the Cloud (aws) structured?](#how-is-the-cloud--aws--structured-)
-      - [Availability Zones:](#availability-zones-)
-      - [Regions:](#regions-)
-      - [Why regions though?](#why-regions-though-)
-      - [High availability & fault tolerance:](#high-availability---fault-tolerance-)
-    + [Examples of IaaS Services on AWS:](#examples-of-iaas-services-on-aws-)
-        * [VPC: Virtual Private cloud (IaaS example)](#vpc--virtual-private-cloud--iaas-example-)
-        * [EC2: Virtual Machines (IaaS example)](#ec2--virtual-machines--iaas-example-)
-        * [S3 Storage](#s3-storage)
-      - [Examples of PaaS:](#examples-of-paas-)
-        * [RDS](#rds)
-        * [Elastic Beanstalk:](#elastic-beanstalk-)
-      - [IaaS vs PaaS](#iaas-vs-paas)
+  - [Technical side of scaling a warehouse of computers](#technical-side-of-scaling-a-warehouse-of-computers)
+- [Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)](#lecture-5--public-clouds--infrastructure-and-platform--iaas--paas)
+  - [How is the Cloud (aws) structured?](#how-is-the-cloud--aws--structured)
+    - [Availability Zones:](#availability-zones)
+    - [Regions:](#regions)
+    - [Why regions though?](#why-regions-though)
+    - [High availability & fault tolerance:](#high-availability---fault-tolerance)
+    * [Examples of IaaS Services on AWS:](#examples-of-iaas-services-on-aws)
+      - [VPC: Virtual Private cloud (IaaS example)](#vpc--virtual-private-cloud--iaas-example)
+      - [EC2: Virtual Machines (IaaS example)](#ec2--virtual-machines--iaas-example)
+      - [S3 Storage](#s3-storage)
+      * [Examples of PaaS:](#examples-of-paas)
+        - [RDS](#rds)
+        - [Elastic Beanstalk:](#elastic-beanstalk)
+      * [IaaS vs PaaS](#iaas-vs-paas)
 - [Lecture 07: Virtualisation, Containers and Container Orchestration](#lecture-07--virtualisation--containers-and-container-orchestration)
-    + [Virtualization:](#virtualization-)
-    + [Containers](#containers)
-  * [Virtualisation and Containerisation:](#virtualisation-and-containerisation-)
-    + [Docker in Detail (WHY THO??!?)](#docker-in-detail--why-tho-----)
-  * [Container Orchestration (Kubernetes)](#container-orchestration--kubernetes-)
-    + [Kubernetes in detail ( what is this degree legit?)](#kubernetes-in-detail---what-is-this-degree-legit--)
-        * [Master:](#master-)
-        * [Nodes:](#nodes-)
-      - [Deployments:](#deployments-)
+  - [Virtualization:](#virtualization)
+  - [Containers](#containers)
+  * [Virtualisation and Containerisation:](#virtualisation-and-containerisation)
+    - [Docker in Detail (WHY THO??!?)](#docker-in-detail--why-tho)
+  * [Container Orchestration (Kubernetes)](#container-orchestration--kubernetes)
+    - [Kubernetes in detail ( what is this degree legit?)](#kubernetes-in-detail---what-is-this-degree-legit)
+      - [Master:](#master)
+      - [Nodes:](#nodes)
+      * [Deployments:](#deployments)
 - [Lecture 09 Serverless](#lecture-09-serverless)
-    + [Case Study: AWS Lambda](#case-study--aws-lambda)
-      - [Performance Limitations:](#performance-limitations-)
-      - [Vendor Lock-in](#vendor-lock-in)
-      - [Monitoring and Debugging](#monitoring-and-debugging)
-      - [Serverless Security:](#serverless-security-)
+  - [Case Study: AWS Lambda](#case-study--aws-lambda)
+    - [Performance Limitations:](#performance-limitations)
+    - [Vendor Lock-in](#vendor-lock-in)
+    - [Monitoring and Debugging](#monitoring-and-debugging)
+    - [Serverless Security:](#serverless-security)
 - [Lecture 11 : Developing Scalable Cloud Applications](#lecture-11---developing-scalable-cloud-applications)
-    + [How to scale out these architectures? (Example, blackboard)](#how-to-scale-out-these-architectures---example--blackboard-)
-      - [X Axis Scaling:](#x-axis-scaling-)
-      - [Y Axis Scaling:](#y-axis-scaling-)
-      - [Z Axis Scaling:](#z-axis-scaling-)
+  - [How to scale out these architectures? (Example, blackboard)](#how-to-scale-out-these-architectures---example--blackboard)
+    - [X Axis Scaling:](#x-axis-scaling)
+    - [Y Axis Scaling:](#y-axis-scaling)
+    - [Z Axis Scaling:](#z-axis-scaling)
   * [Software Architectures in Cloud](#software-architectures-in-cloud)
-  * [Architectural Components & Patterns for Scalable Systems (Basically keywords and buzzwords)](#architectural-components---patterns-for-scalable-systems--basically-keywords-and-buzzwords-)
-    + [Decoupled Components](#decoupled-components)
-      - [Load Balancing:](#load-balancing-)
+  * [Architectural Components & Patterns for Scalable Systems (Basically keywords and buzzwords)](#architectural-components---patterns-for-scalable-systems--basically-keywords-and-buzzwords)
+    - [Decoupled Components](#decoupled-components)
+      - [Load Balancing:](#load-balancing)
       - [Message Topics](#message-topics)
       - [Message Queues](#message-queues)
       - [Service Registries](#service-registries)
 - [Lecture 13 : MapReduce and Distributed File Systems](#lecture-13---mapreduce-and-distributed-file-systems)
-    + [MapReduce fault tolerance](#mapreduce-fault-tolerance)
-  * [Google File System (GFS)](#google-file-system--gfs-)
-    + [GFS explained](#gfs-explained)
-    + [Leases and Mutation in GFS](#leases-and-mutation-in-gfs)
+  - [MapReduce fault tolerance](#mapreduce-fault-tolerance)
+  * [Google File System (GFS)](#google-file-system--gfs)
+    - [GFS explained](#gfs-explained)
+    - [Leases and Mutation in GFS](#leases-and-mutation-in-gfs)
   * [HDFS - Hadoop File System](#hdfs---hadoop-file-system)
   * [Next Step for HDFS (3.0) is using ERASURE CODING](#next-step-for-hdfs--30--is-using-erasure-coding)
-- [Lecture 13: Theory of Distributed Systems (CAP, Byzantine Generals)](#lecture-13--theory-of-distributed-systems--cap--byzantine-generals-)
-  * [Paxos Algorithm](#paxos-algorithm)
-  * [So, how does this damn Paxos actually work???](#so--how-does-this-damn-paxos-actually-work---)
-    + [-- FLOW: --](#---flow----)
-      - [Proposer:](#proposer-)
-      - [Acceptor:](#acceptor-)
-      - [Interaction once Acceptors prepare:](#interaction-once-acceptors-prepare-)
-      - [How does an acceptor choose a value?](#how-does-an-acceptor-choose-a-value-)
-  * [Byzantine Generals or Byzantine Fault Tolerance (BFT)](#byzantine-generals-or-byzantine-fault-tolerance--bft-)
-    + [Results of the Byzantine Generals:](#results-of-the-byzantine-generals-)
-    + [Solution to a simplied version of the problem](#solution-to-a-simplied-version-of-the-problem)
-        * [If there are 3 armies, 1 traitor](#if-there-are-3-armies--1-traitor)
-        * [Now if there are 9 armies and only 1 traitor](#now-if-there-are-9-armies-and-only-1-traitor)
-    + [Actual Algorithm "Oral Message Algorithm": OM(m)](#actual-algorithm--oral-message-algorithm---om-m-)
-    + [Solving the BG problem with traitors](#solving-the-bg-problem-with-traitors)
-- [Lecture 15: Hadoop and Related Technologies (Hadoop ecosystem)](#lecture-15--hadoop-and-related-technologies--hadoop-ecosystem-)
+- [Lecture 13: Theory of Distributed Systems (CAP, Byzantine Generals)](#lecture-13--theory-of-distributed-systems--cap--byzantine-generals)
+  - [Paxos Algorithm](#paxos-algorithm)
+  - [So, how does this damn Paxos actually work???](#so--how-does-this-damn-paxos-actually-work)
+    - [-- FLOW: --](#---flow)
+      - [Proposer:](#proposer)
+      - [Acceptor:](#acceptor)
+      - [Interaction once Acceptors prepare:](#interaction-once-acceptors-prepare)
+      - [How does an acceptor choose a value?](#how-does-an-acceptor-choose-a-value)
+  - [Byzantine Generals or Byzantine Fault Tolerance (BFT)](#byzantine-generals-or-byzantine-fault-tolerance--bft)
+    - [Results of the Byzantine Generals:](#results-of-the-byzantine-generals)
+    - [Solution to a simplied version of the problem](#solution-to-a-simplied-version-of-the-problem)
+      - [If there are 3 armies, 1 traitor](#if-there-are-3-armies--1-traitor)
+      - [Now if there are 9 armies and only 1 traitor](#now-if-there-are-9-armies-and-only-1-traitor)
+    - [Actual Algorithm "Oral Message Algorithm": OM(m)](#actual-algorithm--oral-message-algorithm---om-m)
+    - [Solving the BG problem with traitors](#solving-the-bg-problem-with-traitors)
+- [Lecture 15: Hadoop and Related Technologies (Hadoop ecosystem)](#lecture-15--hadoop-and-related-technologies--hadoop-ecosystem)
 - [Lecture 17: NoSQL Databases](#lecture-17--nosql-databases)
-  * [Key-Value DBs:](#key-value-dbs-)
-    + [Examples of DBs](#examples-of-dbs)
-        * [Amazon SimpleDB:](#amazon-simpledb-)
-        * [GAE's Datastore (Google's version)](#gae-s-datastore--google-s-version-)
-        * [Document DB (AWS DynamoDB)](#document-db--aws-dynamodb-)
-    + [Columnar DBs](#columnar-dbs)
-- [Lecture 18 (Graph Processing and Graph DBs)](#lecture-18--graph-processing-and-graph-dbs-)
-      - [Case Study - Web Pages](#case-study---web-pages)
-  * [Graph Processing](#graph-processing)
-    + [Execution of a "Pregel" program:](#execution-of-a--pregel--program-)
-  * [Examples of other graph based applications](#examples-of-other-graph-based-applications)
-- [Lecture 19: NewSQL and Stream Processing](#lecture-19--newsql-and-stream-processing)
-      - [Challenges with NoSQL](#challenges-with-nosql)
-    + [NewSQL:](#newsql-)
+  - [Key-Value DBs:](#key-value-dbs)
+    - [Examples of DBs](#examples-of-dbs)
+      - [Amazon SimpleDB:](#amazon-simpledb)
+      - [GAE's Datastore (Google's version)](#gae-s-datastore--google-s-version)
+      - [Document DB (AWS DynamoDB)](#document-db--aws-dynamodb)
+    - [Columnar DBs](#columnar-dbs)
+- [Lecture 18 (Graph Processing and Graph DBs)](#lecture-18--graph-processing-and-graph-dbs) - [Case Study - Web Pages](#case-study---web-pages)
+  - [Graph Processing](#graph-processing)
+    - [Execution of a "Pregel" program:](#execution-of-a--pregel--program)
+  - [Examples of other graph based applications](#examples-of-other-graph-based-applications)
+- [Lecture 19: NewSQL and Stream Processing](#lecture-19--newsql-and-stream-processing) - [Challenges with NoSQL](#challenges-with-nosql)
+  - [NewSQL:](#newsql)
   * [Case Study : Google AdWords / Ads](#case-study---google-adwords---ads)
-  * [Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)](#google-spanner--in-more-detail-because-why-not-you-know------)
-    + [SpanServers:](#spanservers-)
-    + [Google TrueTime:](#google-truetime-)
-    + [Google F1 (F-one) Deployment Structure:](#google-f1--f-one--deployment-structure-)
-      - [How does G-F1 deal with high latency?](#how-does-g-f1-deal-with-high-latency-)
+  * [Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)](#google-spanner--in-more-detail-because-why-not-you-know)
+    - [SpanServers:](#spanservers)
+    - [Google TrueTime:](#google-truetime)
+    - [Google F1 (F-one) Deployment Structure:](#google-f1--f-one--deployment-structure)
+      - [How does G-F1 deal with high latency?](#how-does-g-f1-deal-with-high-latency)
   * [Real Time Event Streaming](#real-time-event-streaming)
-    + [Case Study: Apache Storm](#case-study--apache-storm)
-      - [Structure of Apache Storm:](#structure-of-apache-storm-)
+    - [Case Study: Apache Storm](#case-study--apache-storm)
+      - [Structure of Apache Storm:](#structure-of-apache-storm)
 - [Lecture 20: Cloud Security & Cloud Research](#lecture-20--cloud-security---cloud-research)
-    + [Academic Side of Cloud Security / Cloud Research](#academic-side-of-cloud-security---cloud-research)
+  - [Academic Side of Cloud Security / Cloud Research](#academic-side-of-cloud-security---cloud-research)
 - [Lecture 21 Public Clouds for Software Dev - DevOps](#lecture-21-public-clouds-for-software-dev---devops)
-  * [DevOps](#devops)
+  - [DevOps](#devops)
 - [End of Lectures](#end-of-lectures)
-
-
 
 # Lecture 1:
 
@@ -119,36 +116,29 @@ Which means if you're dealing with a lot of servers, you're just going to have f
 That's why **Scalability** is very important!
 
 These are some characteristics of Cloud Computing:
-    
-    1. On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider.
-    2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client platforms.
-    3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand.
-    4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically.
-    5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
-    
-## *AAS abreviations:
+  
+ 1. On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider. 2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client platforms. 3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand. 4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically. 5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
+
+## \*AAS abreviations:
+
     1. SaaS : Software as a Service
         - Application software functionality served remotely. Imagine a program from a CD
     2. PaaS: Platform as a Service
         - Middlewear functionality, remotely accessible.
         Provices a combination of OS, Server, Data-base etc.
         **Example:** LAMP : Linux, Apache, MySQL, PHP/Python-- GOOGLE APP ENGINE, RDS, DYNAMODB
-        
+
     3. IaaS: Infrastructure as a Service
         - IT Infrastructure, almost virtualised and remotely accessible. Basically bare metal given to you. -- AMAZON EC2, S3, etc.
-        
-    
+
+
 # Lecture 3 : Economics of Cloud
 
-Economies of Scale are why cloud works! 
+Economies of Scale are why cloud works!
 ["Required Reading"](https://cacm.acm.org/magazines/2013/2/160173-the-tail-at-scale/abstract)
 
-
-
-Definitions:
-    1. Capital Expenditure: One time cost, to get the infrastructure built for your system (servers, building, etc)
-    2. Operating Expenditure: Electricity, man power, cooling, marketing etc.
-    
+Definitions: 1. Capital Expenditure: One time cost, to get the infrastructure built for your system (servers, building, etc) 2. Operating Expenditure: Electricity, man power, cooling, marketing etc.
+  
 Some Amazon Propogranda:
 EC2 is a virtual server, it uses Amazon Machine Image, and you can build your own AMIs. Amazon has some prebuilt AMIs and now third party AMIs as well.
 
@@ -157,20 +147,19 @@ Cooling is v v v important for data centres
     1. Open the window -small scale
     2. Two-loop cooling: Bigger scale, but not BIG
     3. Three loop cooling: Basically need to go to a different centre just to get rid of heat.
- 
- PUE: Power Usage Effectiveness -- PUE reflects the quality of the datacentre.
- PUE = Facility Power / IT Power.
- 
- 
+
+PUE: Power Usage Effectiveness -- PUE reflects the quality of the datacentre.
+PUE = Facility Power / IT Power.
+
 ## Technical side of scaling a warehouse of computers
-Architecture of a Warehouse-scale computer(WSC) is largely defined by the choice of it's building blocks. 
+
+Architecture of a Warehouse-scale computer(WSC) is largely defined by the choice of it's building blocks.
 
 In WSCs, the main building blocks are server hardware, network and storage components.
 
 WSCs are now built from low-end servers, there used to be something called SMPs (symmetric multi-processing ) systems, but they were too expensive on scaling.
 
 **Communication efficinecy is very important for scaling**. That's why there is a focus in loading time efficiency.
-
 
 # Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)
 
@@ -202,10 +191,11 @@ Often connnected on a backbone, but independent of each other.
 
     1. Data Sovereignty and Complaince: Data is stored where it's supposed to be and it's not sent accross
     2. Proximity of users to data: To provide low latency, and therefore you wanna move the regions around to allow things
-    3. Service and Feature availability: Slowly allows you to scale your features to region, managing costs in setup and infrastructure. 
+    3. Service and Feature availability: Slowly allows you to scale your features to region, managing costs in setup and infrastructure.
     4. Cost Effectiveness: Cheaper and easier depending on locations, so prices vary
 
 #### High availability & fault tolerance:
+
 Basically good ways to keep uptime and reduce problems if things breakdown. Amazon suggests 2 AZs at minimum
 
 Fault tolerance means that no users notice anything broken, which is why they suggest 3 AZs
@@ -215,44 +205,51 @@ Fault tolerance means that no users notice anything broken, which is why they su
 **PaaS**: Usually have HA, and some services offer FT
 
 ### Examples of IaaS Services on AWS:
+
 ##### VPC: Virtual Private cloud (IaaS example)
-It's software-defined networking. 
+
+It's software-defined networking.
 Ususally done via AWS CLI / UI
 VPC Must have:
+
 1. Defined private or public IP Address range
 2. Atleast one subnet (partition) using a subset of the IP addresses
 3. Firewalls, with or without security groups.
 
 Optionally (additional):
+
 1. Creating routing paths between VPCs
 2. Create private connections using software/hardware VPNs
 3. Connected via AZs and Regions
 4. Have IPv4 or IPv6 addresses
 
 ##### EC2: Virtual Machines (IaaS example)
+
 1. Uses Amazon Machine images (AMI)
 2. You can create your own AMIs for faster booting and scaling
 3. Default Elastic Band Storage with network attached SSDs
 4. Easy automated deployment for scaling and delivery
 
-
 ##### S3 Storage
+
 1. Internet Based Storage, it's highly durable and cheap
 2. Used by a LOT of apps
 3. Accessible via AWS UI, CLI etc.
 4. Files are **IMMUTABLE** objects.
 5. max for 1 file is 5TB
 
-
 #### Examples of PaaS:
+
 ##### RDS
+
 1. Manages DBs, has SQL/MySQL etc.
 2. Scales and backups well
 3. Saved time and money for admin
 4. Cannot get to DB instances, doens't work well for highly customised services
-5.RDS has multi AZs and uses Master/Slave DBs
+   5.RDS has multi AZs and uses Master/Slave DBs
 
 ##### Elastic Beanstalk:
+
 1. Scalable applications
 2. Custom docker containers
 3. Load balances, scales etc automatically for you
@@ -261,30 +258,36 @@ Optionally (additional):
 6. Can upload thru git
 
 #### IaaS vs PaaS
+
 IaaS:
+
 1. Used by Sys Admins
 2. Provides infrastructures, and sotrage services
 3. Offers flexibility in config
 4. Lowers cloud resources
 
 PaaS:
+
 1. Used by Devs,
 2. Locked into the application
 3. offers low cost solutions for race to markets.
 
 # Lecture 07: Virtualisation, Containers and Container Orchestration
+
 Focus is on an application called Xen, it's used in AWS.
 Docker is great for containers
 Kubernetes is great for Container Orchestration
 
 ### Virtualization:
+
 1. Provision of emulations of specific computer programs
 2. Specifics of the hardware and host server should be hidden from user. They should only sese waht they added (VM)
 3. AWS offers AMIs, and these are managed and run by a **Virtual Machine Monitor** (VMM), AKA the _hypervisor_
 4. This allowes the VM to be paused, moved and copied, therefore making it easily scalable.
 
 Different look into virtualisation is the use of a HOST OS or not.
-The two types are defined as 
+The two types are defined as
+
 1. Bare Metal -> <Hardware, Hypervisor, {VMs}> as the structure
 2. Hosted -> <Hardware, **HOST OS**, Hypervisor {VMs}>
 
@@ -304,6 +307,7 @@ The flow of Xen is as follows:
 > Application->Domain Guest ->TCP/IP Stack->Split Device Driver-> Xen -> Shared Meemory segment -> Split Device Driver of Domain 0 guest, -> tcp then -> REAL device driver, THEN to the PHYSICAL device.
 
 ### Containers
+
 Containers are a solution to the problem created due to the difference in requirements from Apps, DBs, Websites, Queues and the related VMs, Servers, Cloud structures, OSs etc, and how they all might interact with each other.
 
 Containers allowed a simple solution, where the developer builds in an environment, and the environment easily maps the instructions and data between the hardware to the software.
@@ -314,80 +318,88 @@ Docker allows for :
     2. Managed by docker engine, that uses a REST api.
     3. Small footprint for running on Linux based servers.
     4. Runs user processes in an isolated mode.
-    
-Docker Definitions
-1. Images: Read only templates, with instructions for creating docker containers, they're layered and kept track with a docker file
-2. Container: It's a runnable instance of an image, and is created, stopped, started, moved or deleted. It's defined by it's image and also any environment variables you use when you start or create it 
 
+Docker Definitions
+
+1. Images: Read only templates, with instructions for creating docker containers, they're layered and kept track with a docker file
+2. Container: It's a runnable instance of an image, and is created, stopped, started, moved or deleted. It's defined by it's image and also any environment variables you use when you start or create it
 
 ## Virtualisation and Containerisation:
+
 1. Similarities: Both emulate compute infrastructure, and encapsulate the tenant
 2. Differences:
-    - VMs provide HARDWARE level virtualisation, containers provide OS level virtualisation
-    - VMs need more time than containers for provisioning
-    - Virtualisation is slower in VMS in comparison to  containers except for networking
-    - VM tenants are usually isolated, but containers provide process level isolation to tenants.
+   - VMs provide HARDWARE level virtualisation, containers provide OS level virtualisation
+   - VMs need more time than containers for provisioning
+   - Virtualisation is slower in VMS in comparison to containers except for networking
+   - VM tenants are usually isolated, but containers provide process level isolation to tenants.
 
 ### Docker in Detail (WHY THO??!?)
-Docker works similar to virtualisation, where we take the approach of 
->   Server -> HOST OS -> Docker Engine -> <CONTAINER> 
+
+Docker works similar to virtualisation, where we take the approach of
+
+> Server -> HOST OS -> Docker Engine -> <CONTAINER>
 
 The container contains the applications that are interacting with the middle-ware used by docker.
 Focusing on the distinction between Containers and Images:
+
 1. containers run images
-2. images are publically displayed  / deployed on docker hub
+2. images are publically displayed / deployed on docker hub
 3. you can pull various images int oa repository/dev machine
 4. cloud operators have container servecies for your images.
 
 Images in docker are basically composed of layers, similar to git, where they only keep track of changes to ensure that the data used is light and it's easily scalable.
 
 ## Container Orchestration (Kubernetes)
+
 Why?
 
-Well, running containers at scale requires tools. Fault tolerance is an important factor along with auto-scaling on demand of users. 
+Well, running containers at scale requires tools. Fault tolerance is an important factor along with auto-scaling on demand of users.
 
-Kubernetes uses docker containers to package applications then added tons of frameworks around it. It's got a  LOT of support and it's quite powerfull. However, it's got a steeep learning curve.
+Kubernetes uses docker containers to package applications then added tons of frameworks around it. It's got a LOT of support and it's quite powerfull. However, it's got a steeep learning curve.
 
 It's great for scheduling work and replacing and scheduling in broken / failed containers.
 
 It's service discovery and load balancing is good
 
-It's good for horizontal scaling: Basically adding in more parallel roads to handle more traffic, but not increasing the length or width of a single road. Basically don't mess with the hardware, but feel free to add more versions 
+It's good for horizontal scaling: Basically adding in more parallel roads to handle more traffic, but not increasing the length or width of a single road. Basically don't mess with the hardware, but feel free to add more versions
 
 ### Kubernetes in detail ( what is this degree legit?)
+
 Some components are:
+
 1. Master
 2. Etcd
 3. Nodes
-    - Pods
-    - Kubelet
-    - Kube Proxy
+   - Pods
+   - Kubelet
+   - Kube Proxy
 4. Kubectl
-    - Local cli manager to manage clusters
-    - configured to know cluster target for commands
+   - Local cli manager to manage clusters
+   - configured to know cluster target for commands
 
 ##### Master:
+
 1. Manages the cluster state
-2. Subcomponents include 
-    - API server,
-    - controller,
-    - scheduler
+2. Subcomponents include
+   - API server,
+   - controller,
+   - scheduler
 3. Possibly redundant
 4. Writes to etcd
 
 ##### Nodes:
+
 1. Run work in pods
 2. Pods are the scheduling unit
-    - Contain one or more containers
-    - scheduled together on the same host
-    - mount the same external storage
+   - Contain one or more containers
+   - scheduled together on the same host
+   - mount the same external storage
 3. Container at runtime
 4. Kubelete - Agent that communicates with the big boi master
 5. kube-proxy: Network agent, overlays network routes.
 
+Kubernetes has some Runetime Objects, such as
 
-
-Kubernetes has some Runetime Objects, such as 
 1. Pods
 2. Deployments
 3. Services
@@ -395,13 +407,15 @@ Kubernetes has some Runetime Objects, such as
 These are all stored in `yaml` files.
 
 #### Deployments:
+
 1. ReplicaSets: Balances the number of scheduled and running pods, it kills and creates them as needed
 2. Deployments provides declarative updates for pods and ReplicaSets.
 3. They're managed via
-    - Specs : These describe the state
-    - Status: The actual status
+   - Specs : These describe the state
+   - Status: The actual status
 
 The steps to run kubernetes:
+
 - Create a deployment to rollout a ReplicaSet
 - Declare the new state with Pods
 - Rollback with the deployement revision
@@ -411,22 +425,21 @@ The steps to run kubernetes:
 
 # Lecture 09 Serverless
 
-
 Serverless still has servers, it's just the idea that the developer doesn't need to care about them.
 
 The servers themselves work on more generic generalised structure, rather than application specific.
 
-
 Examples of some serverless layers.
+
 1. Computing focused - Google Cloud Functions, AWS Lambda etc (FaaS)
-2. Data Focused -  Storage and Management, AWS S3, DynamoDB, Firebase etc
+2. Data Focused - Storage and Management, AWS S3, DynamoDB, Firebase etc
 3. Messaging Focused - AWS SNS/ SQS etc
 4. User Management and Identiy - AWS Cognito, Auth0 etc
 5. Montiring and Dev - AWS CloudWatch, DataDog
 6. Edge / APIs - AWS API Gateway, Cloudfront etc.
 
-
 The **Main pillers of serverless** are:
+
 1. No server management
 2. Flexible scaling
 3. High availability
@@ -450,15 +463,19 @@ How does it work?
 **Cool Feature:** The container that runs this lambda, is actually retained for sometime to reduce the time needed to start it up each time.
 
 The **Four Stumbling Blocks of Serverless**:
+
 1. Performance limitations
 2. Vendor Lock-in
 3. Montioring and Debugging
 4. Security and Privacy
 
 #### Performance Limitations:
+
 Specifically we're going to focus on the "cold start" issue
 Essentially having auto deployment and auto-scaling require provisioning. This means that code that hasn't been used in a while and therefore cached takes longer to start
+
 #### Vendor Lock-in
+
 This essentially means that because we use a vendor like AWS Lambda, the associated programs that can run well with it are other lambda structures. Such as cloudwatch for logging or API gateway for https reqs.
 
 However the lock-in has the advantage of easy integration with other processess if we'd like to use them.
@@ -476,30 +493,20 @@ The time that hackers have to interact with your device can be limited due to ti
 
 Weaknesses:
 App code is still dependent to the library dependencies
-The normal vulnerabilities that apply to code would still be valid. 
-
+The normal vulnerabilities that apply to code would still be valid.
 
 # Lecture 11 : Developing Scalable Cloud Applications
 
 Definitions:
-    
-    1. Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines
-    2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
+  
+ 1. Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines 2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
 
-X Axis Split Horizontal Duplication with unbiased cloning of services and data:
-    - Each clone can do the work of all the other clones, and the work is distributed among clons without bias
-    - Inefficient compared to alternatives
-    - But EASY to do
-    
-Y Axis Split refers to isolating and making scalable individual responsibility of components
-    - Needs to be split on the code base
-    - More costly than x-Axis
+X Axis Split Horizontal Duplication with unbiased cloning of services and data: - Each clone can do the work of all the other clones, and the work is distributed among clons without bias - Inefficient compared to alternatives - But EASY to do
+  
+Y Axis Split refers to isolating and making scalable individual responsibility of components - Needs to be split on the code base - More costly than x-Axis
 
-Z Axis - Partitioning the domain of incoming requests
-    - Data partitioning, split relative to client
-    - Improves fault tolerance and cache performances
-    - Most costly system
-    
+Z Axis - Partitioning the domain of incoming requests - Data partitioning, split relative to client - Improves fault tolerance and cache performances - Most costly system
+  
 Simpler explanation of the above
 If you split on X axis, imagine adding more clones of the system
 
@@ -511,16 +518,15 @@ Splitting on Z axis means each server runs the same version of the code, but are
 
 ### How to scale out these architectures? (Example, blackboard)
 
-If the basic structure is 
+If the basic structure is
 
->  Presentation -> Logic -> DataBase
+> Presentation -> Logic -> DataBase
 
 #### X Axis Scaling:
 
 You would expand the application logic and presentation layers, keeping the DB constant
 
-> LoadBalancer -> {Presentation}\* + {Logic}\* -> DB 
-
+> LoadBalancer -> {Presentation}\* + {Logic}\* -> DB
 
 #### Y Axis Scaling:
 
@@ -542,7 +548,6 @@ Architecture is implicit even if it's a big scaled project. Maybe you haven't do
 
 Good differentiation to think of is the Napster / Torrents system
 
-
 Napster depends on a single login node, and then multiple client nodes (the logic / downloads etc)
 
 Whereas torrent is a peer-to-peer network, which while badly scalable, is very fault tolerant unlike napster
@@ -556,31 +561,29 @@ Whereas torrent is a peer-to-peer network, which while badly scalable, is very f
 - Uses APIs, RPCs or Typed Messages, and will HEAVILY rely on communication
 
 Four important aspects of decoupled components is :
+
 1. Load Balancers
 2. Message Queues
 3. Message Topics
 4. Service Registers
 
 #### Load Balancing:
+
 Distribute Requests, manage availability, perform health checks and session affinity. Have lists of various servers and mappins and have a concrete load balancing polciy.
 
 Sticky LBs means that the router is always routing client's requests to the same sever instances.
 
 Cookies are managed by the load balancer, there is session replications and session-aware clusters.
 
-The algorithms used can be Even Task Distribution and Round Robin.
-    - Sequential distribution of work amongst the servers
-    - Ignored the difference in weight required
+The algorithms used can be Even Task Distribution and Round Robin. - Sequential distribution of work amongst the servers - Ignored the difference in weight required
 Can also be weighted round robin
 
 or least connections.
 
-
 **Load balancers also check the health of other load balancers to ensure no clients are being missed**
 
-
-
 #### Message Topics
+
 1. Messages are immidiately pushed to subscribers
 2. Decouple producers from subscribers
 3. concurrent processing of the data
@@ -588,22 +591,21 @@ or least connections.
 
 Essentially use a Pub/Sub system, and handle that not like an idiot.
 
-
 #### Message Queues
-1. Asynchronous, queue it and leave it 
+
+1. Asynchronous, queue it and leave it
 2. Decoupling, as it seperates application logic
 3. Guarantees that things will run atleast once
 4. Scalable, many workers can observe add and remove from the queue
-5. Introduces latency however 
-
+5. Introduces latency however
 
 #### Service Registries
+
 1. Resolve addresses for names
 2. Internal and ensure the HA system
 3. Some workflows might need more scaling than others, and this can identify and handle that
 
 Also handles things like Databasing and logging, as it _should_ have a sight of all the services being run
-
 
 # Lecture 13 : MapReduce and Distributed File Systems
 
@@ -613,7 +615,6 @@ Google made MapReduce and GoogleFileSystem for their own in-house developement o
 
 MapReduce has now been taken over by Hadoop, and GoogleFileSystem is now also Hadoop File System
 
-
 MapReduce is a "style of programming and of implementation". It's essentially simply described as splitting a large task amongst multiple workers, then taking the final output and combining it to give you a final output. [Simple Explanation here](https://www.ibm.com/analytics/hadoop/mapreduce)
 
 MapReduce is great because it's **FAULT TOLERANT**, in the presence of normal failure.
@@ -621,7 +622,8 @@ MapReduce is great because it's **FAULT TOLERANT**, in the presence of normal fa
 MapReduce operates independent of storage systems and doens't require the data to be in a database before it's processed.
 
 ### MapReduce fault tolerance
-Tbh, MapReduce is usually done over hundreds or thousands of worker machines, so normal failure is a significant issue. 
+
+Tbh, MapReduce is usually done over hundreds or thousands of worker machines, so normal failure is a significant issue.
 
 To handle normal failure, there exists a "master" worker, which would ping the worker threads periodically and if the worker does not reply in time, the master assumes that it's failed and marks it as such.
 
@@ -645,29 +647,25 @@ If you have cheap computers, they're unreliable, so how do you hande "normal fai
 
 ### GFS explained
 
-Files in GFS are divided into 64Mb blocks called `chunks`, each chunk has a `chunk handle` which is a unique ID.These chunks are stored on `chunkservers`. 
+Files in GFS are divided into 64Mb blocks called `chunks`, each chunk has a `chunk handle` which is a unique ID.These chunks are stored on `chunkservers`.
 
 **Fault-Tolerance** is provided by replicating each chink accross multiple servers. Usually there are 3 replicas, but this can be user-configured.
 
 Meta-data records _where_ a chunk is stored, so GFS knwos where they are.
-
 
 GFS consists of these three core processess
 
     1. GFS Master Server (single) - Maintains all file system metadata
     2. GFS Chunkserver (multiple)
     3. GFS Clinet (multiple)
-    
 
 The application being run with GFS would talk to the GFS client, which would then deal with GFS as a whole, specifically going in contact with the GFS master
 
 The role of the GFS Chunkserver, is to contact and map the storage to the linux file system.
 
-
 To find the fastest access time by name in the name filespace of GFS, it uses a Trie kinda structure to deal with the dat.
 
 The Master basically finds which chunkserver the data is stored in, and handles the retrieving and mutation of the data.
-
 
 **Mutation of the data is a key factor**. Mutation basically means changing the data. Here to handle and maintain fault-tolerance, the chunks are replicated `n` times over the multiple servers. Each mutation is performed on all replicas, and is synchronised via [leases](http://vandanat.blogspot.com/2011/01/how-google-file-system-manages.html)
 
@@ -682,8 +680,8 @@ The Master basically finds which chunkserver the data is stored in, and handles 
 7. Primary replies back to the client with confirmation that the mutation is replicated.
 8. Any point of failure will mean that the process is restarted by the Client pushing the data to all the replicas.
 
-
 ## HDFS - Hadoop File System
+
 In hadoop the following changes are made to the naming convention
 
 1. GFS Client -> HDFS Client
@@ -708,10 +706,11 @@ EC can kinda be understood with this line
     When written, data bits are encoded along with additional bits
     When read back, data missing from erasures can be reconstructed from the extra bits
     It can reduce / eliminate need to maintain `n` identical replicas.
-    
+
 # Lecture 13: Theory of Distributed Systems (CAP, Byzantine Generals)
 
 A goood cloud system should aim to achieve these three things
+
 1. Consitency (C): All nodes should see the same data at the same time
 2. Availability (A): Node failures shouldn't prevent survivors from working
 3. Partition-tolerance (P): System continues to operate despite network partitions, i.e. partitions temporarily speperate systems from communicating with each other.
@@ -720,6 +719,7 @@ However, there's no chance a service can provide all three of the above simultan
 
 Imagine a scenario with A, B servers and they suffer a partition:
 A must decide
+
 - Wait to hear back from B sacrificing Availability of A
 - Proceed without hearing back from B, meaning the consistency would be gone b/w them
 - Never actually be paritioned from B in the first place, meaning losing the tolerance to partitions
@@ -727,13 +727,13 @@ A must decide
 **However, this isn't a scenario of pick 2 out of 3, as parititions will ALWAYS happen and is NEEDED in a cloud structure**
 You infact just choose how much of Availability and Consistency you're willing to sacrifice.
 
-Sometimes in a cloud it might make more sense to focus on Consistency(C) (finance as an example). 
+Sometimes in a cloud it might make more sense to focus on Consistency(C) (finance as an example).
 
 ## Paxos Algorithm
 
-Paxos is an approach to ensuring agreement on a series of asynchronous operations taking place accross a distributed system. 
+Paxos is an approach to ensuring agreement on a series of asynchronous operations taking place accross a distributed system.
 
-It's a family of protocols for solving consensus in a network of unreliable processors. 
+It's a family of protocols for solving consensus in a network of unreliable processors.
 
 Paxos guarantees saftey (consistency) and the conditions that could prevent it from making progress are difficult to provoke. Paxos is good for places where durability is required, for example replicating a file or a database where the amount of data could be large.
 
@@ -742,7 +742,7 @@ The Paxos algorithms is for systems that must
     Achieve consensus on an order in which to carry out actions
     Ensure that actions that are agreed upon cannot be forgotten
     Despite system messages being duplicated, delayed or lost
-    
+
 Here **Paxos makes an assumption that the messages are not deliberately malicious, which is different form the Byzantine Generals Problemo**
 
 A set of replicas handle a series of Async requests that relate to the same resource
@@ -754,43 +754,44 @@ A set of replicas handle a series of Async requests that relate to the same reso
 So what happens if replicas fail or become paritioned?
 
     All surviving replicas must remain identical despite replica failure and message loss.
-    
+
 Paxos treats `value` to be any of {reading, writing, roll-backs, commits} that the system might choose to make.
 
 For each attempt to agree on a `value`, Paxos must ensure that
+
 - Only a value that has been actually proposed may be chosen
 - Only a single value is chosen
 - No one thinks a value has been chosen UNLESS IT ACTUALLY HAS
 
 **Paxos doesn't guarantee a pick on the oldest, or best, it just says a valid value**
 
-
 ## So, how does this damn Paxos actually work???
 
-There are a set of `replicas` tha handle a series of synchronus requests that deal with **the same resource**. We remember that a `value` can be {reading, writing, roll-backs or commits}.  
+There are a set of `replicas` tha handle a series of synchronus requests that deal with **the same resource**. We remember that a `value` can be {reading, writing, roll-backs or commits}.
 
 There are three main roles a `replica` or `process` can play:
+
 - `Proposers`: Learn values that are already accepted; propose those values
 - `Acceptors`: Let proposers knows already-accepted-values; accept or reject values they propose, and reach a consensus on choosing a particular proposal or value.
 - `Learners`: Become aware of the chosen proposal/value and _act on it_.
 
-
 Replicas can play **more than one** of these roles at different times. Often a replica is _elected_ to be a priviliged learner and or proposer. This means that they're the ONLY one allowed to play the role.
 
- 
-### -- FLOW: -- 
+### -- FLOW: --
 
 #### Proposer:
+
 P asks some majority of acceptors to prepare for a proposal N. A "majority" is asked to get ready for the proposal and not all the players as if a majority of replicas agree on `V`, then a different majority CANNOT agree on another proposal `V'`. We also say majority **because not all acceptors could be in easy contact**
 
 (Note, that P hasn't offered a value yet, and the acceptors can sign up whether or not they want to listen to the proposal)
 
 #### Acceptor:
+
 An acceptor A, gets a `prepare please` message from P with an ID `N`.
 Acceptor has these possible options
 
     1. A promises to ignore future proposals with ID lesser than `N`
-    2. A has already accepted a proposal P, and then sends the value to P with the ID of the last proposal that was accepted. 
+    2. A has already accepted a proposal P, and then sends the value to P with the ID of the last proposal that was accepted.
     3. If N is too low, (N is behind the last ID she accepted), then acceptor can reject the `prepare please` message.
 
 #### Interaction once Acceptors prepare:
@@ -801,14 +802,12 @@ Acceptor has these possible options
 - They HAVE to accept unless P was too slow and they accepted a higher proposal number. (ID_of_new > N)
 - If they accept, they can register a proposal with **learners** who take action on the value **if the majority of accepters accept the same proposal**
 
-
 #### How does an acceptor choose a value?
-    
+
     1. Acceptor will accept the first proposal it sees
     2. Acceptor will accept the proposal with the highest ID number it sees
     3. A majority of acceptors must accept the same value.
-    4. Once a value is chosen, all proposals with a higher ID coose to recommend the same chosen value. 
-
+    4. Once a value is chosen, all proposals with a higher ID coose to recommend the same chosen value.
 
 ## Byzantine Generals or Byzantine Fault Tolerance (BFT)
 
@@ -816,7 +815,7 @@ BFT is the dependability of a fault tolerant computer system, where components m
 
 In a Byzantine failure, a component can inconsistently appear both failed and functioning to failure-detection systems, presenting different symptoms to different observers.
 
-It's difficult for other components to declare it failed and shut it out of the network, as they first need to reach a consensus regarding which component has failed.  This is derived from the Byzantine Generals' problem where the "actors" need to agree on a stategy to avoid a system failure, but some of the "actors" are malicious.
+It's difficult for other components to declare it failed and shut it out of the network, as they first need to reach a consensus regarding which component has failed. This is derived from the Byzantine Generals' problem where the "actors" need to agree on a stategy to avoid a system failure, but some of the "actors" are malicious.
 
 It's **focused on consistency in a distributed system**.
 
@@ -824,7 +823,7 @@ Byzantine General's problem:
 
 - N allied generals must decide on a plan of attack
 - They must all follow the SAME consensus plan
-- But `m` of the generals are **traitors** (DUN, DUN, DUNNN) trying to prevent this. 
+- But `m` of the generals are **traitors** (DUN, DUN, DUNNN) trying to prevent this.
 - --- What is the largest value of `m` that the loyal generals can cope with and why?
 
 (`m` here refers to broken / failing components)
@@ -833,10 +832,9 @@ If we look at simple majority vote of the generals, if there's any traitors, the
 
 However, the problem arrises when the traitors send different messages to different generals, not allowing them to reach a consensus.
 
-
 ### Results of the Byzantine Generals:
 
-    Byzantine generals can achieve consensuss when n > 3*m + 1 
+    Byzantine generals can achieve consensuss when n > 3*m + 1
     To do so, they must engage in m+1 rounds of message passing
 
 ### Solution to a simplied version of the problem
@@ -847,6 +845,7 @@ However, the problem arrises when the traitors send different messages to differ
 2. If one of the lieutenants is the traitor, they still cannot reach consensus because they cannot tell which is true.
 
 ##### Now if there are 9 armies and only 1 traitor
+
 Problem becomes relatively straightfoward.
 
 1. The commander being a traitor: No matter how he splits it, there will always be a consensus in the system, and they will always reach the same consensus. They might even be able to identify that the commander is a traitor
@@ -858,14 +857,13 @@ Problem becomes relatively straightfoward.
 If OM(M) & M>0:
 
     1. The commander sends a vote `v_i` to n-1 lieutenants
-    2. Each lieutenant, `i` acts as a Commander for a new call OM(m-1), sending `v_i`  to the other n-2 lieutenants. 
+    2. Each lieutenant, `i` acts as a Commander for a new call OM(m-1), sending `v_i`  to the other n-2 lieutenants.
     3. If `V_i` is the set of the values that Lieutenant `i` receives during the above step, then Lieutenant `i` uses the value majority (`V_i`)
-    
+
 If OM(0):
-    
-    1. The commander sends a vote `v_i` to each lieutenant, i.
-    2. Each Lieutenant `i` uses the vote received from the Commander.
-    
+  
+ 1. The commander sends a vote `v_i` to each lieutenant, i. 2. Each Lieutenant `i` uses the vote received from the Commander.
+  
 m being the number of adversaries.
 
 ### Solving the BG problem with traitors
@@ -893,19 +891,18 @@ This is because we'd never reach consensus as the number of votes required would
 [Vimeo link!](https://vimeo.com/303507914)
 
 Hadoop's history
+
 - Hadoop was built to do open source MapReduce
-- But now they needed a file system to handle it, like Google File System, so they built HDFS 
+- But now they needed a file system to handle it, like Google File System, so they built HDFS
 - Now they needed a DB system to handle this, so built Apache HBase like Google BigTable
 
 The above three {Hadoop, HDFS, HBase} became Hadoop Core
 
-
-Apache Pig Latin was developed to create functions that can be MapReduced by Hadoop. 
+Apache Pig Latin was developed to create functions that can be MapReduced by Hadoop.
 
 `Hive` was created to build a SQL-like query language for Hadoop core // HBase
 
 `YARN` was built as a method to deal with interacting HDFS2 layer, when MapReduce/Hadoop became too big
-
 
 Literally the best understanding you'll get from this lecture is to read the "one slide summary" that Dave's put up.
 
@@ -923,22 +920,21 @@ Here's a summary of that summary
 # Lecture 17: NoSQL Databases
 
 There are 4 main classes of a NoSQL DB:
+
 1. Key-Value DBs: DynamoDB
 2. Document DB: MongoDB
 3. Column Family DB: HBase
 4. Graph DBs : Giraph
 
-
 Relational Databases was great when you wanted to keep _relations_ (suprise suprise) between the data and easily access them based on these relations.
 
 Relational databases are great for **ACID**: **Atomicity, Consistency, Isolation and Durability**
 
-But, this isn't what we always want, 
+But, this isn't what we always want,
 sometimes we want **CRUD: Create/Read/Update/Delete**
 
-Also RDBMS (Relational) are not scalable. They become more and more expensive as they get bigger and bigger. 
+Also RDBMS (Relational) are not scalable. They become more and more expensive as they get bigger and bigger.
 They're hard to scale down if the need dies out, therefore they end up having a long term permanently rising cost
-
 
 ## Key-Value DBs:
 
@@ -950,7 +946,6 @@ Values can be almost any digital object, and usually the DB will put it's own co
 
 KV DB's restricitons very much depend on the system being used, they may or may not provide auto indexing or generate keys.
 Most of them **will use hashing** for quick access
-
 
 ### Examples of DBs
 
@@ -969,10 +964,9 @@ SimpleDB has 3 main resources
 The data is stored **in a "tree like" structure** not a table.
 SimpleDB **only stores text**
 
-
 ##### GAE's Datastore (Google's version)
 
-GAE's approach is a cloud style scale _out_ not up system. Basically this means as it's easier to scale _out_, it makes more sense for it to be automated. 
+GAE's approach is a cloud style scale _out_ not up system. Basically this means as it's easier to scale _out_, it makes more sense for it to be automated.
 
 - GAE Datasores holds data as `entities`
 - Each entity has one ore more `properties`
@@ -983,7 +977,8 @@ GQL is the language used to interact with GAE, and it's used in a similar fashio
 
 It allows for filtering based on property values, returning in a sorted order and can sort/filter keys too.
 
-GAE like services 
+GAE like services
+
 1. Memcache - Short term key/value storage serivce, that uses RAM and not disk and is therefore faster. It's not persistent though.
 2. Blobstore - Store large items like videos and images
 3. URL fetch - HTTP reqs to other servers on the internet.
@@ -998,10 +993,10 @@ They **DONT** store electronic documents like MS Word files. A `document` is a s
 
 A Document example is a JSON file.
 
-Exampls of DocumentDBs: 
+Exampls of DocumentDBs:
+
 1. MongoDB
 2. Couch (Apache open source based)
-
 
 ### Columnar DBs
 
@@ -1016,19 +1011,20 @@ ColumnDbs come from the fact that groups of _related_ columns, which are frequen
 Data modelers using Column DBs can implement their own `families` when defining the structure, but devs can add onto it as needed.
 
 Examples:
-1. Cassandra-  V famous, used in apple, netflix, reddit uber etc.
-2. HBase - Part of hadoop, used by airbnb, netflix, pintrest, spotify etc.
 
+1. Cassandra- V famous, used in apple, netflix, reddit uber etc.
+2. HBase - Part of hadoop, used by airbnb, netflix, pintrest, spotify etc.
 
 # Lecture 18 (Graph Processing and Graph DBs)
 
-Networks are represented using Graphs in CS. 
+Networks are represented using Graphs in CS.
+
 1. Fully Connected - Each node is connected to all other nodes directly
 2. Clique is a **sub-graph** that is complete
 3. Path is a sequence of edges connecting nodes
 4. Cycle is a closed path.
 
-Number of ways to arrive or leave a node is a node's **degree*.
+Number of ways to arrive or leave a node is a node's \*_degree_.
 
 This is equivalent to counting a node's neighbours.
 
@@ -1041,19 +1037,19 @@ This is equivalent to counting a node's neighbours.
 
     - Basically a matrix representation that shows how a graph is connected
     - Colums and rows label's are both matrix nodes
-    - A_ij represents teh number of edges from node i to node j. 
+    - A_ij represents teh number of edges from node i to node j.
     - Sum of **rows** = Out-degree of i
     - sum of **columns** = In-degree of j
-    
+
 If you square an adjacency matrix, the values in the graph show you how many connections of **LENGTH = 2** does it take to get from A to B.
 Connections that used to be true for length = 1 will now show 0
 
 _NB: I recommend looking at the slides for this, since that makes more sense_
 
-
 #### Case Study - Web Pages
 
 How do you see how important a web page is?
+
 - If there's `a` link from `b` to `a`, then `a` must be important
 - If `b` is important and links to `a` then `a` must be VERY important
 - if `b` only links to `a` few pages, one of them being `a` then `a` is super important
@@ -1069,12 +1065,12 @@ This can cause problems as they will accumulate a high score but never distribut
 
 A **fix** for this is to teleport the surfers to random pages. Damping the pages imposes transitions between all nodes.
 
-
 ## Graph Processing
 
 Google developed **Pregel**, a framework for running network analysis using graph processing.
 
 It provides
+
 1. High Scalability
 2. Fault-Tolerance
 3. Flexibility in arbitrary graph algorithms
@@ -1082,6 +1078,7 @@ It provides
 Facebook developed **Giraph** (now Apache Giraph) to solve a similar problem.
 
 Both the algorithms above have the same model
+
 - Concurrent Computation: Computation is local to each node.
 - Communication: There is messaging between nodes
 - Barrier Synchronisation: Checkpoints that globally block nodes before processing.
@@ -1089,19 +1086,22 @@ Both the algorithms above have the same model
 Essentially this means run everything in parallel for processing, where each node does the computation for the related nodes nearby, but make sure to synchronise at some point before running the next iteration of the processing.
 
 Pregel operates over a directed graph
+
 - Each vertex is associated with a modifiable user-defined value
 - Each edge has a value, and links a source vertex to a destination vertex
 
 It runs a sequence of "supersteps" that's similar to MapReduce rounds
+
 - Each vertex runs a user defined function
 - It takes input from the last function run and gives output for the next function to run
 - It can also change the surrounding topology by modifying it's outgoing edges.
 
 The algorithm terminates based on the nodes voting to halt
+
 - Initially every node is active
 - All active nodes participate in the computation of a "superstep"
 - Node deactivates itself by voting to halt
-- Node can return to the active state if it gets the appropriate message 
+- Node can return to the active state if it gets the appropriate message
 
 ### Execution of a "Pregel" program:
 
@@ -1110,20 +1110,22 @@ The algorithm terminates based on the nodes voting to halt
 - The master coordinates the running and communication and then couns the inactive vertices after each step and singals workers if there is an incoming message.
 
 Master is also incharge of
+
 - Keeping track of failed workers (via pings)
 - Keeping track of superstep and sync steps
 - Failed workers' work is reassinged to other workers, and the step is restarted
 
 ## Examples of other graph based applications
 
-1. Neo4j Graph DB - 
- - GraphDB in Java
- - Associative Data Sets (nodes with edges)
- - Clustred 
- - Uses a query language
- - Works fast on connected data
- 
-2. Cypher Query Language 
+1. Neo4j Graph DB -
+
+- GraphDB in Java
+- Associative Data Sets (nodes with edges)
+- Clustred
+- Uses a query language
+- Works fast on connected data
+
+2. Cypher Query Language
 
 - Declerative
 - Matches a pattern
@@ -1134,8 +1136,8 @@ Master is also incharge of
 
 NewSQL is a class of modern RDBMSs that want to provide the same scalability of the NoSQL systems but still maintaining the ACID guarantees of a traditional RDBMs system.
 
+reCAPping CAP:
 
-reCAPping CAP: 
 - Consistency
 - Availability
 - Parition Tolerance
@@ -1143,9 +1145,9 @@ reCAPping CAP:
 NoSQL offerings grew in comparison to the other two because the requirement of Partial Tolerance grew as the internet did. Partial tolerance being a core factor in web dev.
 
 #### Challenges with NoSQL
- 
+
 Lack of strong ACID consistency, this adds complication for developers (imagine multiple transactions?)
- 
+
 Theres limitations with what SQL support is available, and there's very few systems that have robust management tools.
 
 ### NewSQL:
@@ -1160,7 +1162,8 @@ It's a DBS that delivers the **scalability** and **flexibility** of NoSQL while 
 
 ## Case Study : Google AdWords / Ads
 
-The workflow of the application used to be 
+The workflow of the application used to be
+
 - Do a content based list of ads to display
 - take £££ related to it by the advertisers
 - Set rules for the ads (time, location)
@@ -1168,22 +1171,24 @@ The workflow of the application used to be
 - If there's an ad click, then record the transaction for billing purposes.
 
 The limitations it faced tho
+
 - Availablity : There was downtime for updating the schema and replicating the data
 - Scaling : Since it used a shared MySQL Db, rebalancing was difficult as you added nodes
 - Functionality: Couldn't do sharing accross apps for the data
 
 New version that happened in 2011:
+
 - Architecure: It uses shared servers, it has a stateless server to deal with data. Worker pools are used for distributed SQL execution
 - It has a relational schema, with consistent indexes and extensions for rich data types
 - It uses MULTIPLE INTERFACES, like MapReduce, Key-Value, SQL etc.
 - Can change the values in this.
 
-
 It's used in GCP, Google Photos, Adwords!
 
 ## Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)
 
-The google spanner universe has 
+The google spanner universe has
+
 1. `Zonemaster`: Assigns data to span servers
 2. `Spanserver:` serves data to clients
 3. `Location Proxies`: Used to locate spanservers with accurate data
@@ -1193,6 +1198,7 @@ The google spanner universe has
 ### SpanServers:
 
 Each Spanserver contains
+
 1. Colossus: Distributed FileSystem
 2. Tablet: a bag of key/value timestamps. the State of this is tracked
 3. Paxos state machine: it maintains consistency amongst replicas
@@ -1208,13 +1214,12 @@ Application Data Model:
 
 ### Google TrueTime:
 
-It's an API that tells you  what the time is
+It's an API that tells you what the time is
 Specifically, that it can GUARANTEE that if time T has been given out, then the next call will only give T' > T, which is IMPORTANT AS HECK for transactions.
 
 Each google data centre has an atomic clock, accurate to < 10ms
 
 Clients can poll the TimeMaster, and they use "Marzullo's algorithm" which can detect liars and reach consensus in noisy conditions.
-
 
 ### Google F1 (F-one) Deployment Structure:
 
@@ -1222,33 +1227,34 @@ Clients can poll the TimeMaster, and they use "Marzullo's algorithm" which can d
 - Geography-> it's spread accross the world to survive regional natural distasters, approx 100ms apart
 - Performance: High commit latency, have high throughput (bandwidth kinda)
 
-
 #### How does G-F1 deal with high latency?
 
 - Preferred Transaction structure
-    - One read phase
-    - Read in async
-    - Buffer writes in client, uses RPC
-- Use coarse schema 
+  - One read phase
+  - Read in async
+  - Buffer writes in client, uses RPC
+- Use coarse schema
 - Use bulk operations, but do small transactions in parallel for high throughput
 
 ## Real Time Event Streaming
 
 Where would you need this?
+
 - Large Haldron Collider
 - Network monitoring
 - Fraud detection
 - Marketing
 
 What do i need?
+
 - Data arrives in real time (as close)
 - High throughput
 - Low latency
 - Fault tolerance
 - Straggler tolerant
 
-
 ### Case Study: Apache Storm
+
 It's great to process unboudned streams of data
 
 Good for realtime processing.
@@ -1256,6 +1262,7 @@ Good for realtime processing.
 Good for low latency passing
 
 #### Structure of Apache Storm:
+
 - Define nodes and their roles
 - Create a graph of computation
 
@@ -1273,15 +1280,11 @@ Apache storm provides an **atleast once** processing guarantee, such that each d
 
 It cannot guarantee a **Only once** system, because they may be done in parallel and no way of telling.
 
-
 It cannot provide consistency in the nodes, as they're hard to reason about. This is because the nodes process messages as they come.
-
-
 
 # Lecture 20: Cloud Security & Cloud Research
 
 There's a thing called the "Treacherous Twelve", which is basically a list of threats that exist in cloud security.
-
 
 1. Data Breaches: When organisation's sensitive data falls into someone else's hands
 2. Identity/Credential/Access Management: Data breaches occur due to faulty / not scalable Identiy Access Management sysems, things that use weak passwords, don't have multi factor authentication or fail to do other security measures
@@ -1301,6 +1304,7 @@ There's a thing called the "Treacherous Twelve", which is basically a list of th
 There are 5 pitfalls and 5 opportunities of Cloud Research
 
 **Pitfalls:**
+
 1. Infrastructure at Scale: No one can get AWS level resources
 2. Abstractions: Important details are often hidden (VMs)
 3. Non-Reproducible Results: Often research is done using un-validated simulators
@@ -1308,6 +1312,7 @@ There are 5 pitfalls and 5 opportunities of Cloud Research
 5. Industry Relations: Industries aren't super happy giving access to academics sometimes
 
 **Opportunities:**
+
 1. User-Driven Research: Budget limited comptuation from reearch group forces the research to be user oriented
 2. Programming Models: Can write scalable elastic ode without worrying about IaaS issues (?? are they saying that it's good to use cloud basically ??)
 3. Debugging Large-Scale Applications: (?? Same as above ??)
@@ -1331,15 +1336,15 @@ New system is DevOps, merge Dev and Ops (wow)
 The problem in classical method is that Developers like having agility, wheras Operations love stability.
 
 DevOps is an extension of Agile methodolgy.
+
 - People: Break down the silos and walls between the teams, merge them together
 - Process: Automate the manual processes that can be automated, make it more streamlined
 - Tools: Create a pipeline that aims for speed and consistency and shows a clear path to the destinations.
 
-
 Dev/Ops teams should focus on Collaboration with other teams (such as QA and IT). Responsibilities are shared amongst the team, focusing from the end to end quality of the product. The Devs will learn what the operations do, and the operations will learn what the developers need. Communication between the teams is integral, people usually use Slack & JIRA (issue tracker) to improve this.
 
+**Continous Integration** is very important.
 
-**Continous Integration** is very important. 
 - Shared Code repo
 - Automated testing on commits
 - Frequent integrations
@@ -1354,7 +1359,6 @@ Fail-Fast Philosophy: Having Continous integration and continous deliver helps s
 
 This also means that the developers can have integrated mointoring, which allows the developers to have more detailed information about bugs which can lead to easier fixes.
 
-
 **Consistent Deployment Environments**
 
 Having identical environments across the workers ensures that you don't have problems of systems only working on a particular machine
@@ -1363,10 +1367,6 @@ It means that it's easier to scale up engineers as you can use VM images, have b
 
 This also means you can use IaaS systems as an advantage, focusing on cloud systems to scale engineers.
 
-
------
+---
 
 # End of Lectures
-
-
-
