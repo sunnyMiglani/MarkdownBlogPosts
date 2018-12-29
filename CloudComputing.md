@@ -7,101 +7,102 @@ Author: Sunny Miglani
 **I wrote this from the slides, didn't watch the lectures unless it was needed! So this may not have _all_ the information**
 
 # Table of Contents
-
 - [Cloud Computing](#cloud-computing)
 - [Lecture 1:](#lecture-1)
   - [\*AAS abreviations:](#aas-abreviations)
-- [Lecture 3 : Economics of Cloud](#lecture-3---economics-of-cloud)
+- [Lecture 3 : Economics of Cloud](#lecture-3--economics-of-cloud)
   - [Technical side of scaling a warehouse of computers](#technical-side-of-scaling-a-warehouse-of-computers)
-- [Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)](#lecture-5--public-clouds--infrastructure-and-platform--iaas--paas)
-  - [How is the Cloud (aws) structured?](#how-is-the-cloud--aws--structured)
-    - [Availability Zones:](#availability-zones)
-    - [Regions:](#regions)
-    - [Why regions though?](#why-regions-though)
-    - [High availability & fault tolerance:](#high-availability---fault-tolerance)
-    * [Examples of IaaS Services on AWS:](#examples-of-iaas-services-on-aws)
-      - [VPC: Virtual Private cloud (IaaS example)](#vpc--virtual-private-cloud--iaas-example)
-      - [EC2: Virtual Machines (IaaS example)](#ec2--virtual-machines--iaas-example)
-      - [S3 Storage](#s3-storage)
-      * [Examples of PaaS:](#examples-of-paas)
+- [Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)](#lecture-5-public-clouds-infrastructure-and-platform-iaas-paas)
+  - [How is the Cloud (aws) structured?](#how-is-the-cloud-aws-structured)
+      - [Availability Zones:](#availability-zones)
+      - [Regions:](#regions)
+      - [Why regions though?](#why-regions-though)
+      - [High availability & fault tolerance:](#high-availability--fault-tolerance)
+    - [Examples of IaaS Services on AWS:](#examples-of-iaas-services-on-aws)
+        - [VPC: Virtual Private cloud (IaaS example)](#vpc-virtual-private-cloud-iaas-example)
+        - [EC2: Virtual Machines (IaaS example)](#ec2-virtual-machines-iaas-example)
+        - [S3 Storage](#s3-storage)
+      - [Examples of PaaS:](#examples-of-paas)
         - [RDS](#rds)
         - [Elastic Beanstalk:](#elastic-beanstalk)
-      * [IaaS vs PaaS](#iaas-vs-paas)
-- [Lecture 07: Virtualisation, Containers and Container Orchestration](#lecture-07--virtualisation--containers-and-container-orchestration)
-  - [Virtualization:](#virtualization)
-  - [Containers](#containers)
-  * [Virtualisation and Containerisation:](#virtualisation-and-containerisation)
-    - [Docker in Detail (WHY THO??!?)](#docker-in-detail--why-tho)
-  * [Container Orchestration (Kubernetes)](#container-orchestration--kubernetes)
-    - [Kubernetes in detail ( what is this degree legit?)](#kubernetes-in-detail---what-is-this-degree-legit)
-      - [Master:](#master)
-      - [Nodes:](#nodes)
-      * [Deployments:](#deployments)
+      - [IaaS vs PaaS](#iaas-vs-paas)
+- [Lecture 07: Virtualisation, Containers and Container Orchestration](#lecture-07-virtualisation-containers-and-container-orchestration)
+    - [Virtualization:](#virtualization)
+    - [Containers](#containers)
+  - [Virtualisation and Containerisation:](#virtualisation-and-containerisation)
+    - [Docker in Detail (WHY THO??!?)](#docker-in-detail-why-tho)
+  - [Container Orchestration (Kubernetes)](#container-orchestration-kubernetes)
+    - [Kubernetes in detail ( what is this degree legit?)](#kubernetes-in-detail--what-is-this-degree-legit)
+        - [Master:](#master)
+        - [Nodes:](#nodes)
+      - [Deployments:](#deployments)
 - [Lecture 09 Serverless](#lecture-09-serverless)
-  - [Case Study: AWS Lambda](#case-study--aws-lambda)
-    - [Performance Limitations:](#performance-limitations)
-    - [Vendor Lock-in](#vendor-lock-in)
-    - [Monitoring and Debugging](#monitoring-and-debugging)
-    - [Serverless Security:](#serverless-security)
-- [Lecture 11 : Developing Scalable Cloud Applications](#lecture-11---developing-scalable-cloud-applications)
-  - [How to scale out these architectures? (Example, blackboard)](#how-to-scale-out-these-architectures---example--blackboard)
-    - [X Axis Scaling:](#x-axis-scaling)
-    - [Y Axis Scaling:](#y-axis-scaling)
-    - [Z Axis Scaling:](#z-axis-scaling)
-  * [Software Architectures in Cloud](#software-architectures-in-cloud)
-  * [Architectural Components & Patterns for Scalable Systems (Basically keywords and buzzwords)](#architectural-components---patterns-for-scalable-systems--basically-keywords-and-buzzwords)
+    - [Case Study: AWS Lambda](#case-study-aws-lambda)
+      - [Performance Limitations:](#performance-limitations)
+      - [Vendor Lock-in](#vendor-lock-in)
+      - [Monitoring and Debugging](#monitoring-and-debugging)
+      - [Serverless Security:](#serverless-security)
+- [Lecture 11 : Developing Scalable Cloud Applications](#lecture-11--developing-scalable-cloud-applications)
+    - [How to scale out these architectures? (Example, blackboard)](#how-to-scale-out-these-architectures-example-blackboard)
+      - [X Axis Scaling:](#x-axis-scaling)
+      - [Y Axis Scaling:](#y-axis-scaling)
+      - [Z Axis Scaling:](#z-axis-scaling)
+  - [Software Architectures in Cloud](#software-architectures-in-cloud)
+  - [Architectural Components & Patterns for Scalable Systems (Basically keywords and buzzwords)](#architectural-components--patterns-for-scalable-systems-basically-keywords-and-buzzwords)
     - [Decoupled Components](#decoupled-components)
       - [Load Balancing:](#load-balancing)
       - [Message Topics](#message-topics)
       - [Message Queues](#message-queues)
       - [Service Registries](#service-registries)
-- [Lecture 13 : MapReduce and Distributed File Systems](#lecture-13---mapreduce-and-distributed-file-systems)
-  - [MapReduce fault tolerance](#mapreduce-fault-tolerance)
-  * [Google File System (GFS)](#google-file-system--gfs)
+- [Lecture 13 : MapReduce and Distributed File Systems](#lecture-13--mapreduce-and-distributed-file-systems)
+    - [MapReduce fault tolerance](#mapreduce-fault-tolerance)
+  - [Google File System (GFS)](#google-file-system-gfs)
     - [GFS explained](#gfs-explained)
     - [Leases and Mutation in GFS](#leases-and-mutation-in-gfs)
-  * [HDFS - Hadoop File System](#hdfs---hadoop-file-system)
-  * [Next Step for HDFS (3.0) is using ERASURE CODING](#next-step-for-hdfs--30--is-using-erasure-coding)
-- [Lecture 13: Theory of Distributed Systems (CAP, Byzantine Generals)](#lecture-13--theory-of-distributed-systems--cap--byzantine-generals)
+  - [HDFS - Hadoop File System](#hdfs---hadoop-file-system)
+  - [Next Step for HDFS (3.0) is using ERASURE CODING](#next-step-for-hdfs-30-is-using-erasure-coding)
+- [Lecture 13: Theory of Distributed Systems (CAP, Byzantine Generals)](#lecture-13-theory-of-distributed-systems-cap-byzantine-generals)
   - [Paxos Algorithm](#paxos-algorithm)
-  - [So, how does this damn Paxos actually work???](#so--how-does-this-damn-paxos-actually-work)
-    - [-- FLOW: --](#---flow)
+  - [So, how does this damn Paxos actually work???](#so-how-does-this-damn-paxos-actually-work)
+    - [-- FLOW: --](#---flow---)
       - [Proposer:](#proposer)
       - [Acceptor:](#acceptor)
       - [Interaction once Acceptors prepare:](#interaction-once-acceptors-prepare)
       - [How does an acceptor choose a value?](#how-does-an-acceptor-choose-a-value)
-  - [Byzantine Generals or Byzantine Fault Tolerance (BFT)](#byzantine-generals-or-byzantine-fault-tolerance--bft)
+  - [Byzantine Generals or Byzantine Fault Tolerance (BFT)](#byzantine-generals-or-byzantine-fault-tolerance-bft)
     - [Results of the Byzantine Generals:](#results-of-the-byzantine-generals)
     - [Solution to a simplied version of the problem](#solution-to-a-simplied-version-of-the-problem)
-      - [If there are 3 armies, 1 traitor](#if-there-are-3-armies--1-traitor)
-      - [Now if there are 9 armies and only 1 traitor](#now-if-there-are-9-armies-and-only-1-traitor)
-    - [Actual Algorithm "Oral Message Algorithm": OM(m)](#actual-algorithm--oral-message-algorithm---om-m)
+        - [If there are 3 armies, 1 traitor](#if-there-are-3-armies-1-traitor)
+        - [Now if there are 9 armies and only 1 traitor](#now-if-there-are-9-armies-and-only-1-traitor)
+    - [Actual Algorithm "Oral Message Algorithm": OM(m)](#actual-algorithm-oral-message-algorithm-omm)
     - [Solving the BG problem with traitors](#solving-the-bg-problem-with-traitors)
-- [Lecture 15: Hadoop and Related Technologies (Hadoop ecosystem)](#lecture-15--hadoop-and-related-technologies--hadoop-ecosystem)
-- [Lecture 17: NoSQL Databases](#lecture-17--nosql-databases)
+- [Lecture 15: Hadoop and Related Technologies (Hadoop ecosystem)](#lecture-15-hadoop-and-related-technologies-hadoop-ecosystem)
+- [Lecture 17: NoSQL Databases](#lecture-17-nosql-databases)
   - [Key-Value DBs:](#key-value-dbs)
     - [Examples of DBs](#examples-of-dbs)
-      - [Amazon SimpleDB:](#amazon-simpledb)
-      - [GAE's Datastore (Google's version)](#gae-s-datastore--google-s-version)
-      - [Document DB (AWS DynamoDB)](#document-db--aws-dynamodb)
+        - [Amazon SimpleDB:](#amazon-simpledb)
+        - [GAE's Datastore (Google's version)](#gaes-datastore-googles-version)
+        - [Document DB (AWS DynamoDB)](#document-db-aws-dynamodb)
     - [Columnar DBs](#columnar-dbs)
-- [Lecture 18 (Graph Processing and Graph DBs)](#lecture-18--graph-processing-and-graph-dbs) - [Case Study - Web Pages](#case-study---web-pages)
+- [Lecture 18 (Graph Processing and Graph DBs)](#lecture-18-graph-processing-and-graph-dbs)
+      - [Case Study - Web Pages](#case-study---web-pages)
   - [Graph Processing](#graph-processing)
-    - [Execution of a "Pregel" program:](#execution-of-a--pregel--program)
+    - [Execution of a "Pregel" program:](#execution-of-a-pregel-program)
   - [Examples of other graph based applications](#examples-of-other-graph-based-applications)
-- [Lecture 19: NewSQL and Stream Processing](#lecture-19--newsql-and-stream-processing) - [Challenges with NoSQL](#challenges-with-nosql)
-  - [NewSQL:](#newsql)
-  * [Case Study : Google AdWords / Ads](#case-study---google-adwords---ads)
-  * [Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)](#google-spanner--in-more-detail-because-why-not-you-know)
+- [Lecture 19: NewSQL and Stream Processing](#lecture-19-newsql-and-stream-processing)
+      - [Challenges with NoSQL](#challenges-with-nosql)
+    - [NewSQL:](#newsql)
+  - [Case Study : Google AdWords / Ads](#case-study--google-adwords--ads)
+  - [Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)](#google-spanner-in-more-detail-because-why-not-you-know)
     - [SpanServers:](#spanservers)
     - [Google TrueTime:](#google-truetime)
-    - [Google F1 (F-one) Deployment Structure:](#google-f1--f-one--deployment-structure)
+    - [Google F1 (F-one) Deployment Structure:](#google-f1-f-one-deployment-structure)
       - [How does G-F1 deal with high latency?](#how-does-g-f1-deal-with-high-latency)
-  * [Real Time Event Streaming](#real-time-event-streaming)
-    - [Case Study: Apache Storm](#case-study--apache-storm)
+  - [Real Time Event Streaming](#real-time-event-streaming)
+    - [Case Study: Apache Storm](#case-study-apache-storm)
       - [Structure of Apache Storm:](#structure-of-apache-storm)
-- [Lecture 20: Cloud Security & Cloud Research](#lecture-20--cloud-security---cloud-research)
-  - [Academic Side of Cloud Security / Cloud Research](#academic-side-of-cloud-security---cloud-research)
+- [Lecture 20: Cloud Security & Cloud Research](#lecture-20-cloud-security--cloud-research)
+    - [Academic Side of Cloud Security / Cloud Research](#academic-side-of-cloud-security--cloud-research)
 - [Lecture 21 Public Clouds for Software Dev - DevOps](#lecture-21-public-clouds-for-software-dev---devops)
   - [DevOps](#devops)
 - [End of Lectures](#end-of-lectures)
@@ -116,8 +117,8 @@ Which means if you're dealing with a lot of servers, you're just going to have f
 That's why **Scalability** is very important!
 
 These are some characteristics of Cloud Computing:
-  
- 1. On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider. 2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client platforms. 3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand. 4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically. 5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
+
+1.  On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider. 2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client platforms. 3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand. 4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically. 5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
 
 ## \*AAS abreviations:
 
@@ -131,14 +132,13 @@ These are some characteristics of Cloud Computing:
     3. IaaS: Infrastructure as a Service
         - IT Infrastructure, almost virtualised and remotely accessible. Basically bare metal given to you. -- AMAZON EC2, S3, etc.
 
-
 # Lecture 3 : Economics of Cloud
 
 Economies of Scale are why cloud works!
 ["Required Reading"](https://cacm.acm.org/magazines/2013/2/160173-the-tail-at-scale/abstract)
 
 Definitions: 1. Capital Expenditure: One time cost, to get the infrastructure built for your system (servers, building, etc) 2. Operating Expenditure: Electricity, man power, cooling, marketing etc.
-  
+
 Some Amazon Propogranda:
 EC2 is a virtual server, it uses Amazon Machine Image, and you can build your own AMIs. Amazon has some prebuilt AMIs and now third party AMIs as well.
 
@@ -498,15 +498,15 @@ The normal vulnerabilities that apply to code would still be valid.
 # Lecture 11 : Developing Scalable Cloud Applications
 
 Definitions:
-  
- 1. Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines 2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
+
+1.  Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines 2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
 
 X Axis Split Horizontal Duplication with unbiased cloning of services and data: - Each clone can do the work of all the other clones, and the work is distributed among clons without bias - Inefficient compared to alternatives - But EASY to do
-  
+
 Y Axis Split refers to isolating and making scalable individual responsibility of components - Needs to be split on the code base - More costly than x-Axis
 
 Z Axis - Partitioning the domain of incoming requests - Data partitioning, split relative to client - Improves fault tolerance and cache performances - Most costly system
-  
+
 Simpler explanation of the above
 If you split on X axis, imagine adding more clones of the system
 
@@ -861,9 +861,9 @@ If OM(M) & M>0:
     3. If `V_i` is the set of the values that Lieutenant `i` receives during the above step, then Lieutenant `i` uses the value majority (`V_i`)
 
 If OM(0):
-  
- 1. The commander sends a vote `v_i` to each lieutenant, i. 2. Each Lieutenant `i` uses the vote received from the Commander.
-  
+
+1.  The commander sends a vote `v_i` to each lieutenant, i. 2. Each Lieutenant `i` uses the vote received from the Commander.
+
 m being the number of adversaries.
 
 ### Solving the BG problem with traitors
