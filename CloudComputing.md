@@ -1170,4 +1170,42 @@ It cannot guarantee a **Only once** system, because they may be done in parallel
 It cannot provide consistency in the nodes, as they're hard to reason about. This is because the nodes process messages as they come.
 
 
-** TBC **
+
+# Lecture 20: Cloud Security & Cloud Research
+
+There's a thing called the "Treacherous Twelve", which is basically a list of threats that exist in cloud security.
+
+
+1. Data Breaches: When organisation's sensitive data falls into someone else's hands
+2. Identity/Credential/Access Management: Data breaches occur due to faulty / not scalable Identiy Access Management sysems, things that use weak passwords, don't have multi factor authentication or fail to do other security measures
+3. Insecure Interfaces & APIs: If you build a large structure with small microservices, it raises risk that one or more APIs would be weak / comprimised. This spreads and ruins the security of the whole infrastructure
+4. System Vulnerabilities: Exploitable bugs in programs that attackers can use. These could be in the software, the kernel or just other application tools.
+5. Account Hijacking: Phishing, Fraud man-in-the-middle etc.
+6. Malicious Insiders: Malicious insider is someone who worked for the company / has access to the system in suc ha way that they might negatively affect the (C-I-A) of the system.
+7. Advanced Persistent Threats: Parasitical form of attack where the "parasite" stays in the infrastructure stealithily and aims to smuggle as much data as possible.
+8. Data Loss: Because of Confidientiality in the cloud, it's hard to see users // your own data. This could mean data loss for things via accidental deletion, forgetting keys etc.
+9. Insufficient Due Diligence: Moving things to the cloud could cause vulnerabilities for the organisations if they're not well trained into what they're using.
+10. Abuse & Nefarious Use of Cloud Services: Basically use the cloud to do bad things like DDoS or try and crack an encryption key.
+11. Denial of Service: Inject malicious code into cloud systems which could result in DoS or a malicious party could rack up charges for a system via pings.
+12. Shared Technology Issues: Shared resources that may have problems but also get someone to monitor the actual system to ensure there are no problems.
+
+### Academic Side of Cloud Security / Cloud Research
+
+There are 5 pitfalls and 5 opportunities of Cloud Research
+
+**Pitfalls:**
+1. Infrastructure at Scale: No one can get AWS level resources
+2. Abstractions: Important details are often hidden (VMs)
+3. Non-Reproducible Results: Often research is done using un-validated simulators
+4. Rebradning: People mess up vocabulary (?)
+5. Industry Relations: Industries aren't super happy giving access to academics sometimes
+
+**Opportunities:**
+1. User-Driven Research: Budget limited comptuation from reearch group forces the research to be user oriented
+2. Programming Models: Can write scalable elastic ode without worrying about IaaS issues (?? are they saying that it's good to use cloud basically ??)
+3. Debugging Large-Scale Applications: (?? Same as above ??)
+4. PaaS Environments: ??????
+5. Elasticity: ?????
+
+# Lecture 21 Public Clouds for Software Dev - DevOps
+
