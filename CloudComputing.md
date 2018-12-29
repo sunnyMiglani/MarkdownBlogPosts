@@ -153,6 +153,7 @@ Some Amazon Propogranda:
 EC2 is a virtual server, it uses Amazon Machine Image, and you can build your own AMIs. Amazon has some prebuilt AMIs and now third party AMIs as well.
 
 Cooling is v v v important for data centres
+
     1. Open the window -small scale
     2. Two-loop cooling: Bigger scale, but not BIG
     3. Three loop cooling: Basically need to go to a different centre just to get rid of heat.
@@ -210,6 +211,7 @@ Basically good ways to keep uptime and reduce problems if things breakdown. Amaz
 Fault tolerance means that no users notice anything broken, which is why they suggest 3 AZs
 
 **IaaS**: Maybe have HA, but FT is not possible / unlikely
+
 **PaaS**: Usually have HA, and some services offer FT
 
 ### Examples of IaaS Services on AWS:
