@@ -1,8 +1,10 @@
 # Cloud Computing 
 at University of Bristol, 4th year MEng unit.
 
+Author: Sunny Miglani
 
 
+**I wrote this from the slides, didn't watch the lectures unless it was needed! So this may not have _all_ the information**
 
 # Lecture 1:
 
@@ -1208,4 +1210,58 @@ There are 5 pitfalls and 5 opportunities of Cloud Research
 5. Elasticity: ?????
 
 # Lecture 21 Public Clouds for Software Dev - DevOps
+
+Waterfall is bad, agile is good.
+
+Agile people sprint
+
+Aim of a sprint is to **deliver a working minimum viable product**.
+
+New system is DevOps, merge Dev and Ops (wow)
+
+## DevOps
+
+**Goal:** Release updates as quickly as possible, without losing quality.
+
+The problem in classical method is that Developers like having agility, wheras Operations love stability.
+
+DevOps is an extension of Agile methodolgy.
+- People: Break down the silos and walls between the teams, merge them together
+- Process: Automate the manual processes that can be automated, make it more streamlined
+- Tools: Create a pipeline that aims for speed and consistency and shows a clear path to the destinations.
+
+
+Dev/Ops teams should focus on Collaboration with other teams (such as QA and IT). Responsibilities are shared amongst the team, focusing from the end to end quality of the product. The Devs will learn what the operations do, and the operations will learn what the developers need. Communication between the teams is integral, people usually use Slack & JIRA (issue tracker) to improve this.
+
+
+**Continous Integration** is very important. 
+- Shared Code repo
+- Automated testing on commits
+- Frequent integrations
+
+**Integrate early and intergrate often**!
+
+Continous Delivery is another very key feature, this is because it would include more testing, and ensures that the production stage is more release ready each time.
+
+**Robust Product Releases**:
+
+Fail-Fast Philosophy: Having Continous integration and continous deliver helps spot any code problems early, and can alert the dev teams almost instantly.
+
+This also means that the developers can have integrated mointoring, which allows the developers to have more detailed information about bugs which can lead to easier fixes.
+
+
+**Consistent Deployment Environments**
+
+Having identical environments across the workers ensures that you don't have problems of systems only working on a particular machine
+
+It means that it's easier to scale up engineers as you can use VM images, have backups of productions and make changes accross all developers.
+
+This also means you can use IaaS systems as an advantage, focusing on cloud systems to scale engineers.
+
+
+-----
+
+# End of Lectures
+
+
 
