@@ -763,3 +763,135 @@ Attacker can manipulate the target by making the value appear several times, so 
 2. Reduce query expressivity: It might have an impact on the usability / utility of the system
 3. Rate limit query: Attacker can go around this using the browser cache.
 4. Detection: Attack detection is the new research topics.
+
+
+# Lecture 8: (9th Nov) Public Key Infrastructure
+
+I've ignored the PKI and SI explanations because ew
+
+Problem we're trying to solve:
+In a PKI structure, how do i know who Bob is and if his publickey is actually his?
+
+You need to use authentication.
+
+## Certificates in Encryption
+
+## Digital Certificate (X509)
+
+- Help with authentication
+- Binds an identity with a public key
+- Issued by a Certificate Authority (people your trust!)
+
+## Certificate Authority (CA):
+- Responsible for issuing and signing certificates
+- Often a trusted third party, (digicert, verisign)
+- Companies and organisations have their own CAs
+
+### Certificate being used, (TLS Example):
+- Bob has a pk, and a certificate with a pk
+- Alice has the pk of the CA
+- Sends bob hello, bob replies with a hello and a certificate
+- Alice validates the certificate, and generates a `pre master secret`, and bob takes the the `pre master key`, and Bob and Alice generate a secret key from this pre master key and continue communication with a secret key, symmetric enctyption.
+
+
+Usage Example:
+**Handshake**:
+- Auth one or both sides
+- negotiate algorithms and params
+- establish a secret **session key**.
+
+**Record Protocol**:
+- Exchange individual messages
+- protected under symmetric key
+
+**Mutual Authentication Definition**: It's when two parties authenticate each other at the same time, and it's the default mode in some protocols, and optional in others.
+
+**mTLS: Mutual TLS authentication**: It's much more widespread in business-to-business applications, where a limited number of clients are connecting to specific web services. This is usually because the security requirements are a lot higher in companies than consumer environments.
+
+Its usually handled by machines not by the users until it fails.
+
+
+In the TLS handshake, we use a **random value** to send to Bob with the first message, which not just use the premaster in the first case so you reduce communictions?
+
+A: Because the attacker could immitate being you and then do a "replay attack!" (what i'm feeling listening to these lectures). This "replay attack" could be used to do repeating transactions and keep sending the same values again and again.
+
+## Certificate Chain:
+
+Well, basically trying to get everyone signed by one authority all the time would be hard and complicated as it scales. So instead CAs can sign a signature, and this could be used to sign another signature. Basically building a chain of certificates.
+
+Keep checking the signatures until you find a one you trust.
+
+These intermediate certificate people (the ones who got signed by a CA) get a constraint, and it stops them from signing any keys, but fixes them towards specific domains (For example @ bristol.ac.uk)
+
+## Certificate Expirations:
+
+The certificate can expire based on the policy set by those signing it.
+
+If a certificate is expired in a chain then all certificates signed by those is invalid as well. 
+
+A -> B -> C
+If B is invalid, then C is insecure / unsecure?
+
+## Registration Authority:
+
+- Front end entity you interact with to obtain a cert
+- Provide the RA with information, for example being physically present
+- RA verifies your identity
+- Once this is confirmed, it's sent to the CA and the public key is signed.
+- Does not sign the certificate itself.
+- Ususally a government agency?
+
+### Certificate Revocation List:
+
+The CA publishes and maintains a list of Certificates that cannot be used anymore
+
+Basically certificates that aren't secure anymore 
+This happens if
+- compromised private key
+- HR reasons (do we truss the person's pk?)
+- Company changes details of themseleves
+- Discretion to the CA
+
+the list is **public** to prevent anyone from using a compromised or exposed / untrustworthy CA
+
+Browsers actually implement this list to point out authenticated signatures that aren't valid.
+
+## Key Escrows
+
+Basically the private keys (whether symmetric or PKI) are stored in an escrow by companies or employers or organisations in the cases where the it may arise that these keys are needed to gain access to the data encrypted by the employees or workers. 
+
+The problem is restricting access to the keys if they've been exposed in this manner. the third party access should be permitted only under carefully considered conditions. 
+
+Court orders are usually the reasons. This is controversial in many countries due to the technical mistrust of the security of the escrow itself. And this might extend even to untrust of the entire system if it functions as designed.
+
+## Problems with Certifications (Google review) [not in the slides]:
+
+[This was a refrenced link that he recommended people read](https://www.certificate-transparency.org/)
+
+[This however is easier to read](https://www.certificate-transparency.org/what-is-ct) because it's direct.
+
+Essentially sometimes CAs might leak or might be comprimised, which means that some certificates issued by them could be grabbed and used maliciously.
+
+Certificate transparency has three main goals.
+1. Make it impossible for a CA to issue an SSL certificate without the certificate being visible to the owner of the domain
+2. Provide an open auditing and monitoring system that lets any domain owner / CA determine whether certificates have been mistakingly issued.
+3. Protect users from being duped by false certificates.
+
+It uses the following components **to build a framework for the goals mentioned above**:
+1. _Certificate logs_: Append only network structure that is cryptographically assued. Allows anyone to submit certificates to a log, but usually CAs are usually the foremost submitters. Anyone can query a log for cryptographic proof to verify the log. These servers can be operated independently or by an ISP
+2. _Monitors_ are publically run servers that contact all log servers certificates and watch for any suspicious certificates. These are usually run by goverments or people like Google/Banks etc. Others are run as subscription service that CA can buy into. It's open for public to run their own as well.
+3. _Auditors_: are lightweight software components that typically perform 2 funtions. They can verify logs are behaving correctly and consistently.
+
+
+The entire framework is built to function with these principles:
+1. Earlier detection of faults
+2. Faster Mitigation
+3. Better oversight.
+
+# Lecture 9 (13th Nov) : Network Security
+
+
+
+
+
+
