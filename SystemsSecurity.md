@@ -199,7 +199,7 @@ Spectre tricks applications into accessing the arbitrary locations in their memo
 **Cool cloud computing detail**: If theres any computer that's fully virualised, (not docker etc, think more VMBox), then the host kernel is not affected, just the guest kernel.
 
 # Lecture 3 (Buffer Overflow)
- 
+
 ## Stack
 Goes from bottom to top 
 
@@ -676,3 +676,90 @@ Approach
 
 ## Private Browsing
 
+Client Side Privacy: Incognito aint anything except a forgetful browser.
+
+Private Browsing reveals a lot still, things like DNS caches, RAM left over data (page swaps, temp files etc).
+
+It's basically not hard at all to recover such data!
+
+# Lecture 7 (Web Security II) 6th October
+
+Attack 1:
+- CSS Based attack
+- Get the victim to visit attacker.com
+- Learn what other websites have been visited (purple links?)
+- Exploit the colour of the links to see if they've visited them
+- Gain information like this.
+- **Solution:** Lie to JS about this, and say that no website has ever been visited.
+
+Attack 2:
+- Cache Based Attack
+- Get the victim to visit attacker.com
+- Learn what other webites they've visited
+- This is based on loading times for objects like google map tiles etc.
+- **Solution:** No caching on the client side, but if that's slow go for origin based caching, or maybe even non local caches!
+
+Attack 3:
+- Rendering Engine based attack
+- Get victim to visit attacker.com
+- Learn what other website the victim has visited.
+- Attacker wants to make a copy of the login pages, and then steal your data. If they make copies of the same images used in the actual login page, then they can see whether you're logged in or not in the other pages.
+- **Fixing** it : apply the same origin policy on shader effects
+
+
+## Timing Attacks:
+
+The overall goal is to see the response time in a cross site scripting response.
+The attacker will send a XSS request to the other website that they're trying to target, and if the response is quick (very quick) then they know that you have accessed the website recently due to the caching from it.
+
+So other than just seeing whether a website has been visited. You can do other stuff top, like just see some details from the caches 
+
+Thing like requesting
+1. Get q=in:sent&from:Bob could reveal whether they received any mesages from Bob.
+
+If the response is quick, then obviously the data was accessed quickly, and if the response is slow then it wasn't visited / didn't happen from the other website
+
+
+**Goal of the attack:**:
+Find the answer to a boolean question:
+1. Transform the question into a search request
+2. Send the search request and collect samples
+3. Analyse resposne time -> answer the question
+
+**Steps of the attack**:
+- Run it once with a negative response so you know the baseline for negative responses
+- Run it multiple times for positive resposnes so you can analyse the data (it's not a simple Yes/No per req)
+- Is there a statistical difference between the Yes and No responses.
+
+
+We do this above multi-sample testing because of congestion and concurrent requests on the client and server.  Things liek traffic might affect the response time.
+
+- Keep requests minimal, to avoid DDoS requests
+- Keep requests quick due to short visits from users.
+
+
+To increase the difference b/w positive and negative responses:
+1. Response inflation, so expect the parameters reflected in the URLs to be a lot higher, so it'll take longer to get the request if it's valid. However will quickly say no if invalid for the first req.
+2. **What if there's no paramets in te url?** Then you send a dummy question you know is going to have a negative response with some extra maths, and it'll give back a negative. Then you send a valid question with some extra maths, and it'll reply back a bit longer.
+
+> actual examples are:
+> dummy: in:sent&from:xiquisddk&hasnot:{rjew+...+iqejh}
+> question: in:sent&from:alice&hasnot:{rjew+...+iqejh}
+
+
+**What if the other website is rate limited and might see you spamming requests?**
+
+Answer: **Use the `serviceWorker.cache`**, this is a file that's stored on the victim's browser (and not another site), and you can send requests for full pages to it rather than direct questions but the response times will be different if the pages have been visited or not. This will not be rate limited and therefore technically undetectable
+
+**What else can you do?** if inflatinon isn't possible?
+
+Attacker can manipulate the target by making the value appear several times, so if you're searching for a positive reaction email, send them 100 emails wiht a lot of spam words so it lands in spam and ensures that the user doesn't see it. You can then group requests to see how many times you get a response for your mail + the targetmail and do stat analysis there.
+
+
+
+
+## Protecting against these attacks
+1. Don't allow external queries: but this might not work for a large class of applications
+2. Reduce query expressivity: It might have an impact on the usability / utility of the system
+3. Rate limit query: Attacker can go around this using the browser cache.
+4. Detection: Attack detection is the new research topics.
