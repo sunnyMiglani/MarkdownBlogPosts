@@ -8,6 +8,121 @@ Author: Sunny Miglani
 Basically the course is structured to not depend 100% on slides for the exam.
 "Anything in security in the world can be asked" (lol)
 
+# Table of Contents 
+- [Lecture 1 (Intro - 2nd Oct):](#lecture-1-intro---2nd-oct)
+    - [Example of a System and a fault](#example-of-a-system-and-a-fault)
+    - [2 Factor authentication problems:](#2-factor-authentication-problems)
+- [Lecture 2 (Safety 5th Oct)](#lecture-2-safety-5th-oct)
+    - [Safety Measures:](#safety-measures)
+    - [Risk](#risk)
+    - [Security](#security)
+    - [Definition of an Attack](#definition-of-an-attack)
+    - [Countermeasures](#countermeasures)
+    - [Computer Security](#computer-security)
+    - ["What can go wrong?"](#what-can-go-wrong)
+      - [Spectre/Meltdown explained:](#spectremeltdown-explained)
+- [Lecture 3 (Buffer Overflow)](#lecture-3-buffer-overflow)
+  - [Stack](#stack)
+  - [Buffer Overflows](#buffer-overflows)
+    - [Problems with Buffer Overflows:](#problems-with-buffer-overflows)
+    - [Protection from Buffer Overflows (PREVENT):](#protection-from-buffer-overflows-prevent)
+    - [Detection from Buffer Overflows:](#detection-from-buffer-overflows)
+      - [Stack Canaries:](#stack-canaries)
+        - [Malloc/Free with Canaries:](#mallocfree-with-canaries)
+      - [Protecting against Heap / Canary failures (Guard Pages)](#protecting-against-heap--canary-failures-guard-pages)
+      - [Bounds Checking:](#bounds-checking)
+      - [Fat Addresses:](#fat-addresses)
+  - [Worms](#worms)
+    - [Morris Worm // Great Worm](#morris-worm--great-worm)
+    - [Blaster -- Buffer overflow worm](#blaster----buffer-overflow-worm)
+      - [ASIDE: Trusted Platform Modules](#aside-trusted-platform-modules)
+- [Lecture 4 (23rd Oct) Authentication [only from lectures, NO MEDIASITE]](#lecture-4-23rd-oct-authentication-only-from-lectures-no-mediasite)
+  - [Passwords:](#passwords)
+    - [Threat 1 (Password Storing)](#threat-1-password-storing)
+    - [Threat 2 (Password Recovery):](#threat-2-password-recovery)
+    - [Threat 3: (Man in the Middle!)](#threat-3-man-in-the-middle)
+    - [Threat 4: 'Hammering' the login page!](#threat-4-hammering-the-login-page)
+    - [Solution to Passwords??](#solution-to-passwords)
+    - [Two Factor Authentication!! (Our saviour...?)](#two-factor-authentication-our-saviour)
+- [Lecture 5: Access Control (30/10):](#lecture-5-access-control-3010)
+    - [Complete Mediation:](#complete-mediation)
+    - [Protection State:](#protection-state)
+    - [Access Control Matrix:](#access-control-matrix)
+    - [Mechanisms and Models (Defintiions):](#mechanisms-and-models-defintiions)
+    - [Access Control List:](#access-control-list)
+    - [Discretionary / Mandatory](#discretionary--mandatory)
+    - [Role Based Access Control:](#role-based-access-control)
+    - [Information Flow Control](#information-flow-control)
+        - [Integrity using IFC - Biba Model:](#integrity-using-ifc---biba-model)
+    - [Brewer And Nash Model (Chinese Wall?)](#brewer-and-nash-model-chinese-wall)
+    - [Clark Wilson Model (Integrity of data, used in banks)](#clark-wilson-model-integrity-of-data-used-in-banks)
+- [Lecture 6 Web Security (2nd Nov) - Client Side Security](#lecture-6-web-security-2nd-nov---client-side-security)
+  - [MIME Sniffing Attack:](#mime-sniffing-attack)
+      - [MIME SNIFFING ATTACK:](#mime-sniffing-attack)
+      - [Avoiding MIME Sniffing Attacks](#avoiding-mime-sniffing-attacks)
+  - [DNS Exploit](#dns-exploit)
+  - [Private Browsing](#private-browsing)
+- [Lecture 7 (Web Security II) 6th October](#lecture-7-web-security-ii-6th-october)
+  - [Timing Attacks:](#timing-attacks)
+  - [Protecting against these attacks](#protecting-against-these-attacks)
+- [Lecture 8: (9th Nov) Public Key Infrastructure](#lecture-8-9th-nov-public-key-infrastructure)
+  - [Certificates in Encryption](#certificates-in-encryption)
+  - [Digital Certificate (X509)](#digital-certificate-x509)
+  - [Certificate Authority (CA):](#certificate-authority-ca)
+    - [Certificate being used, (TLS Example):](#certificate-being-used-tls-example)
+  - [Certificate Chain:](#certificate-chain)
+  - [Certificate Expirations:](#certificate-expirations)
+  - [Registration Authority:](#registration-authority)
+    - [Certificate Revocation List:](#certificate-revocation-list)
+  - [Key Escrows](#key-escrows)
+  - [Problems with Certifications (Google review) [not in the slides]:](#problems-with-certifications-google-review-not-in-the-slides)
+- [Lecture 9 (13th Nov) : Network Security](#lecture-9-13th-nov--network-security)
+  - [Types of Attacks in networks](#types-of-attacks-in-networks)
+  - [Examples of Vulnerabilities](#examples-of-vulnerabilities)
+    - [DNS Resolve & Cache (DNS Poisioning)](#dns-resolve--cache-dns-poisioning)
+    - [Slow Loris Attack:](#slow-loris-attack)
+- [Lecture 10 : Anonymous Communication (16th November)](#lecture-10--anonymous-communication-16th-november)
+    - [Define: Anonymity](#define-anonymity)
+    - [Define : Unlinkability, Unobservability](#define--unlinkability-unobservability)
+  - [VPNs](#vpns)
+  - [TOR (Circuit):](#tor-circuit)
+  - [Directory Authorities:](#directory-authorities)
+  - [Tor Vulnerabilities:](#tor-vulnerabilities)
+    - [Passive Attacks:](#passive-attacks)
+    - [Active Attacks:](#active-attacks)
+- [Lecture 11: Firewalls (27th Nov)](#lecture-11-firewalls-27th-nov)
+  - [DMZ of a Network:](#dmz-of-a-network)
+  - [Types of firewall](#types-of-firewall)
+    - [Packet Filters:](#packet-filters)
+    - [Stateful Filtering:](#stateful-filtering)
+    - [Application level proxy](#application-level-proxy)
+    - [Client Level Proxy](#client-level-proxy)
+    - [Personal Firewall](#personal-firewall)
+  - [Network Address Translation (NAT)](#network-address-translation-nat)
+  - [Firewalls and Attack Prevention:](#firewalls-and-attack-prevention)
+  - [The Great Firewall of China](#the-great-firewall-of-china)
+  - ["iptables" Firewalls on Linux](#iptables-firewalls-on-linux)
+- [Lecture 12: Isolation (4th Dec)](#lecture-12-isolation-4th-dec)
+  - [System level sandbox:](#system-level-sandbox)
+  - [Security and Virtualisation / Sandboxing:](#security-and-virtualisation--sandboxing)
+    - [Container Based Sandboxing:](#container-based-sandboxing)
+  - [UniKernel](#unikernel)
+  - [SGX Hardware supported memory enclaves](#sgx-hardware-supported-memory-enclaves)
+- [Lecture 13: Hardware Root of Trust (7th Dec)](#lecture-13-hardware-root-of-trust-7th-dec)
+  - [RootKit](#rootkit)
+  - [Software approach to Trust](#software-approach-to-trust)
+    - [Return Oriented Programming Attack](#return-oriented-programming-attack)
+  - [Hardware Approach for Attestation](#hardware-approach-for-attestation)
+    - [Static Root of Trust:](#static-root-of-trust)
+  - [Trusted Platform Module Based Computed (TPM)](#trusted-platform-module-based-computed-tpm)
+    - [TPM Registers:](#tpm-registers)
+    - [TPM and Remote Attestation:](#tpm-and-remote-attestation)
+- [Lecture 13: Blockchain (14th December)](#lecture-13-blockchain-14th-december)
+  - [Proof Of Work](#proof-of-work)
+  - [Transactions](#transactions)
+  - [Chain](#chain)
+  - [How can i mine for some of that blockchain gold?](#how-can-i-mine-for-some-of-that-blockchain-gold)
+
 # Lecture 1 (Intro - 2nd Oct):
 How would you define a system?
 It's a collection of components, with relationship and connections to achieve a goal in an environment.
@@ -115,13 +230,13 @@ Not to mention with social media and people's views on privacy and generally sec
 ### Security 
 It's what a system does to protect the Confidentiality, Integrity and Availablity of an automated system.
 
-| Safety | Security |
-|---|---|
-|Hazard|vulnerability|
-|?|threat|
-|safety measure|countermeasure|
-|risk|risk|
-|accidents/incidents|incidents|
+| Safety              | Security       |
+| ------------------- | -------------- |
+| Hazard              | vulnerability  |
+| ?                   | threat         |
+| safety measure      | countermeasure |
+| risk                | risk           |
+| accidents/incidents | incidents      |
 
 ### Definition of an Attack
 
