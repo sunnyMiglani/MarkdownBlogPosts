@@ -890,8 +890,165 @@ The entire framework is built to function with these principles:
 
 # Lecture 9 (13th Nov) : Network Security
 
+OSI Model:
+1. Application Layer
+2. Presentation Layer
+3. Session Layer
+4. Transport Layer
+5. Network Layer
+6. Data Link Layer
+7. Physical Layer
+
+OSI model doesn't fit exactly reality, it's a nice way of understanding the overall system
+
+The actual running model is the TCP/IP model:
+1. Application Layer (HTTP, FTP)
+2. Transport Layer (TCP)
+3. Internet Layer (IP)
+4. Network layer
+
+
+**TLS/SSL** for example are in application layer in the TCP/IP model and the presentation layer in the OSI model.
+
+Encapsulation is taking the message you want to send from the application level and sending it down the stack. 
+Decapsulation is the opposite.
+
+Structure is like so (A -> B means B covers A)
+> (http header/httpPayload) -> (tls header/tls payload) -> (tcp header/tcp payload) -> (ip header/ip payload) -> ... -> packet
+
+
+Security is stored on the different layers as well, and they're focused on different aspects of the security.
+
+To add security to existing protocols, we add **optional layers** into the system to ensure that there's backward compatibility in the network.
+
+## Types of Attacks in networks
+
+1. Traffic Analysis
+2. Message disclosure
+3. masquerade
+4. message modification
+5. replay 
+6. topology disclosure
+7. unauthorised access
+8. denial of service
+
+There are two types of targets
+- Network data
+- Systems connected to the network or within the network (switches, routers etc)
+
+Types of attacks:
+- Passive Attacks
+- Active Attacks
+
+**Traffic Analysis**:
+- Attacker can see who is exchanging messages
+- Number of messages, time they're sent and the patterns in which they're sent. 
+- They are usually done as timing analysis
+
+Example: SSH Timing attack, that looks at how many packets are sent in an interactive session and learns details of typing behaviour of a user.
+
+**Message Disclosure**:
+Attacked aimed to extract specific information about a website such as software distributions, version numbers, patch levels etc.
+- Attacker can read the content or some content of the exchanged message
+- Countermeasure: encryption
+- Although size of the messages/packets can reveal some information. 
+
+**Masquerade**:
+- Pretending to be someone else
+- TCP Hijacking
+- Changing IP address in the DNS etc.
+- Conducted through the use of stolen login information, IDs, and passwords!
+
+**Message Modification**:
+- Similar to a man-in-the-middle attack, where the attacker does the following
+- Receives message from A
+- Modifies the message
+- Sends it to bob as A
+- Blocsk the traffic between Bob and Alice so he can keep the attack going with Bob thinking he's alice
+
+
+**Replay Attack**:
+- Data maliciously _retransmitted_ (imagine a transaction).
+
+**Topology Disclosure**:
+- Discover nodes connected to a network
+- Discover services running on those nodes
+- **Port scans** in the network, (morris worm is an example of this)
+
+**Unauthorized Access**:
+- Break into a system
+- Many ways to do so, like phishing, password guessing, brute force etc.
+
+**Denial of Service**:
+- Attacker wants to block the usage of something in a network, for example a node or router etc
+- Example is overloading a server with a large number of reqeusts etc.
 
 
 
+## Examples of Vulnerabilities
+
+TCP Packets main things
+1. Sequence number
+2. Ack number
+3. Ack Flag
+4. Syn Flag
+
+TCP handshakes are used to send some sequence numbers and acknowledgement numbers so the two devices in the communication are aware of packets being sent and can identify missing or collided packets.
+
+- Sequence numbers are not random
+- they're designed to prevent collision
+- Things can go wrong like getting haxed
+- Attackers can **GUESS** the sequence numbers!
+
+THIS ALLOWS FOR **Session Hijacking!!** by an attacker once they guess your number.
+
+**Oh but i'm protected from an attacker coz i can see which IP my packet is coming from!**
+NOPEEEEE
+
+This is bad because anyone can fake an IP address, specifically they can change the actual packet data (like we did in labs wowza) to fake a user's ip. It's a masquarade attack! 
+
+Using TCP can also have problems with 
+1. Reset Attacks: Can spoof an ip packet and send a TCP RESET request that could break any application that relied on long-lived connections (imagine DL ssh)
+2. Data Injection: Wait until application level authorisation has been achieved, insert a packet as if it was coming from the initial user. Masquarade as the server for the response and mimic man-in-the-middle for the rest of it.
+
+TODO: Read on SynFlood Attacks
+
+
+
+**How do i attack knowing the topology of a network?**:
+
+Basically you can disconnect routers by using SynFloods, DoS attacks or even Reset Attacks!
+This works if there's only IP based authorisation.
+
+There's a fix against this, i.e. that a smart network admin could enforce two hardware connected routers to have a TTL being set to 255 (max value, TTL reduces per hop in a network). If the incoming packet has a TTL of less than 255, then it's obviously not from the hardware connected router, and is therefore an attacker or some malicious force. 
+
+
+### DNS Resolve & Cache (DNS Poisioning)
+
+DNS has a map from domain to an IP address.
+You attack the DNS to replace the IP address from a website to lead to your IP instead.
+
+For example, replace the IP related to bank.com to lead to your ip, which hosts a fake website. This could also be a valid attack for the bank.com to lead to an invalid IP therefore causing a form of a DOS attack!
+
+Steps for this attack:
+1. Exploil vulnerability in the DNS server
+2. Man in the middle (send a fake response)
+3. Modify the client host file
+4. Domain high-jack (point to a different DNS server)
+5. Masquareade type attack!
+
+Steps to block this attack! (DNSSEC)
+1. Sign the (domain name, IP Addr) pair with the domain's owner certificates!
+2. Problem! : What if you map between domains, i.e. from foo.bris.ac.uk to bar.bris.ac.uk??? 
+3. The above fault could lead to a **topology disclosure** where the attacker could identify the topology by looping over the domains from a->aa, etc.
+
+### Slow Loris Attack:
+
+- The same as a normal DOS attack, overload the server's resources
+- Slow loris is a protocol level attack, and requries v v little computer power from the attacker
+- HTTPS request is always finished by \n\n, this means that you can send https requests slowly in small and small packets.
+- Before it times out, send another character for the HTTPs request. Keep doing that
+- Keep doing it from different connections, so then you can keep sending slowly data. This means that all your active connections would stop.
+- Low Bandwidth too
 
 
