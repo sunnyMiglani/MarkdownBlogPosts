@@ -207,9 +207,9 @@ In order of effectiveness, these are how you make something _safe_ (most effecti
 
 
 Types of safety measures:
-1. **Passive**: Presence contributes to saftey, like building fences around train tracks
-2. **Fail-safes**: Systems that if they fail, reach a safe state like trains stopping on open doors etc
-3. **Active safety measures**: montior systems and intervine like putting off a fire on a train if it starts.
+1. **Passive**: Presence contributes to saftey, like building fences around train tracks (eg. Stack Canaries)
+2. **Fail-safes**: Systems that if they fail, reach a safe state like trains stopping on open doors etc (eg. Guard Pages)
+3. **Active safety measures**: montior systems and intervine like putting off a fire on a train if it starts. (Bounds checked in a compiler/hardware)
 
 ### Risk
 Risk is defined as loss X probability of occurance
