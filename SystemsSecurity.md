@@ -200,9 +200,11 @@ People say security "incident", not really "accident"
 ### Safety Measures:
 In order of effectiveness, these are how you make something _safe_
 1. Mitigate: reduce damage that might happen in an accident
-2. Control the environment or control the system
-3. Reduce likelihood of the occurence
+2. Reduce likelihood of the occurence
+3. Control the environment or control the system
 4. Eliminate the hazard that might cause the accident
+
+
 
 Types of safety measures:
 1. **Passive**: Presence contributes to saftey, like building fences around train tracks
