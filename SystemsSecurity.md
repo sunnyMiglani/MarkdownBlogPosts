@@ -198,10 +198,10 @@ Terminology:
 People say security "incident", not really "accident"
 
 ### Safety Measures:
-In order of effectiveness, these are how you make something _safe_
+In order of effectiveness, these are how you make something _safe_ (most effective is at the other end!)
 1. Mitigate: reduce damage that might happen in an accident
-2. Reduce likelihood of the occurence
-3. Control the environment or control the system
+2. Control the environment or control the system
+3. Reduce likelihood of the occurence
 4. Eliminate the hazard that might cause the accident
 
 
