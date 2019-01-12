@@ -118,7 +118,12 @@ That's why **Scalability** is very important!
 
 These are some characteristics of Cloud Computing:
 
-1.  On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider. 2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client platforms. 3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand. 4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically. 5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
+1.  On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider. 
+2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client
+platforms. 
+3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand. 
+4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically. 
+5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
 
 ## \*AAS abreviations:
 
@@ -137,7 +142,9 @@ These are some characteristics of Cloud Computing:
 Economies of Scale are why cloud works!
 ["Required Reading"](https://cacm.acm.org/magazines/2013/2/160173-the-tail-at-scale/abstract)
 
-Definitions: 1. Capital Expenditure: One time cost, to get the infrastructure built for your system (servers, building, etc) 2. Operating Expenditure: Electricity, man power, cooling, marketing etc.
+Definitions:
+1. Capital Expenditure: One time cost, to get the infrastructure built for your system (servers, building, etc)
+2. Operating Expenditure: Electricity, man power, cooling, marketing etc.
 
 Some Amazon Propogranda:
 EC2 is a virtual server, it uses Amazon Machine Image, and you can build your own AMIs. Amazon has some prebuilt AMIs and now third party AMIs as well.
