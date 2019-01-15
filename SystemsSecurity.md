@@ -9,6 +9,8 @@ Basically the course is structured to not depend 100% on slides for the exam.
 "Anything in security in the world can be asked" (lol)
 
 # Table of Contents 
+- [System's Security](#systems-security)
+- [Table of Contents](#table-of-contents)
 - [Lecture 1 (Intro - 2nd Oct):](#lecture-1-intro---2nd-oct)
     - [Example of a System and a fault](#example-of-a-system-and-a-fault)
     - [2 Factor authentication problems:](#2-factor-authentication-problems)
@@ -122,6 +124,7 @@ Basically the course is structured to not depend 100% on slides for the exam.
   - [Transactions](#transactions)
   - [Chain](#chain)
   - [How can i mine for some of that blockchain gold?](#how-can-i-mine-for-some-of-that-blockchain-gold)
+- [Some reading](#some-reading)
 
 # Lecture 1 (Intro - 2nd Oct):
 How would you define a system?
@@ -190,9 +193,9 @@ Which has problems such as:
 Terminology:
 1. Accident: unplanned and undesired event
 2. Hazard: Condition that can lead to an accident in an environment
-3. Incident: Things that happen but isn't an accident
+3. Incident: Things that happen but isn't an accident // a malicious accident. In-cident,intentional
 4. Safety: Freedom from accident (caused without intent)
-5. Security: Freedome from incidents (caused maliciously)
+5. Security: Freedom from incidents (caused maliciously)
 
 
 People say security "incident", not really "accident"
@@ -264,10 +267,12 @@ Have methods to detect and ensure everyrhing being released is secure!
 
 The whole system is basically C-I-A
 1. C: Confidentiality (only you & lectuerer see your marks)
-2. I: Integrity (only lecturere chaanges it)
+2. I: Integrity (only lecturer changes it)
 3. A: Availability (you can always see and lectueres can always change)
 
-**Threat model**: Make assumptions about the adversary, the system and the environment. We use this when **evaluating** and testing our security.
+**Threat model**: Make assumptions about the adversary, the system and the environment. 
+
+We use this when **evaluating** and testing our security
 
 It's actually quite hard to test security, it's hard to define what the powers the attacker might have, and what smaller things build up.
 
@@ -330,7 +335,7 @@ In order (bot to top):
 
 So buffer overflows happen because the stack isn't protected per say. 
 
-What happens if you go past the boundary of the buffer in a stack? It means you'd start accessing the values and the variables stored by the calling program
+What happens if you go past the boundary of the buffer in a stack? It means you'd start accessing the values and the variables stored by the calling program.
 
 You could even change the return address of the previous call to a malicious function, giving you the ability to change what the computer does as much as you'd like.
 
@@ -396,7 +401,7 @@ Canaries can't protect because this operations is on the heap, not the stack.
 
 Use a `Guard Page`, which is hardware protected and will raise a fault or an error if someone tries to change, read or write on the memory in those pages.
 
-This is different from the canary, as here we're depending on the harware protection, not the software protection.
+This is different from the canary, as here we're depending on the hardware protection, not the software protection.
 
 This stops them from overwriting the area where the buffer overflow can do damage, since these pages are placed amongst various other memory blocks.
 
@@ -449,6 +454,9 @@ And how to survive
 - Don't make thousands of threads, only make 1 or 2
 - Wait for a specific threshold (time, size, day etc)
 - The first thread did a DDoS attacks on Microsoft update.
+
+Notes from Wikipedia:
+- Once through the firewall of a uni / company network, it spreads much faster as the firewall 
 
 #### ASIDE: Trusted Platform Modules 
 Specialised chip on a computer, it requries that you sign off every program being executed on the machine.
@@ -1683,3 +1691,7 @@ You'll need:
 1. High computational resource
 2. Cheap electricity
 3. Good network access (fast mining and fast retrieving and fast sending)
+
+# Some reading
+
+[TLS VS SSL](https://www.globalsign.com/en/blog/ssl-vs-tls-difference/)
