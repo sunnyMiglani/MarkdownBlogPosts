@@ -499,15 +499,24 @@ Michael Jackson's man in the mirror is not the man in the middle.
 Basically this is focused on transmission:
 
 **How do i transmit the password?**
+
 A1: Clear text!
+
 **No pls, need to encrypt**
+
 A2: Encrypted password on a clear channel
+
 **Essentially the same as a password at this point...**
+
 A3: Clear password on an encrypted channel!
-** I could fake being google, and you'll just encrypt your password to me instead!**
+7
+**I could fake being google, and you'll just encrypt your password to me instead!**
 A4: I'll make you confirm you're google!
-** I could fake being google by faking being you, I could just check online for any auth codes that are needed, and ofc they'd have to be public fi you want access to them!**
+
+**I could fake being google by faking being you, I could just check online for any auth codes that are needed, and ofc they'd have to be public fi you want access to them!**
+
 A5: I'll use some crypto magic and make you share a secret
+
 **Ah damn, you right that might work!!**
 
 ### Threat 4: 'Hammering' the login page!
