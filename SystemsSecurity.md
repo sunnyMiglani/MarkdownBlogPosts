@@ -546,6 +546,8 @@ and tbh, it's not always the most great for C either.
 
 # Lecture 5: Access Control (30/10):
 
+Mediate a subject's access to an object
+
 Two types of access control:
 1. Physical Access Control: Gates and physical enforcement from area
 2. Digital access control: Restrict access to resources and interactions
