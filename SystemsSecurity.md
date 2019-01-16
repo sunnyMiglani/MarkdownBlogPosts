@@ -8,7 +8,7 @@ Author: Sunny Miglani
 Basically the course is structured to not depend 100% on slides for the exam.
 "Anything in security in the world can be asked" (lol)
 
-# Table of Contents 
+# Table of Contents
 - [System's Security](#systems-security)
 - [Table of Contents](#table-of-contents)
 - [Lecture 1 (Intro - 2nd Oct):](#lecture-1-intro---2nd-oct)
@@ -175,7 +175,7 @@ Goes into the ideas that the people didn't think in terms of combined results, b
 
 Great to secure things if objects are independent of each other.
 
-If you look into the principles of security, i.e. 
+If you look into the principles of security, i.e.
 1. Things you know (password, PINs)
 2. things you are (fingerprint, iris, voice etc)
 3. things you have (phones, bank pin consoles etc)
@@ -232,7 +232,7 @@ Not to mention with social media and people's views on privacy and generally sec
 
 
 
-### Security 
+### Security
 It's what a system does to protect the Confidentiality, Integrity and Availablity of an automated system.
 
 | Safety              | Security       |
@@ -251,7 +251,7 @@ And it's a sequence of actions that result in a loss
 
 > {threatAgents} -> {threats} -> {vulnerabilities} -> {attack}
 
-> hackers -> SQL Injections -> Login Form's code -> Deface the website 
+> hackers -> SQL Injections -> Login Form's code -> Deface the website
 
 ### Countermeasures
 
@@ -270,7 +270,7 @@ The whole system is basically C-I-A
 2. I: Integrity (only lecturer changes it)
 3. A: Availability (you can always see and lectueres can always change)
 
-**Threat model**: Make assumptions about the adversary, the system and the environment. 
+**Threat model**: Make assumptions about the adversary, the system and the environment.
 
 We use this when **evaluating** and testing our security
 
@@ -294,7 +294,7 @@ It wasn't anything to do with the OS, or the security patches or anything. It wa
 
 #### Spectre/Meltdown explained:
 
-Take an instruction pipeline, it's not always A then B then C then D 
+Take an instruction pipeline, it's not always A then B then C then D
 but it's A then AB then ABC then ABCD during the program
 
 To make pipelines efficient, you must always try and keep the CPU be busy trying to the next thing. But if you've reached a conditional/jump, what do you do?
@@ -307,8 +307,9 @@ What did Spectre/Meltdown do?
 - Exploited the branch prediction
 - You can get access to the data in the pipeline cache
 - Access check is done when instructions are "executed" not actually when they're being predicted. The data is collected, but not shown until you've confirmed you have access.
-- However this was the fault as it basically convinced the predictor to get the sensitive data by inching closer and closer in memory to it, using a constantly executing loop. And after some X iterations, because the CPU may have half stored the data and was ready with the pipeline to proceed to the next "retrieve data" instruction, make the only thing change be _where_ the data was pointing. 
-- This would then get that data from the cached sensiive information, through hardware even if the software side didn't give permission yet.
+- However this was the fault as it basically convinced the predictor to get the sensitive data by inching closer and closer in memory to it, using a constantly executing loop. And after some X iterations, because the CPU may have half stored the data and was ready with the pipeline to proceed to the next "retrieve data" instruction, make the only thing change be _where_ the data was pointing.
+- This would then get that data from the cached sensitive information, through hardware even if the software side didn't give permission yet.
+
 
 
 So, more detail bout these bois:
@@ -322,8 +323,23 @@ Spectre tricks applications into accessing the arbitrary locations in their memo
 
 # Lecture 3 (Buffer Overflow)
 
+--- 0xfff ---
+
+|LAYOUT OF A STACK|
+|------|
+|Kernel|
+|Stack|
+|downwards from here|
+|<< EMPTY SPACE >>> |
+|upwards from here|
+|heap|
+|data|
+|text|
+--- 0x000 ---
+
+
 ## Stack
-Goes from bottom to top 
+Goes from bottom to top
 
 In order (bot to top):
 1. Arguments of the function being called
@@ -333,25 +349,39 @@ In order (bot to top):
 
 ## Buffer Overflows
 
-So buffer overflows happen because the stack isn't protected per say. 
+So buffer overflows happen because the stack isn't protected per say.
 
 What happens if you go past the boundary of the buffer in a stack? It means you'd start accessing the values and the variables stored by the calling program.
 
 You could even change the return address of the previous call to a malicious function, giving you the ability to change what the computer does as much as you'd like.
 
-So buffer overflows happen because **arrays in C don't really exist**. It's essentially just notation for pointers. 
+So buffer overflows happen because **arrays in C don't really exist**. It's essentially just notation for pointers.
 
 - Ask for a buffer
 - Place malicious code on the buffer
 - Overflow the stack
 - Change the return address to your malicious code.
+- The return address is placed using the stack-overflowing input.
+- If your code doesn't end up in the correct place, you use a `nop` slide / sled (`0x90`), that would move the instruction pointer.
 
 **usual attack is to replace the running program with your malicious program using exec()**
+
+|Layout for a program call|
+|-------------------------|
+|previous function data|
+|Variables that are used (parameters)|
+|return pointer|
+|base pointer|
+|buffer for memory [500]|
+
+[Good reference from comp-phile](https://www.youtube.com/watch?v=1S0aBV-Waeo)
+
+
 
 ### Problems with Buffer Overflows:
 
 So suppose you have some cool kid malicious code right?
-To insert it into the program, you're smart and use a string. However, you're not that smart, so you end up with instructions that have string terminating characters, for example `0x0C`, `0x00` etc. 
+To insert it into the program, you're smart and use a string. However, you're not that smart, so you end up with instructions that have string terminating characters, for example `0x0C`, `0x00` etc.
 
 ---- This was the CW ----
 
@@ -361,7 +391,7 @@ Solution A:
 - Prevent Bugs in your code!
 - Check usages of problematic C functions
 - Use compiler flags for this, and use new built programs that have restricted access of the buffers
-- Avoid raw pointer manipulations! 
+- Avoid raw pointer manipulations!
 - Understand code from libraries you use!
 
 Solution B:
@@ -435,11 +465,11 @@ This means that any pointer based calls become non atomic operations. i.e. they 
 
 Basically would go to a node in a network, put the payload on the node and check all the related nodes in the network and see whether they have the "worm" already.
 
-If the worm already exists, don't need to add it? 
+If the worm already exists, don't need to add it?
 Naah, add it anyway. Add it 1/7th of the time.
 
 This meant that all the machines on the internet were affected by this and ended up messing up everyone.
-
+[Good video](https://www.youtube.com/watch?v=KsrirSb2jiU)
 
 ### Blaster -- Buffer overflow worm
 
@@ -456,9 +486,11 @@ And how to survive
 - The first thread did a DDoS attacks on Microsoft update.
 
 Notes from Wikipedia:
-- Once through the firewall of a uni / company network, it spreads much faster as the firewall 
+- Once through the firewall of a uni / company network, it spreads much faster as the firewall
+[Cool hacking wow amaze video so cool matrix wow](https://www.youtube.com/watch?v=r0_xtYwPs5M)
 
-#### ASIDE: Trusted Platform Modules 
+
+#### ASIDE: Trusted Platform Modules
 Specialised chip on a computer, it requries that you sign off every program being executed on the machine.
 
 # Lecture 4 (23rd Oct) Authentication [only from lectures, NO MEDIASITE]
@@ -499,6 +531,12 @@ A4: I'll salt the password!
 We know that this basically has messed up a lot of things! We know that recovery questions are poop and are prone to phishing attacks. We know that password recovery is a joke unless it's 2 factor but even 2 factor is a joke sometimes.
 
 Basically password recovery is poop af.
+
+
+### ASIDE: Rainbow Table!
+Rainbow tables are precomputed tables that have reversed cryptographic hash functions that are used for cracking password hashes. They're usually used in recovering passwords or credit card numbers to a certain length.
+They take up a lot of space, but they save you a lot of time as well!
+
 
 ### Threat 3: (Man in the Middle!)
 
@@ -571,21 +609,25 @@ In simpler words:
 - Subject: Person!
 
 Access Control:
-- Concerened with authorisation i.e. what is the subject allowed to do?
-- Mediates a subject's access to an object
-- Enforces a security policy, limiting what actions are allowed by a subject.
+- Concerened with **authorisation** i.e. what is the subject allowed to do?
+- **Mediates** a subject's access to an object
+- **Enforces** a security policy, limiting what actions are allowed by a subject.
 
 ### Complete Mediation:
 
 - This is our aim
 - **Trusted Computing Base**: All hardware and software that's responsible for enforcing a policy. For example the trusted base is the OS kernel, the PC hardware. And a fault in this can cause a huge problem in security (think spectre/meltdown?)
 - Try and aim for complete mediation, but light and thin to enforce security but not comprimise computation power / speed.
-- **Reference Montior**: Control any access to objects and every subject needs to go through the reference monitor (bouncer in a nightclub).
+- **Reference Montior**: Controls any access to objects and every subject needs to go through the reference monitor (bouncer in a nightclub).
 
 ### Protection State:
-- Security context is information that's used to make an informed decision. For example in an airport, a passport could be your _authentication_. However you need a visa as your **authorisation**.
+- Security context is information that's used to make an informed decision. (a UID / GID for a process) For example in an airport, a passport could be your _authentication_. However you need a visa as your **authorisation**.
 - Protection state: It's a state of the security sensitive actions a subject is able to do, for example a user changign to sudo.
 - Transition between these states is tightly controlled and must be secured.
+
+- Security Context: Information needed to make a decision (IDs/ Auths)
+- Protection State: Security based actions someone can do
+- Transition: Moving between the protection state needs to be tightly controlled.
 
 ### Access Control Matrix:
 - Simplest way to present protection state of a system
@@ -595,22 +637,25 @@ But the Access Control Matrix is a very **theoretical model**. Imagine trying to
 
 **What is it good for?**:
 - Express formally / informally what is allowed in the system
-- Generally express confidentiality / integrity requirements from the system. 
+- Generally express confidentiality / integrity requirements from the system.
 
 ### Mechanisms and Models (Defintiions):
 
-**Mechanism:** How is the policy enforced? 
+**Mechanism:** How is the policy enforced?
 **Model**: How do you represent these policies?
 
 ### Access Control List:
+
+It is a list of permissions attached to an object. The ACL specifies which users or system processes have access to objects and what operations are allowed on those given objects.
+
 
 It's an alternative format of an access control matrix
 Where you group the data into types.
 
 - Object Centric access control
-- Subject centric capabilities
+- Subject Centric capabilities
 
-### Discretionary / Mandatory 
+### Discretionary / Mandatory
 **Discretionary:** Owner of a resource, and defines and delegates the right to other users
 -  Requires the notion of the owner (what does owning something mean?)
 -  Resource owner defines the associated policy.
@@ -619,7 +664,7 @@ Where you group the data into types.
 - Notion of an owner is optional
 - Great for an organisation that may own the data
 
-Example: 
+Example:
 Google Drive by UoB:
 - Users / Students create the file, and define who has access into the file to the point of read, write and other systems
 - The University sets the default policies of sharing and distributing data. Limits what _can_ and cannot be sahred etc.
@@ -629,8 +674,11 @@ Google Drive by UoB:
 
 Group the users into different roles.
 1. Owners
-2. Group 
+2. Group
 3. Others!
+
+
+Role Based Access Control - RBAC
 
 [ TODO: Read the info about RBAC (NIST) from the lectures ]
 - RBAC 0 [Flat]: Users have a role, roles have permissions
@@ -656,7 +704,7 @@ The policy is defined by these constraints:
 Problems with this?
 1. Classification of the data becomes a bit harder, until you need to put in other policies to deal with declassificiation.
 
-So in a large organisation you want to keep track of various groups and permission levels in the range. For example if you're in the navy, you don't need to know the secrets of the air force. 
+So in a large organisation you want to keep track of various groups and permission levels in the range. For example if you're in the navy, you don't need to know the secrets of the air force.
 So they add a **Discretionary Access Control** aspect which adds categories to the model.
 
 We use the same classifications as before (Top Secret, Secret, Unclassified etc) but we add a special group / categories into the system which means we can define access a bit better.
@@ -720,12 +768,12 @@ Have well formed transactions, and move systems safely from one state to another
 
 Have seperation of duty
 - Who certifies transactions
-- who confirms that these match the constraints 
+- who confirms that these match the constraints
 
 Some objects / classifications in this model
 1. Constrained Data Item  (CDI) - Bank Details
 2. Unconstrained Data Items (UDI) - User input
-3. Transformation Procedure (TP) 
+3. Transformation Procedure (TP)
 4. Integrity Verification Procedure (IVP)
 5. Permission is a triple {user, TP, CDIs}
 6. Transfer{CDI:account, UDI:reference}
@@ -743,17 +791,17 @@ Enforcement Rules:
 3. All users are authenticated
 4. Only authorised peopl can change permissions
 
-# Lecture 6 Web Security (2nd Nov) - Client Side Security 
+# Lecture 6 Web Security (2nd Nov) - Client Side Security
 
 -- Note: Big man Tom forgot to record the screen so this is all from the slides.
 
-On a website right now there's  a lot of ads, a lot of analytics being run, a lot of javascript being run. Along with the page's html / js. 
+On a website right now there's  a lot of ads, a lot of analytics being run, a lot of javascript being run. Along with the page's html / js.
 
-As we move through websites and the _information highway_, we expect things, values and information to be passed through to different websites. For example the **"same origin policy"** allows a web browser in the first web page to access the data from a second web page **if** they come from the same origin. 
+As we move through websites and the _information highway_, we expect things, values and information to be passed through to different websites. For example the **"same origin policy"** allows a web browser in the first web page to access the data from a second web page **if** they come from the same origin.
 
 An "origin" is defined using:
 1. URI scheme
-2. Host name 
+2. Host name
 3. port number
 
 This prevents malicious scripts on one page from obtaining access to sensitive data on another page.
@@ -774,12 +822,12 @@ MIME sniffinc is a technique used by browsers to find the actual type of a parti
 
 Assets are written with a file format, and it's hard to tell what the type might be just from the meta data sometimes, and therefore this requires the browser to MIME sniff.
 
-This is a big vulnerability as the attacker can leverage MIME sniffing to send an XSS attack (Cross Site Scripting). 
+This is a big vulnerability as the attacker can leverage MIME sniffing to send an XSS attack (Cross Site Scripting).
 
 MIME sniffing (not the attack) is:
 1. Web browser requests a particular asset which responds with no content type or a content type set by he previous owner
 2. Web browser "sniffs" the content to analyse the file format
-3. Once the browser has completed it's analysis, it compares what it found against the web server's provided type in the header. 
+3. Once the browser has completed it's analysis, it compares what it found against the web server's provided type in the header.
 4. If there's a mistmach, the browser uses the MIME type that it determined to be associated with the asset.
 
 #### MIME SNIFFING ATTACK:
@@ -796,7 +844,7 @@ This would disable the browser from sniffing the content.
 2. Use a subdomain to avoid XSS attacks, as this would prevent the script from gaining authorisation.
 
 
-## DNS Exploit 
+## DNS Exploit
 
 The internet and users heavily rely on DNSs to find any web page and browse through the internet overall.
 A DNS exploit is the vulnerability in the DNS through which an attacker can infiltrate a network.
@@ -848,7 +896,7 @@ Attack 3:
 The overall goal is to see the response time in a cross site scripting response.
 The attacker will send a XSS request to the other website that they're trying to target, and if the response is quick (very quick) then they know that you have accessed the website recently due to the caching from it.
 
-So other than just seeing whether a website has been visited. You can do other stuff top, like just see some details from the caches 
+So other than just seeing whether a website has been visited. You can do other stuff top, like just see some details from the caches
 
 Thing like requesting
 1. Get q=in:sent&from:Bob could reveal whether they received any mesages from Bob.
@@ -963,7 +1011,7 @@ These intermediate certificate people (the ones who got signed by a CA) get a co
 
 The certificate can expire based on the policy set by those signing it.
 
-If a certificate is expired in a chain then all certificates signed by those is invalid as well. 
+If a certificate is expired in a chain then all certificates signed by those is invalid as well.
 
 A -> B -> C
 If B is invalid, then C is insecure / unsecure?
@@ -981,7 +1029,7 @@ If B is invalid, then C is insecure / unsecure?
 
 The CA publishes and maintains a list of Certificates that cannot be used anymore
 
-Basically certificates that aren't secure anymore 
+Basically certificates that aren't secure anymore
 This happens if
 - compromised private key
 - HR reasons (do we truss the person's pk?)
@@ -994,9 +1042,9 @@ Browsers actually implement this list to point out authenticated signatures that
 
 ## Key Escrows
 
-Basically the private keys (whether symmetric or PKI) are stored in an escrow by companies or employers or organisations in the cases where the it may arise that these keys are needed to gain access to the data encrypted by the employees or workers. 
+Basically the private keys (whether symmetric or PKI) are stored in an escrow by companies or employers or organisations in the cases where the it may arise that these keys are needed to gain access to the data encrypted by the employees or workers.
 
-The problem is restricting access to the keys if they've been exposed in this manner. the third party access should be permitted only under carefully considered conditions. 
+The problem is restricting access to the keys if they've been exposed in this manner. the third party access should be permitted only under carefully considered conditions.
 
 Court orders are usually the reasons. This is controversial in many countries due to the technical mistrust of the security of the escrow itself. And this might extend even to untrust of the entire system if it functions as designed.
 
@@ -1046,7 +1094,7 @@ The actual running model is the TCP/IP model:
 
 **TLS/SSL** for example are in application layer in the TCP/IP model and the presentation layer in the OSI model.
 
-Encapsulation is taking the message you want to send from the application level and sending it down the stack. 
+Encapsulation is taking the message you want to send from the application level and sending it down the stack.
 Decapsulation is the opposite.
 
 Structure is like so (A -> B means B covers A)
@@ -1063,7 +1111,7 @@ To add security to existing protocols, we add **optional layers** into the syste
 2. Message disclosure
 3. masquerade
 4. message modification
-5. replay 
+5. replay
 6. topology disclosure
 7. unauthorised access
 8. denial of service
@@ -1078,7 +1126,7 @@ Types of attacks:
 
 **Traffic Analysis**:
 - Attacker can see who is exchanging messages
-- Number of messages, time they're sent and the patterns in which they're sent. 
+- Number of messages, time they're sent and the patterns in which they're sent.
 - They are usually done as timing analysis
 
 Example: SSH Timing attack, that looks at how many packets are sent in an interactive session and learns details of typing behaviour of a user.
@@ -1087,7 +1135,7 @@ Example: SSH Timing attack, that looks at how many packets are sent in an intera
 Attacked aimed to extract specific information about a website such as software distributions, version numbers, patch levels etc.
 - Attacker can read the content or some content of the exchanged message
 - Countermeasure: encryption
-- Although size of the messages/packets can reveal some information. 
+- Although size of the messages/packets can reveal some information.
 
 **Masquerade**:
 - Pretending to be someone else
@@ -1141,9 +1189,9 @@ THIS ALLOWS FOR **Session Hijacking!!** by an attacker once they guess your numb
 **Oh but i'm protected from an attacker coz i can see which IP my packet is coming from!**
 NOPEEEEE
 
-This is bad because anyone can fake an IP address, specifically they can change the actual packet data (like we did in labs wowza) to fake a user's ip. It's a masquarade attack! 
+This is bad because anyone can fake an IP address, specifically they can change the actual packet data (like we did in labs wowza) to fake a user's ip. It's a masquarade attack!
 
-Using TCP can also have problems with 
+Using TCP can also have problems with
 1. Reset Attacks: Can spoof an ip packet and send a TCP RESET request that could break any application that relied on long-lived connections (imagine DL ssh)
 2. Data Injection: Wait until application level authorisation has been achieved, insert a packet as if it was coming from the initial user. Masquarade as the server for the response and mimic man-in-the-middle for the rest of it.
 
@@ -1156,7 +1204,7 @@ TODO: Read on SynFlood Attacks
 Basically you can disconnect routers by using SynFloods, DoS attacks or even Reset Attacks!
 This works if there's only IP based authorisation.
 
-There's a fix against this, i.e. that a smart network admin could enforce two hardware connected routers to have a TTL being set to 255 (max value, TTL reduces per hop in a network). If the incoming packet has a TTL of less than 255, then it's obviously not from the hardware connected router, and is therefore an attacker or some malicious force. 
+There's a fix against this, i.e. that a smart network admin could enforce two hardware connected routers to have a TTL being set to 255 (max value, TTL reduces per hop in a network). If the incoming packet has a TTL of less than 255, then it's obviously not from the hardware connected router, and is therefore an attacker or some malicious force.
 
 
 ### DNS Resolve & Cache (DNS Poisioning)
@@ -1175,7 +1223,7 @@ Steps for this attack:
 
 Steps to block this attack! (DNSSEC)
 1. Sign the (domain name, IP Addr) pair with the domain's owner certificates!
-2. Problem! : What if you map between domains, i.e. from foo.bris.ac.uk to bar.bris.ac.uk??? 
+2. Problem! : What if you map between domains, i.e. from foo.bris.ac.uk to bar.bris.ac.uk???
 3. The above fault could lead to a **topology disclosure** where the attacker could identify the topology by looping over the domains from a->aa, etc.
 
 ### Slow Loris Attack:
@@ -1193,7 +1241,7 @@ Steps to block this attack! (DNSSEC)
 
 Attackers can observe network traffice very easily, and even without looking at the actual data, you can learn a LOT.
 
-ISP's for example, know the `domain`, the `ip`, the `ports` the `packet size`. 
+ISP's for example, know the `domain`, the `ip`, the `ports` the `packet size`.
 
 Why should you have anonymity?
 - Law enforcements doens't want to tip their targets
@@ -1207,7 +1255,7 @@ There's a few things that try their best for you to try this (tor)
 - Prevent an observer on a network to link a participant to an action
 - Private browsing (like incognito) is useless for observers, it just doesn't store data in local files, everything else is the same.
 
-If people can be linked to websites, then they can be linked to certain behaviours. For example Alice visiting asos means she's probably buying clothes! Depending on the sale and her behaviour you can probabalisitcally say she's aiming to buy shoes instead! 
+If people can be linked to websites, then they can be linked to certain behaviours. For example Alice visiting asos means she's probably buying clothes! Depending on the sale and her behaviour you can probabalisitcally say she's aiming to buy shoes instead!
 
 ### Define : Unlinkability, Unobservability
 Unlinkability: Cannot link Alice to some online identity or platform via observations
@@ -1223,7 +1271,7 @@ To an observer on Alice's local network, who cannot observe the data directly in
 
 Now if the attacker had access to the other side of the relay as well, and knew that Alice Bob and Charlie (specifically Alice amongst X others) is transmitting their data through the relay, it wouldn't be impossible to identify the packets being sent from/to Alice.
 
-Specifically looking at things like 
+Specifically looking at things like
 - Response time
 - Size of packets
 
@@ -1284,7 +1332,7 @@ This is to allow relay1 to read the data relevant to it, but not touch the data 
 
 
 2. **Iterated Compromise**:
-- If you find vulnerability, then you can infect one relay to another. (So attack sequentially for a whole path). 
+- If you find vulnerability, then you can infect one relay to another. (So attack sequentially for a whole path).
 - But Tor changes the circuit regularly for each user.
 - If the tor servers cross borders, then legal authorities don't have access to legally follow the path.
 
@@ -1297,7 +1345,7 @@ This is to allow relay1 to read the data relevant to it, but not touch the data 
 - Purpose is to force end-nodes to shutdown, which means the attacker can own more end-nodes.
 - Make requests legally, so people end up trustring tor less.
 - Attacker runs a lot of illegal traffic through your nodes, forcing the government to make it shut down.
-- You can however run normal relays, as long as they're not end nodes! 
+- You can however run normal relays, as long as they're not end nodes!
 
 5. **DOS on directory authority**:
 - Could just stop the network by stopping people from downloading the nodes and available relay lists.
@@ -1318,7 +1366,7 @@ This is to allow relay1 to read the data relevant to it, but not touch the data 
 
 # Lecture 11: Firewalls (27th Nov)
 
-**Firewalls** are good for high likelyhood simple attacks. Things like DDoSing (which aren't too complex) 
+**Firewalls** are good for high likelyhood simple attacks. Things like DDoSing (which aren't too complex)
 
 - Protect LAN
 - Interpose between the internet and a local network
@@ -1370,11 +1418,11 @@ Essentially more complex versions of processing packets, usually based on some c
 Example: Stopping DDoS attacks because they always are sent with the same packet / same IP. So you have some stateful information that lets you block out the new requests.
 
 ### Application level proxy
-Proxy is applied at the applicaiton level, therefore every interaction with the outside world has to go through the proxy. 
+Proxy is applied at the applicaiton level, therefore every interaction with the outside world has to go through the proxy.
 
-The idea is to seperate you from the outside world. 
+The idea is to seperate you from the outside world.
 You can authenticate the proxy seperately and essentially the flow of the network is then
-   
+
     Client <-> Proxy <-> Server
 
 The idea being that the data should always go through the proxy both ways. However for the proxy to understand the routing, it needs to be able to understand the protocol that you're using (tls is blocked on purpose)
@@ -1406,7 +1454,7 @@ Set access rules to each program, check whether they're allowed to connect to th
 **IP Spoofing**: Packet filtering application
 
 ## The Great Firewall of China
-Blocks the data based on 
+Blocks the data based on
 - IP Address
 - URLs
 - Keywords
@@ -1437,7 +1485,7 @@ There's Tables and CHAINS (convention says caps)
 5. security (used to support MAC)
 
 **CHAINS**:
-1. PREROUTING 
+1. PREROUTING
 2. INPUT
 3. FORWARD
 4. OUTPUT
@@ -1503,19 +1551,19 @@ The attackers need to get lucky and ensure that they have co-tenancy in the clou
 ### Container Based Sandboxing:
 - Share kernel but sperate user space resources
 - More efficient performance!
-- But containers don't exist in the kernel by defaultm so you use a combination of features such as namespaces, overlayFS(file system for this) etc. 
+- But containers don't exist in the kernel by defaultm so you use a combination of features such as namespaces, overlayFS(file system for this) etc.
 - Give the VMs the illusion of being alone in the VMs
-- Attack surface is **much larger in this compared to full virtualisation**. 
-- The above applications that are used to create this pseudo virtualisation may not be built for it. It could have faults and insecure systems. 
+- Attack surface is **much larger in this compared to full virtualisation**.
+- The above applications that are used to create this pseudo virtualisation may not be built for it. It could have faults and insecure systems.
 
 ## UniKernel
 It's a single address space machine image constructed using library OSs. Developer will select which features he needs and the OS will be built specifically to match those from a library of different functions. The idea is that this will run directly to a hypervisor or hardware
 - It's generally light in comparison
-- More "secure" than containers, and can trust the OS in this case. 
+- More "secure" than containers, and can trust the OS in this case.
 - However classical VM vulnerabilities (side channel attacks) are still present in this.
 
 ## SGX Hardware supported memory enclaves
-SGX refers to Software Guard Extensions. They're a set of CPU instructions (built by intel) that allows user level code to allocate "enclaves" for private memory regions. 
+SGX refers to Software Guard Extensions. They're a set of CPU instructions (built by intel) that allows user level code to allocate "enclaves" for private memory regions.
 
 Idea behind SGX is that running an application in isolation so it cannot be affected by other systems. This is done if you don't trust the OS or the Hypervisor, and implies that you only need to trust the hardware. However there are also faults in this system. (caches are still shareddd)
 
@@ -1546,7 +1594,7 @@ Imagine a malware X
 How can we detect a compromised system?
 We want to remotely verify the **integrity** of the system
 
-**Remote Attestation**: Method by which a host authenticates it's hardware and software configuration to a remote host. The goal of the attestation is to enable a remote system to determine the levle of trust and integrity of platform of another system. 
+**Remote Attestation**: Method by which a host authenticates it's hardware and software configuration to a remote host. The goal of the attestation is to enable a remote system to determine the levle of trust and integrity of platform of another system.
 
 The flow of this is done like so:
 1. Untrusted Prover "P" and trusted verifier "V"
@@ -1565,7 +1613,7 @@ What does remote attestation actually tell you?
 ### Return Oriented Programming Attack
 
 **Return Oriented Programming:** (something a rootkit can do).
-Basically this uses a similar point as buffer overflow. It's used to grab the return pointer to `libc` and therefore gaines access to the code in the computer. It **won't add any code itself** as that might break the checksum, instead it will find instructions that does what it wants and will chain these as needed to get it to do what it likes. 
+Basically this uses a similar point as buffer overflow. It's used to grab the return pointer to `libc` and therefore gaines access to the code in the computer. It **won't add any code itself** as that might break the checksum, instead it will find instructions that does what it wants and will chain these as needed to get it to do what it likes.
 
 - Powerful attack: Uses standard and well known and understood techniques. It's difficult to prevent
 - Examples of this attack exist
@@ -1585,7 +1633,7 @@ We need to rely on hardware to provide some strong guarantee:
 For example Intel SGX -> Sealed execution
 
 ### Static Root of Trust:
-1. Provide a measurement of code at loading time. 
+1. Provide a measurement of code at loading time.
  It's basically hashing the code before loading
  stores the hash in a TPM register (seperated from the CPU, it's for security) (`tpm`: trusted platform module)
  Values can be used as a rpoof of the system
@@ -1593,7 +1641,7 @@ For example Intel SGX -> Sealed execution
   It's a fixed boot loader in the ROM, it contains a public key, will load the code and verify the signature with the public key. If it's a valid, then execute else halt.
 
 **Problem against static root of trust**:
-- It can verify only static information 
+- It can verify only static information
 - If there's a long running application on the server but we need to test the integrity of the program this wouldn't be able to provide it.
 - The runtime status of a device is not known. I.e. an attacker can compromise a system during execution
 - Reboot isn't sufficient, an adversary can ensure that certain code doesn't run when it's safe booting.
@@ -1607,7 +1655,7 @@ A lot of programs and OS and computers come with a trusted platform module (`tpm
 The TPM is used for
 1. Disk encryption
 2. System integrity
-3. Password Protection 
+3. Password Protection
 4. etc
 
 **what's the difference between Trusted Computing and Secure Boot?**:
@@ -1673,7 +1721,7 @@ Even the communication with the network is done over IP so that can identify you
 
 ## Chain
 
-The "Chain" in blockchain is a **public decentralized register/ledger**. 
+The "Chain" in blockchain is a **public decentralized register/ledger**.
 
 It keeps track of transactions that transfer value from a sender to a recipent and this is protected by a signature.
 
