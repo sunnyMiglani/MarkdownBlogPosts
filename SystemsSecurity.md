@@ -639,12 +639,12 @@ But the Access Control Matrix is a very **theoretical model**. Imagine trying to
 - Express formally / informally what is allowed in the system
 - Generally express confidentiality / integrity requirements from the system.
 
-### Mechanisms and Models (Defintiions):
+## Mechanisms and Models (Defintiions):
 
 **Mechanism:** How is the policy enforced?
 **Model**: How do you represent these policies?
 
-### Access Control List:
+## Access Control List:
 
 It is a list of permissions attached to an object. The ACL specifies which users or system processes have access to objects and what operations are allowed on those given objects.
 
@@ -670,7 +670,7 @@ Google Drive by UoB:
 - The University sets the default policies of sharing and distributing data. Limits what _can_ and cannot be sahred etc.
 - Difference in this example is that students can share outside of UoB. Imagine if that wasn't allowed, then that would be a restriction placed by the uni on this.
 
-### Role Based Access Control:
+## Role Based Access Control:
 
 Group the users into different roles.
 1. Owners
@@ -686,16 +686,55 @@ Role Based Access Control - RBAC
 - RBAC 2 [Constraints] : Allows for seperation of duties
 - RBAC 4 [Consolidated] : All of the above
 
-### Information Flow Control
+#### RBAC 0:
+Essentially flat model, where only roles exist; each role has specific permissions and they're independent of each other.
+a user can have multiple roles?
+
+#### RBAC 1:
+Roles and Groups exist. Groups are made up of {Roles, Permissions} and roles are made up of {Users, Permissions}. This means that a role can exist within a group, and the permissions are passed down to the different roles based on groups.
+
+#### RBAC2:
+**if you are rbac2, cannot be rbac1**. This is the RBAC0 model except that roles are exclusive and a user cannot have multiple roles, but these rules are constraints that are placed by the person creating the model.
+
+#### RBAC4:
+It's a summation of all the above, defining the idea that you can have groups and roles that have constraints but still can inherit this data.
+
+## Information Flow Control
+
+
 Defintions:
 1. Read: Receieve information from another entity
 2. Write: Sending information to another entity
+
+
+### Bell-Lapadula
 
 Example Model: Bell Lapadula
 Think of different levels of clearance
 - Top Secret
 - Secret
 - Unclassified
+
+Wikipedia:
+
+- State machine model enforces access control in government and military applications.
+- Uses a formal state transformation model, which defines access control rules.
+- Focuses on **data confidentiality**
+- Uses the idea of a "secure state".
+- To check whether a specific access mode is allowed, the clearance of _the subject_ is compared to the _classification of the object_ to determine if the subject is authorised for the specific access mode.
+
+There are two rules, with 3 security properties:
+- **Discretionary access control** (DAC) (1 rule)
+- **Mandatory access control**. (MAC). ( 2 rules)
+
+
+The three security properties are:
+1. Simple Security Property - A subject at a given security level may not read an object at a higher level
+2. The (Star) property says that a subject at a given level may not write to any object at a lower level.
+3. The Discretionary Security property - uses an access matrix to specficy discretionary access control.
+
+In the Bell-LaPadula model, the **users can create content only at or above their own security level**. I.e. a secret researcher can only create secret or top-secret files, but cannot create public ones. Conversely users can only view content below their security level, as in can only see secret or public, not top secret.
+
 
 The policy is defined by these constraints:
 1. Cannot read up:  I.e. cannot get info from higher level of data. so cannot read somthing with a higher classification
@@ -719,15 +758,23 @@ This is similar to what's used in **SELinux** which is used in android as well.
 An extension of the above is to combine the two, combining **Mandatory Access** with **Discretionary access grouping**. This means you can be top secret in one group but only secret in another.
 
 
-##### Integrity using IFC - Biba Model:
+##### Integrity using IFC (Information Flow Control) - Biba Model:
 
-You can have a system of three classifications
+You can have a system of three classifications (example)
 1. Fact
 2. Belief
 3. Rumor
 
 You cannot turn a belief into a fact, but you can turn fact into a belief (similar to the write-up read-down restrictions)
 You can add the **Discretionary access control** into the system.
+
+Wikipedia:
+- Formal state transition system that describes access-control rules designed to ensure **data integrity**.
+- Data and subjects are grouped into ordered levels of Integrity
+- Model is designed so that subjects may not corrupt data in a higher ranked subject.
+- **Read up, write down**.
+- Users can only create content at or below their own level.
+- Users can only view content at a level higher than theirs.
 
 ### Brewer And Nash Model (Chinese Wall?)
 
@@ -756,7 +803,12 @@ That basically means that o is from the same company as previously read objects 
 - And there doesn't exist another file `o'` that you've already read with the same conflict class.
 - You cannot write client data if reading anyone else's data. Unless the other data has been sanitised.
 
-This menas you now need a sanitation and declassification policy
+This means you now need a sanitation and declassification policy
+
+
+- Prevents communication leading to conflict of Interest
+- If there are two conflict groups `A` and `B`.
+- If an auditor has accessed files from a company in `A`, they can no longer access files for any other company in group `A`. But they can still access group `B`'s files!.
 
 
 ### Clark Wilson Model (Integrity of data, used in banks)
