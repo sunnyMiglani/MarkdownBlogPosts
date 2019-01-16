@@ -812,7 +812,7 @@ This means you now need a sanitation and declassification policy
 
 
 ### Clark Wilson Model (Integrity of data, used in banks)
-The integrity is defined as a set of constraints for the data
+The integrity is defined as a **set of constraints** for the data
 - Data in a valid state when it meets the constraints
 - Today's Balance = Yesterday's Balance + Today's Deposit - Today's withdrawl
 
@@ -841,7 +841,9 @@ Enforcement Rules:
 1. only TPs can change CDIs
 2. TPs require authorisation
 3. All users are authenticated
-4. Only authorised peopl can change permissions
+4. Only authorised people can change permissions
+
+[This is a really good video, watch at 1.5 speed ](https://www.youtube.com/watch?v=Wd3454UQ4kw)
 
 # Lecture 6 Web Security (2nd Nov) - Client Side Security
 
@@ -855,6 +857,8 @@ An "origin" is defined using:
 1. URI scheme
 2. Host name
 3. port number
+
+**Same origin policy is useful for:** cookies as that's what most websites use to maintain authenticated user sessions, and act on the cookie information to reveal sensitive info or state-changing actions.
 
 This prevents malicious scripts on one page from obtaining access to sensitive data on another page.
 
@@ -910,6 +914,7 @@ Approach
 6. Ajax request aimed at attacker.com ends up going to victim.com
 7. the Ajax runs code that was supposed to be on attacker in the internal part of a company
 
+
 ## Private Browsing
 
 Client Side Privacy: Incognito aint anything except a forgetful browser.
@@ -940,7 +945,7 @@ Attack 3:
 - Get victim to visit attacker.com
 - Learn what other website the victim has visited.
 - Attacker wants to make a copy of the login pages, and then steal your data. If they make copies of the same images used in the actual login page, then they can see whether you're logged in or not in the other pages.
-- **Fixing** it : apply the same origin policy on shader effects
+- **Solution:** apply the same origin policy on shader effects
 
 
 ## Timing Attacks:
@@ -955,6 +960,9 @@ Thing like requesting
 
 If the response is quick, then obviously the data was accessed quickly, and if the response is slow then it wasn't visited / didn't happen from the other website
 
+You'd do this in combination with attacks via the MIME sniffing etc.
+Then steal the session keys and use that as a way to gain access to their email stuff.
+However it's hard to send back everything, so you do boolean answers.
 
 **Goal of the attack:**:
 Find the answer to a boolean question:
@@ -968,7 +976,7 @@ Find the answer to a boolean question:
 - Is there a statistical difference between the Yes and No responses.
 
 
-We do this above multi-sample testing because of congestion and concurrent requests on the client and server.  Things liek traffic might affect the response time.
+We do this above multi-sample testing because of congestion and concurrent requests on the client and server.  Things like internet traffic might affect the response time.
 
 - Keep requests minimal, to avoid DDoS requests
 - Keep requests quick due to short visits from users.
@@ -976,7 +984,7 @@ We do this above multi-sample testing because of congestion and concurrent reque
 
 To increase the difference b/w positive and negative responses:
 1. Response inflation, so expect the parameters reflected in the URLs to be a lot higher, so it'll take longer to get the request if it's valid. However will quickly say no if invalid for the first req.
-2. **What if there's no paramets in te url?** Then you send a dummy question you know is going to have a negative response with some extra maths, and it'll give back a negative. Then you send a valid question with some extra maths, and it'll reply back a bit longer.
+2. **What if there's no paramets in the url?** Then you send a dummy question you know is going to have a negative response with some extra maths, and it'll give back a negative. Then you send a valid question with some extra maths, and it'll reply back a bit longer.
 
 > actual examples are:
 > dummy: in:sent&from:xiquisddk&hasnot:{rjew+...+iqejh}
@@ -1029,6 +1037,12 @@ You need to use authentication.
 - Sends bob hello, bob replies with a hello and a certificate
 - Alice validates the certificate, and generates a `pre master secret`, and bob takes the the `pre master key`, and Bob and Alice generate a secret key from this pre master key and continue communication with a secret key, symmetric enctyption.
 
+- Bob and Alice are communicating. (bob = server, alice = client)
+- Alice sends bob a hello, and encryption systems list.
+- Bob replies back with a certificate.
+- Alice validates the certificate, and generates a `premasterkey`, sends it to bob.
+- Bob and Alice generate a secret key from this premaster, and continue with the secret key using symmetric encryption.
+- Secreet key is used for the session key.
 
 Usage Example:
 **Handshake**:
@@ -1066,16 +1080,16 @@ The certificate can expire based on the policy set by those signing it.
 If a certificate is expired in a chain then all certificates signed by those is invalid as well.
 
 A -> B -> C
-If B is invalid, then C is insecure / unsecure?
+If B is invalid, then C is insecure / unsecure?\
 
 ## Registration Authority:
 
 - Front end entity you interact with to obtain a cert
 - Provide the RA with information, for example being physically present
 - RA verifies your identity
-- Once this is confirmed, it's sent to the CA and the public key is signed.
+- Once this is confirmed, it's **sent to the CA** and the public key is signed.
 - Does not sign the certificate itself.
-- Ususally a government agency?
+- Usually a government agency?
 
 ### Certificate Revocation List:
 
@@ -1127,13 +1141,13 @@ The entire framework is built to function with these principles:
 # Lecture 9 (13th Nov) : Network Security
 
 OSI Model:
-1. Application Layer
-2. Presentation Layer
-3. Session Layer
-4. Transport Layer
-5. Network Layer
-6. Data Link Layer
-7. Physical Layer
+1. Application Layer - apis
+2. Presentation Layer - translates data from api to lower level
+3. Session Layer - manages sessions / multiple messages amongst few nodes
+4. Transport Layer - organises data transfer (multiplexing, segmentation etc)
+5. Network Layer - Handles addressing and routing
+6. Data Link Layer - Handles the data transmission and is connected to the physical layer
+7. Physical Layer - Transmission and reception of raw bits.
 
 OSI model doesn't fit exactly reality, it's a nice way of understanding the overall system
 
@@ -1270,13 +1284,13 @@ Steps for this attack:
 1. Exploil vulnerability in the DNS server
 2. Man in the middle (send a fake response)
 3. Modify the client host file
-4. Domain high-jack (point to a different DNS server)
+4. Domain highjack (point to a different DNS server)
 5. Masquareade type attack!
 
 Steps to block this attack! (DNSSEC)
 1. Sign the (domain name, IP Addr) pair with the domain's owner certificates!
 2. Problem! : What if you map between domains, i.e. from foo.bris.ac.uk to bar.bris.ac.uk???
-3. The above fault could lead to a **topology disclosure** where the attacker could identify the topology by looping over the domains from a->aa, etc.
+3. The above fault could lead to a **topology disclosure** where the attacker could identify the topology by looping over the domains from a.bris..->aa.bris..., etc.
 
 ### Slow Loris Attack:
 
@@ -1299,6 +1313,7 @@ Why should you have anonymity?
 - Law enforcements doens't want to tip their targets
 - Minority Groups that are under attack
 - Journalists, Lawyers etc.
+- Whistleblowers
 
 There's a few things that try their best for you to try this (tor)
 
@@ -1307,7 +1322,7 @@ There's a few things that try their best for you to try this (tor)
 - Prevent an observer on a network to link a participant to an action
 - Private browsing (like incognito) is useless for observers, it just doesn't store data in local files, everything else is the same.
 
-If people can be linked to websites, then they can be linked to certain behaviours. For example Alice visiting asos means she's probably buying clothes! Depending on the sale and her behaviour you can probabalisitcally say she's aiming to buy shoes instead!
+If people can be linked to websites, then they can be linked to certain behaviours. For example Alice visiting ASOS means she's probably buying clothes! Depending on the sale and her behaviour you can probabalisitcally say she's aiming to buy shoes instead!
 
 ### Define : Unlinkability, Unobservability
 Unlinkability: Cannot link Alice to some online identity or platform via observations
@@ -1381,7 +1396,6 @@ This is to allow relay1 to read the data relevant to it, but not touch the data 
 - Steal the keys between the relays, this would mean that the data that's sent through is visible to someone who has access to snoop it
 - It's hard for the attacker to keep it running, just because TOR recycles the keys regularly.
 - It's a high cost attack.
-
 
 2. **Iterated Compromise**:
 - If you find vulnerability, then you can infect one relay to another. (So attack sequentially for a whole path).
