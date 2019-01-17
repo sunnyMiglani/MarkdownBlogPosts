@@ -6,6 +6,8 @@ Author: Sunny Miglani
 
 **I wrote this from the slides, didn't watch the lectures unless it was needed! So this may not have _all_ the information**
 
+**NOTE:** This **will** be missing some information, and is NOT a substitute for studying the lectures!
+
 # Table of Contents
 - [Cloud Computing](#cloud-computing)
 - [Lecture 1:](#lecture-1)
@@ -118,11 +120,11 @@ That's why **Scalability** is very important!
 
 These are some characteristics of Cloud Computing:
 
-1.  On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider. 
+1.  On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider.
 2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client
-platforms. 
-3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand. 
-4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically. 
+platforms.
+3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand.
+4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically.
 5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
 
 ## \*AAS abreviations:
