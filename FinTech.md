@@ -13,11 +13,11 @@ Company's success has a lot of different causes, but **Positive feedback** and *
 The idea of success from **The Long Tail**:
 Ages ago when distribution, marketing and just getting products out was hard, companies preferred to only care about the 20% of the content (specific to media) which was where the majority of the consumers lie and use. However, there exists the long tail, that has 80% of the content, which was previously ignored as the old companies found it not cost effective to market the long tail to users.
 
-Companies like amazon, google etc marketed this long tail and focused from it (imagine user suggestions). This is how their profits would increase so much. They'd grab the 20% user share from the peaks, then spread that over to the 80% shares for less marketable content.
+Companies like amazon, google etc marketed this long tail and focused on it (imagine user suggestions). This is how their profits would increase so much. They'd grab the 20% user share from the peaks, then spread that over to the 80% shares for less marketable content.
 
 They used things like customer reviews and recommendations and ratings to learn what groups of people prefer what, and pushed this recommendation down the long tails allowing other users to buy these too.
 
-**Debates about the long tail**: 
+**Debates about the long tail**:
 - Does it really exist?
 - What % is it, and does that change over time?
 - Is it a % or a sliding window
@@ -34,7 +34,7 @@ After a few years, a new company launches as a competitor in your field, maybe n
 
 Overtime this company can grow while you grow, but it will be seen as the underdog and cheaper solution. At some point this will then grow enough to meet market demand and start taking away at your customers / bottom line.
 
-** Two types of innovation:**
+**Two types of innovation:**
 - Sustaining innovations: Incremental improvements on existing products and services. It's attractive to existing customers and businesses, and eventually you will offer more than a customer wants (is that bad or good?)
 - Disruptive innovations: Perform less well than existing products, with lower quality and possibly less sophistication. However it's going to be simpler, cheaper and possibly more user-friendly.
 
@@ -42,17 +42,17 @@ Overtime this company can grow while you grow, but it will be seen as the underd
 
 ## Platform business:
 
-Old internet companies were full piplines, that started with something and gave you an end result. 
+Old internet companies were full pipelines, that started with something and gave you an end result.
 
 However new tech companies prefer to be platforms rather than services. For example Uber and AirBnB are platform businesses and create an online **venue** for matching demand and supply to workers.
-This allows them to get money from both sides if they can. 
+This allows them to get money from both sides if they can.
 
 An advantage of platform businesses is that **they remove the idea that gigs in a gig market are hard to get**. They opened up the market by:
 - Creating low barrier to entry
 - Aggregated supply together, providing an easy place to find demand
 - Large number of customers join the platform makes the consumers/suppliers very glad and more interested in joining.
 
-This allows the workers who worked on commision, worked on "gigs", to be able to find their gigs a lot easier and make finding work more simple rather than spending time looking around. 
+This allows the workers who worked on commision, worked on "gigs", to be able to find their gigs a lot easier and make finding work more simple rather than spending time looking around.
 
 
 **Gig Market:** Short term, single contracts (cars, concerts, photographers etc) rather than fulltime job focused.
@@ -63,9 +63,11 @@ This allows the workers who worked on commision, worked on "gigs", to be able to
 1. Raw Data Based: People's likes, ratings, followings and user surveys lead to better recommendatiosn
 2. Passive / Implicit based: People's behaviour, their viewing history and viewing times, having lists of user interactions and grouping "types" of users together.
 
+
+
 # Lecture 3&4 Economics of the internet
 
-**Macroeconomics**: Large-scale or general economic factors like interest rates and national productivity 
+**Macroeconomics**: Large-scale or general economic factors like interest rates and national productivity
 
 **Microeconomics**: Behaviour of individuals and firms in making decisions aregarding allocation of resources, and the interactions among these individuals and firms.
 
@@ -91,7 +93,7 @@ This is the point when the **quantity demand equals quantity supplied** Q'. The 
 
 In an **ideal** market, we'd expect Q' products to be sold at Price P'.
 
-In the cases of **excess supply**: 
+In the cases of **excess supply**:
 - If there is a product surplus
 - Goods will be supplied but not purchased
 - This leads to the **prices falling**.
@@ -114,7 +116,7 @@ A **market shock** may occur:
 ## Laws of Economics and Changing Technology:
 
 ### Combinatorial Inventions
-**New Definitions:** 
+**New Definitions:**
 Combinatorial invention: A technology whose rich set of components can be combined and recombined to create new products / services
 
 The social inertia to new ways of doing things are overcome (people get used to doing new stuff), this affects the **demand**.
@@ -135,7 +137,7 @@ For digital technology these are the key qualities
 - Fixed upfront costs, which essentially is high costs for development
 - Cheap to distribute and cheaper variable costs (any additional cost per sale is variable cost)
 - Most of the production costs are sunk, i.e cannot get manhours back unlike factory which can be sold.
-- No capacity constraints, which would limit the number of times something can be reproduced. 
+- No capacity constraints, which would limit the number of times something can be reproduced.
 
 Non monetary differentiaters between these :
 - Digital goods are often **experience goods**, which means that a customer doens't know the value without actually using them. This means their internal pricing could be higher or lower. But also means they cannot estimate your costs on it that easily
@@ -148,7 +150,7 @@ If two companies are competing in terms of digital cots, then their **variable c
 
 This however means that new companies might not be open to joining as the setup cost could be too high and they wouldn't be able to recover anything spent.
 
-There's usually a tendency to gain a monopoly and or zero pricing. 
+There's usually a tendency to gain a monopoly and or zero pricing.
 
 **Zero Pricing:** The demand for a good/service/commodity is significantly greater at exactly 0, than compared to any price even slightly higher than 0.
 
@@ -183,11 +185,11 @@ Ex: Amazon, Orbitz that priced you more based on if you were accesing it through
 
 Basically provide the option for the user / customer to pick what kind of services they want. Offer these services at different prices by reducing features or adding limitations in the product.
 
-For example, you can have games without items or you can have Spotify with no ads. 
+For example, you can have games without items or you can have Spotify with no ads.
 
 This is great as it allows a customer to build a true valuation of your product. For example they could start with a free version, then pay $1 for a small feature and could then get hooked and pay a subscription fee of £5. This allows each user to externalise their internal pricing, but through the options available.
 
-**However, note that if there are multiple options, sometimes people willing to pay a higher price would end up taking the lower options if it does exactly what they wanted to do**. 
+**However, note that if there are multiple options, sometimes people willing to pay a higher price would end up taking the lower options if it does exactly what they wanted to do**.
 
 ### 3rd Degree Price descrimination:
 - Sell the product at different price points to different **groups of users**
@@ -218,7 +220,7 @@ If two parties trade, it has an effect on the others who had no say in the trade
 - Negative externalities impose **costs**
 - Positive ones impose **benefit**.
 
-A **network externality** is when buying a product or services confers indirect cost on all those who have already bought the product.  This can be positive or negative 
+A **network externality** is when buying a product or services confers indirect cost on all those who have already bought the product.  This can be positive or negative
 - Positive: More recharge station as electric cars increase
 - Negative: Less space on roads making it worse for other car owners.
 
@@ -282,7 +284,7 @@ Measured by :
 - The advert placement is based on page content, demographics of vistors and time of day etc.
 - Advertisers bid for ads (in a robotic auction)
 
-##  Social Media 
+##  Social Media
 - Earned media: Anectodes on a site (ex reddit)
 - Paid : Advertising
 
@@ -365,7 +367,7 @@ There are two aspects
 - So called Market Based Control (MBC) or Market Based Allocation Resource Allocation (BMRA).
 - Provides fast, robust and distributed control for varying problemss.
 
-It requires software versiosn of traders and marketplaces. 
+It requires software versiosn of traders and marketplaces.
 
 Dynamics from microeconomics can help build automated dynamic resource allocation and control in engineered systems.
 
@@ -378,7 +380,7 @@ Dynamics from microeconomics can help build automated dynamic resource allocatio
 5. The price that a seller is prepared to sell for each possible quantity is a **supply curve**. (as price increases, quantity supplied increases)
 
 Free Markets are **self correcting:**
-If the prices and transactions are taking place at prices away from equilibrium, the competition amongst buyers and sellers will move prices back towards equilibrium. 
+If the prices and transactions are taking place at prices away from equilibrium, the competition amongst buyers and sellers will move prices back towards equilibrium.
 
 At equilibrium, traders won't change their prices as it's good for both of them.
 
@@ -393,9 +395,9 @@ Traders in CDA deal with a lot of data from multiple sources and must act in rea
 
 ## Economics 101 vs Reality:
 
-There's the idea that a smooth supply and demand curve gives a theoretical equilibrium price. (imagine two lines \ and / meeting and making a tilted X). 
+There's the idea that a smooth supply and demand curve gives a theoretical equilibrium price. (imagine two lines \ and / meeting and making a tilted X).
 
-However **in reality**: 
+However **in reality**:
 - the CDA auction leads to a _stepped_ supply and demand "curve".
 - Each step in the **supply curve** represents **and additional unit available** at the indicated price
 - Each step in the **demand** curve represetns an additional unit **desired** as the indicated price.
@@ -410,7 +412,7 @@ However **in reality**:
 
 ## Some Market Metrics:
 
-- Smith's alpha : Root mean square deviation of transaction prices around the theoretical equilibrium price, expressed as a percentage. 
+- Smith's alpha : Root mean square deviation of transaction prices around the theoretical equilibrium price, expressed as a percentage.
 - Allocative Efficiency: Total utility earned by all traders, ... **measures how effective the market is at extracting 'gains through trade'**
 - Single Agent Efficiency: **measures how well an individual agent performs!**
 
@@ -463,7 +465,7 @@ Buyers run the inverse of this, and the amount you update the profit margin `M` 
 
 > P = L ( 1 + M)
 
-The amount by which the margin is raised or lowered is determined by 
+The amount by which the margin is raised or lowered is determined by
 - Target price (stochastic)
 - learning rule  ( adjust towards the profit margin )
 
@@ -496,7 +498,7 @@ However, it's not the best when:
 
 ### GDX  (GD but X)
 - Uses real time dynamic programming to formulate agent bidding strategies.
-- States are represented primarily by an agent's holdings and transition probabilities are estimated from the market event history. 
+- States are represented primarily by an agent's holdings and transition probabilities are estimated from the market event history.
 - The above estimation is done similar to GD hence the name
 
 ### Adaptive-Aggressive algorithm (AA):
@@ -512,9 +514,9 @@ However, it's not the best when:
 - In Financial Markets, that's implausible / not really happening.
 
 So, someone actually tested it on a CDA type:
-1. **Homogenous population tests**: Everyone runs the same algorithm. This provides a good baseline for performance. 
+1. **Homogenous population tests**: Everyone runs the same algorithm. This provides a good baseline for performance.
 2. **One-in-many**: Explore vulnerability to defection / invasion in the trading algorithms. Such as imagine in a MBRA model, one of the bots swapped algorithms.
-3. **Balanced Group Tests:** Buyers and sellers are evenly split between the two types of algorithms, and each has a counterpart with the other type's identical limit prices. 
+3. **Balanced Group Tests:** Buyers and sellers are evenly split between the two types of algorithms, and each has a counterpart with the other type's identical limit prices.
 
 Some results of the algroithms being tested:
 1. Kaplan is only good if there are small number of trades amongst a larger population as it relies on equilibrium in the market
@@ -522,3 +524,7 @@ Some results of the algroithms being tested:
 3. It's hard to tell a winner directly.
 4. AA beat most traders (including GDX)
 
+# Lecture 10: Empirical Methods (Mathsy)
+[Here's a really good link for the same notes by the amazing Aleena Baig!](https://github.com/AleenaCodes/IEFTNotes2018/blob/master/Notes/Lecture10.md)
+
+# Lecture 11: Economic Agents and Market-Based Systems III
