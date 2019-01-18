@@ -119,7 +119,7 @@ Which means if you're dealing with a lot of servers, you're just going to have f
 
 That's why **Scalability** is very important!
 
-These are some characteristics of Cloud Computing:
+These are some characteristics of Cloud Computing (**NIST DEFINITION**):
 
 1.  On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider.
 2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client
@@ -130,15 +130,14 @@ platforms.
 
 ## \*AAS abreviations:
 
-    1. SaaS : Software as a Service
-        - Application software functionality served remotely. Imagine a program from a CD
-    2. PaaS: Platform as a Service
-        - Middlewear functionality, remotely accessible.
-        Provices a combination of OS, Server, Data-base etc.
-        **Example:** LAMP : Linux, Apache, MySQL, PHP/Python-- GOOGLE APP ENGINE, RDS, DYNAMODB
-
-    3. IaaS: Infrastructure as a Service
-        - IT Infrastructure, almost virtualised and remotely accessible. Basically bare metal given to you. -- AMAZON EC2, S3, etc.
+  1. SaaS : Software as a Service
+      - Application software functionality served remotely. Imagine a program from a CD.
+  2. PaaS: Platform as a Service
+      - Middlewear functionality, remotely accessible.
+      Provices a combination of OS, Server, Data-base etc.
+      **Example:** LAMP : Linux, Apache, MySQL, PHP/Python-- GOOGLE APP ENGINE, RDS, DYNAMODB
+  3. IaaS: Infrastructure as a Service
+      - IT Infrastructure, almost virtualised and remotely accessible. Basically bare metal given to you. -- AMAZON EC2, S3, etc.
 
 # Lecture 3 : Economics of Cloud
 
@@ -154,16 +153,16 @@ EC2 is a virtual server, it uses Amazon Machine Image, and you can build your ow
 
 Cooling is v v v important for data centres
 
-    1. Open the window -small scale
-    2. Two-loop cooling: Bigger scale, but not BIG
-    3. Three loop cooling: Basically need to go to a different centre just to get rid of heat.
+1. Open the window: small scale
+2. Two-loop cooling: Bigger scale, but not BIG
+3. Three loop cooling: Basically need to go to a different centre just to get rid of heat.
 
-PUE: Power Usage Effectiveness -- PUE reflects the quality of the datacentre.
+PUE: **Power Usage Effectiveness** -- PUE reflects the quality of the datacentre.
 PUE = Facility Power / IT Power.
 
 ## Technical side of scaling a warehouse of computers
 
-Architecture of a Warehouse-scale computer(WSC) is largely defined by the choice of it's building blocks.
+Architecture of a Warehouse-scale computer (WSC) is largely defined by the choice of it's building blocks.
 
 In WSCs, the main building blocks are server hardware, network and storage components.
 
@@ -171,44 +170,70 @@ WSCs are now built from low-end servers, there used to be something called SMPs 
 
 **Communication efficinecy is very important for scaling**. That's why there is a focus in loading time efficiency.
 
+Fault-Tolerant computing is well developed:
+Having an N-Plex Redundancy deals with "normal failure", however Latency-tolerant is a new field.
+
+## Key Insights from "Tail at Scale":
+- Localised performance "hiccups" can radiate out to affect a significant fraction of all requests.
+- Some sources of variablity are:
+  - Woken Daemons
+  - Maintanence activities
+  - Normal failure
+  - queuing.
+- Having even probability of a system being slow at 0.01% can have a huge impact when you're running thousands of computers.
+- Latency **Tail-tolerant** software techniques, have been developed to smooth out unpredictability.
+
+
 # Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)
 
-Undifferentiated Heavy Lifting: Doesn't really differntiate us from the other companies, and it doesn't help the people stand out.
+[Good resource for quick explanation](https://apprenda.com/library/paas/iaas-paas-saas-explained-compared/)
 
-    1. IaaS: Infrastructure as a Service
-        EC2, GCS
-    2. Platform as a Service (PaaS):
-        AWS Beanstalk, Google App engine
-    3. Software as a Service (Software as a Service):
-        Makes applications available through the internet, Gmail, Office365 etc.
+\*aaS's allow for Undifferentiated heavy lifting, they're usually done with a dedicated service provider.
+
+Undifferentiated Heavy Lifting: Doing things that doesn't really differentiate us from the other companies, and it doesn't help the people stand out. Things like running and building boilerplate code that could be just built by someone else.
+
+1. IaaS: Infrastructure as a Service (IaaS): Provides automted and scalable environments. (eg EC2)
+2. Platform as a Service (PaaS): Provides a framework for quickly developing and deploying applications ex: AWS Beanstalk, Google App engine
+3. Software as a Service (Software as a Service):  Makes applications available through the internet, Gmail, Office365 etc.
+
+With an IaaS - You only get the physical hardware from the cloud, you install and manage the OS, it's often just the bare metal!
+With a PaaS - You get the OS, physical hardware, and runtime management all from the cloud. You need to handle the data and Applications.
+With a SaaS - You get everything from the cloud, and only have to run the actual service you need from the cloud itself.
 
 ## How is the Cloud (aws) structured?
 
 #### Availability Zones:
 
-Clustures of independent data centres
-Interconnected via low latency
-Good to handle broken down data centres, and you can have high availability and fault isolation
+1. Clustures of independent data centres
+2. Interconnected via low latency
+3. Good to handle broken down data centres, and you can have high availability and fault isolation
+
+**Fault Isolation**: Practice of designing systems such that when "something bad" happens, the negative consequences are limited in scope.
 
 #### Regions:
 
-Regions are independent 'clouds'
-Often different geographical locations
-Consist of different AZs
-Often connnected on a backbone, but independent of each other.
+1. Regions are independent 'clouds'
+2. Often different geographical locations
+3. Consist of different AZs
+4. Often connnected on a backbone, but independent of each other.
 
 #### Why regions though?
 
-    1. Data Sovereignty and Complaince: Data is stored where it's supposed to be and it's not sent accross
-    2. Proximity of users to data: To provide low latency, and therefore you wanna move the regions around to allow things
-    3. Service and Feature availability: Slowly allows you to scale your features to region, managing costs in setup and infrastructure.
-    4. Cost Effectiveness: Cheaper and easier depending on locations, so prices vary
+1. Data Sovereignty and Complaince: Data is stored where it's supposed to be and it's not sent across
+2. Proximity of users to data: To provide low latency such as for streaming videos etc.
+3. Service and Feature availability: Slowly allows you to scale your features to region, managing costs in setup and infrastructure.
+4. Cost Effectiveness: Cheaper and easier depending on locations, so prices vary.
 
 #### High availability & fault tolerance:
 
-Basically good ways to keep uptime and reduce problems if things breakdown. Amazon suggests 2 AZs at minimum
+High Availablity:
+- Ability to minimise service downtime by using redundant components.
+- Requires service components in **atleast 2 AZs**
 
-Fault tolerance means that no users notice anything broken, which is why they suggest 3 AZs
+Fault Tolerance:
+- High Availablity is included.
+- Ability to ensure no service disruption by using active-active architectures.
+- Requires service components in 3 AZs.
 
 **IaaS**: Maybe have HA, but FT is not possible / unlikely
 
@@ -237,8 +262,22 @@ Optionally (additional):
 
 1. Uses Amazon Machine images (AMI)
 2. You can create your own AMIs for faster booting and scaling
-3. Default Elastic Band Storage with network attached SSDs
+3. Default Elastic Block Store with network attached SSDs
 4. Easy automated deployment for scaling and delivery
+
+EC2 for HA configuration:
+- Duplicate VMs in differnet AZs with a custom AMI for easier deployement
+- Configuration can be applied manually, or automatically via templates scripts or PaaS services.
+
+Elastic Block Store:
+- Net Attached Storage
+- SSD, Magnetic system
+
+Instance Storage:
+- On-host storage
+- Very fast / transient
+- Available on certain instance types / caching
+
 
 ##### S3 Storage
 
@@ -246,7 +285,10 @@ Optionally (additional):
 2. Used by a LOT of apps
 3. Accessible via AWS UI, CLI etc.
 4. Files are **IMMUTABLE** objects.
-5. max for 1 file is 5TB
+5. Max for 1 file is 5TB
+6. Stored in Buckets.
+7. Each object has a unique key
+8. Objects can be put into long term storage S3.
 
 #### Examples of PaaS:
 
@@ -256,11 +298,11 @@ Optionally (additional):
 2. Scales and backups well
 3. Saved time and money for admin
 4. Cannot get to DB instances, doens't work well for highly customised services
-   5.RDS has multi AZs and uses Master/Slave DBs
+5. RDS has multi AZs and uses Master/Slave DBs
 
 ##### Elastic Beanstalk:
 
-1. Scalable applications
+1. deploy scalable applications
 2. Custom docker containers
 3. Load balances, scales etc automatically for you
 4. Can define various environments yourself.
@@ -272,15 +314,16 @@ Optionally (additional):
 IaaS:
 
 1. Used by Sys Admins
-2. Provides infrastructures, and sotrage services
-3. Offers flexibility in config
-4. Lowers cloud resources
+2. Provides infrastructures, and storage services
+3. Offers flexibility in config and lowers risk of lockin.
+4. Lowers cloud resources needed, and lower costs needed.
 
 PaaS:
 
-1. Used by Devs,
-2. Locked into the application
-3. offers low cost solutions for race to markets.
+1. Used by Devs
+2. Provides application development platform, like hosted DBs, App Deployment and management
+3. Locked into the application.
+4. Offers low cost solutions for race to markets.
 
 # Lecture 07: Virtualisation, Containers and Container Orchestration
 
@@ -307,14 +350,17 @@ Paravirtualisation : Guest OS is edited to make system calls to the hypervisor A
 
 **Xen is an example of a hypervisor**:
 
-    1. Developed in cambridge
-    2. Paravirtualisation
-    3. Open Source
-    4. Hardware-Assisted Virtualisation (Intel x86, ARM)
+1. Developed in cambridge
+2. Paravirtualisation
+3. Open Source
+4. Hardware-Assisted Virtualisation (Intel x86, ARM)
 
 The flow of Xen is as follows:
 
 > Application->Domain Guest ->TCP/IP Stack->Split Device Driver-> Xen -> Shared Meemory segment -> Split Device Driver of Domain 0 guest, -> tcp then -> REAL device driver, THEN to the PHYSICAL device.
+
+The domain 0 guest is the domain management and control.
+Domain U guest, is the virtualised OS.
 
 ### Containers
 
@@ -324,15 +370,17 @@ Containers allowed a simple solution, where the developer builds in an environme
 
 Docker allows for :
 
-    1. Packaging and running applications in light and isolated environments
-    2. Managed by docker engine, that uses a REST api.
-    3. Small footprint for running on Linux based servers.
-    4. Runs user processes in an isolated mode.
+1. Packaging and running applications in light and isolated environments.
+2. Managed by docker engine, that uses a REST api.
+3. Small footprint for running on Linux based servers.
+4. Runs user processes in an isolated mode.
 
 Docker Definitions
 
 1. Images: Read only templates, with instructions for creating docker containers, they're layered and kept track with a docker file
 2. Container: It's a runnable instance of an image, and is created, stopped, started, moved or deleted. It's defined by it's image and also any environment variables you use when you start or create it
+
+Network isolation in Docker makes it quite bad, DiskIO is native however, and the aggregate performance is much better than VMs
 
 ## Virtualisation and Containerisation:
 
@@ -340,7 +388,7 @@ Docker Definitions
 2. Differences:
    - VMs provide HARDWARE level virtualisation, containers provide OS level virtualisation
    - VMs need more time than containers for provisioning
-   - Virtualisation is slower in VMS in comparison to containers except for networking
+   - Virtualisation is slower than VMS in comparison to containers except for networking
    - VM tenants are usually isolated, but containers provide process level isolation to tenants.
 
 ### Docker in Detail (WHY THO??!?)
@@ -352,8 +400,8 @@ Docker works similar to virtualisation, where we take the approach of
 The container contains the applications that are interacting with the middle-ware used by docker.
 Focusing on the distinction between Containers and Images:
 
-1. containers run images
-2. images are publically displayed / deployed on docker hub
+1. Containers running images
+2. Images are publically displayed / deployed on docker hub
 3. you can pull various images int oa repository/dev machine
 4. cloud operators have container servecies for your images.
 
@@ -371,7 +419,9 @@ It's great for scheduling work and replacing and scheduling in broken / failed c
 
 It's service discovery and load balancing is good
 
-It's good for horizontal scaling: Basically adding in more parallel roads to handle more traffic, but not increasing the length or width of a single road. Basically don't mess with the hardware, but feel free to add more versions
+It's good for horizontal scaling: which means basically adding in more parallel roads to handle more traffic, but not increasing the length or width of a single road.
+
+This means the hardware per instance isn't scaled up, but the number of instances being run are. 
 
 ### Kubernetes in detail ( what is this degree legit?)
 
