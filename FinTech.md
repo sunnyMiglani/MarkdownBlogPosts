@@ -575,3 +575,123 @@ Some results of the algroithms being tested:
 [Here's a really good link for the same notes by the amazing Aleena Baig!](https://github.com/AleenaCodes/IEFTNotes2018/blob/master/Notes/Lecture10.md)
 
 # Lecture 11: Economic Agents and Market-Based Systems III
+
+- Understand what's normalisation of deviance
+
+# Lecture 12: Economic Agents and Market Based Systems IV
+
+Market Terminology:
+- **Go long**: Buy X, expecting the price to rise (**bullish**)
+- **Go short**: Sell X, expecting the price to fall (**bearish**)
+
+
+## Short Selling
+Short-Selling: (How to make money as the price is falling)
+1. Borrow n units from a lender
+2. Sell n units at sometime from now at price `P1` ( to a different buyer)
+3. Price of XYZ falls to `P2`.
+4. At time `t2`, buy n again at `p2` and return to lender. (at a price `p2` < `p1`)
+5. Profit = `P1 - P2 - LenderFee - Costs`
+
+## Derivative Contracts:
+1. Contract derives its value from other assets.
+2. Those assets are known as **underlyings**.
+3. **Future** contracts:
+  1. **WILL** be executed on a certain date **aka a delivery date**.
+  2. At a **forward price**
+  3. Buyer of this is bullish (long) and the seller is (bearish)
+  4. Buyer thinks prices will rise, seller thinks they will fall.
+  5. (Forward price > current Price) < priceAtDeliveryDate (if buyer wins)
+4. **Option** Contracts:
+  1. **MAY** be executed on/by the **expiry** date.
+  2. The contract specifies at _strike price_, or the _exercise price_
+  3. Options to sell are **puts**, options to buy are **calls**
+5. Both of the above are standardized, and exchange-traded.
+  1. Standardized: Size of contract, delivery/expiry date are prespecified
+  2. Traded in a secondary market, or an exchange like stocks and shares.
+
+## Options Basics
+
+- Right to buy or sell N shares.
+- Price of option depends on the underlying  risk premium
+- Strike Price: Price at which you can buy / sell
+- Expiry: Last date on which you can exercise the options
+  - American-Style: **exercise can happen any date up to expiry**
+  - European-Style: **exercise can happen only on the expiry date**.
+- Option is written by the seller, and held by the buyer.
+- Option prices are determined by
+  - Intrinsice Value: what would you get if it was exercised now?
+  - Volatility: Premium that depends on the underlying's price volatility
+  - Time Volatility: Potential risk-free return on money saved.
+
+### Calls Vs Puts:
+|Calls|Puts|
+|---|---|
+|Right to buy N units of underlying| Right to sell N units of underlying|
+|Option-holder can buy at strike-price   |Optionholder sells at price|
+|"in-the-money" if the underlying price > strike price   | if the underlying price < strike price|
+|"out-of-the-money" underlying < strike| underlying > strike|
+|"at the money" if the underlying = strike| underlying = strike|
+
+Calls like the underlying price being greater than the strike price (they buy for cheaper than market)
+
+Puts like the underlying price being lesser than the strike price (they sell higher than the market )
+
+
+### Options
+
+**note: definitely NOT sure if this is correct**
+
+1. Long Call: "I think that the price is going to go up, so I'm BUYING the **option** to BUY more **stock** at some price K" (I will buy at a lower price than the future)
+2. Long Put: "I think the price is going to go down, so I'm BUYING the **option** to SELL you **stock** at some price K" (Will sell at a higher price than the future)
+3. Short Call: "I think the price is going up, so I'm BUYING the **option** to SELL **stock** at some price K" (I will buy at a lower price than the future)
+4. Short Put: "I think the price is going down, so I'm SELLING the **option** to BUY me **stock** at some price K"
+
+## Betting Exchanges:
+- Electronic marketplace for gambling.
+
+# Lecture 13
+
+## Definitions:
+1. MUD - Multi User Dungeon
+2. Twinking - Experienced player helping a newbie.
+3. Ninja - Stealing / looting from a monster
+4. Shard - One or more servers that make up a single shared game world.
+5. Bind on Equip: Player has used BoE it can't be used or sold by another player
+6. Bind on Pickup: Once a player has picked up a BoP item, it can't be used by another player.
+7. Multi Unique User Logins - MUUL - Monthly active players / subscribers
+8. PCU - Peak Concurrent Users: Highest number of players online at the same time.
+
+
+## Mirroring between Virtual and Real Economics
+
+For a proper economy to exist in the virtual world, there's gotta be a balance struck between the currency **sources** and **sinks**.
+
+If any imbalances exist, this is **MUDflation**.
+
+High skill players can create their own metagame currencies, such as Dragon Kill Points?
+
+Virual crime is totally a thing, PvP as an example.
+
+
+### Mixing Real and virtual
+- first example was seen in Everquest, which had an exchange rate going between EQ gold and US$
+- EQ's GDP was actually more than the game.
+- People started producing this at scale, so there would be genuine bot farms and human farms that had people playing the game just to get cash.
+
+
+#### Corrupted Blood Plague:
+- September 13, 2005: Virtual plague in WoW
+- Boss would cast a hit point draining spell "Corrupted Blood"
+- The spell spread accross the world.
+- Pandemic ensued that killed lower-level characters, and was carried by higher-levels.
+- Studied by epidemiologists for real world reactions.
+- Anti-terrorism officials took notice of the event, noting the implication of players to join and spread the epidemic.
+
+## Gamification:
+- Mechanisms in gameplay that drive players to keep playing the games due to the addictive nature of the games. Some examples: Visible goals, rankings etc.
+- This has been adopted by a lot of different companies, for example Location Based- Foursquare, MyTown.
+- Fitness: WiiFit, Nike+, FitBit.
+- Education: DuoLingo, KhanAcademy.
+
+# Lecture 14: Social Finance / The Crowd Economy
