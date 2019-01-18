@@ -695,3 +695,50 @@ Virual crime is totally a thing, PvP as an example.
 - Education: DuoLingo, KhanAcademy.
 
 # Lecture 14: Social Finance / The Crowd Economy
+
+Web 1.0: Few content creates, personal web pages are common. Often static pages.
+
+Web 2.0: User contributions, user generated content (youtube, wikipedia), SaaS started becoming a thing. Dynamic programming languages became a thing. Social networks etc.
+
+## Prediction Markets:
+
+- Trading units that pay based on real world events (such as an election):
+  - Winner Take All Systems
+  - % payment, based on the quantitative outcome like shares or votes.
+- Market is run like a **countinous double auction**, where participants state the prices they're buying and selling at.
+- Trade price is considered a measure of probability of a given event by collective of traders.
+- Money speaks louder than opinion polls.
+
+Essentially it's just people placing "bets" on the chances of something happening in the future, and the uncertainty of it will help predict the cost / place the cost of the bets.
+
+### Iowa Electronic Market ( IEM ): Example of a prediciton market
+
+- Opened in 1988 @ university of iowa
+- Small-scale real-money futures market, where contract payoffs depend on economic/political events
+  - Non-for-profit
+  - Stakes are small, with limits per trader
+  - Low numbers of traders.
+- It's not considered gambling, though most Electronic markets are.
+- Only place in the US that allows you to use real money on markets
+- You can use fake money / points in other prediction markets.
+
+### how do prediction markets work?:
+- Binary answers (mutually exlusive)
+- Create two futures contracts, C_a, C_b
+  - Each share of C_a pays out £1 if A wins, same for C_b.
+- Contracts initially offered by allowing any trader to buy one C_a and C_b for £1.
+- You can only sell shares that you **own**.
+- You can only buy shares with money **you have**.
+- CDA is used to trade securities.
+
+### CrowdSourcing:
+- Enlist a crowd of humans to help solve a problem defined by the system's owners.
+- Can build some artifact together, like wikipedia articles.
+- Can execute one task (amazon turk)
+- Can contribute to some evaluation: Reviewing and voting at amazon.
+- Can be implicit: Ad Behaviour!
+
+You need to recruit and retain contributers:
+- Pay them ££ -> Mechanical Turk
+- Crowd Source as a side effect, like using reCAPTCHA
+- Recruit Volunteers!
