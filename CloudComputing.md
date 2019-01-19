@@ -735,8 +735,7 @@ The application being run with GFS would talk to the GFS client, which would the
 
 The role of the GFS Chunkserver, is to contact and map the storage to the linux file system.
 
-To find the fastest access time by name in the name filespace of GFS, it uses a Trie kinda structure to deal with the dat.
-
+To find the fastest access time by name in the name filespace of GFS.
 The Master basically finds which chunkserver the data is stored in, and handles the retrieving and mutation of the data.
 
 **Mutation of the data is a key factor**. Mutation basically means changing the data. Here to handle and maintain fault-tolerance, the chunks are replicated `n` times over the multiple servers. Each mutation is performed on all replicas, and is synchronised via [leases](http://vandanat.blogspot.com/2011/01/how-google-file-system-manages.html)
