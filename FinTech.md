@@ -859,3 +859,197 @@ Some spam detection on atypical behaviours is :
 - Targetting a group of products in a short period of time
 - Often giving v high or v low scores
 - Giving ratings wihch deviate from other reviewrs of a product.
+
+
+# Lectuer 16: Financial Technology
+
+Financial Regulation:
+- Authority with rules and directives to control and manage services.
+  - Protects actors (by providing insurance and deposit protection)
+  - improves efficiency (by monopoly regulation and antitrust laws)
+  - reduces risk (differentiates between retail banking and other banking systems)
+
+## Technology that assisted in finance
+
+1. Barcode Scanners:
+  1. Helped retailers, for inventory keeping and labelling prices
+  2. It's used in customer databases with loyalty cards.
+2. Credit Cards:
+  1. Diners Club (intro)
+  2. VISA mailed 60k cards to everyone
+  3. BoA had 1mil cards in circulation in 1960
+  4. Magnatic strip made it a lot easier to use.
+3. ATM (Automatic Teller Machine):
+  1. Barclays started it, 24/7 access to money
+  2. 80s networks appeared, and added more functionality
+  3. Consolidated ATM network (LINK) started in the UK
+
+These are examples of how the technical world grew in finance:
+First the data was needed to see how technology would work in this world, barcodes provided a great entry point into it.
+Second the network effects and scaling occured, where the card companies may have incurred a loss, but it allowed to build a network that helped in the long run.
+Third we came to ATMs that enabled the customers to get access to their resources more often using technology they wouldn't have before. This enabled the lock-in environment and helped the economy to work at scale. It even lead to regularisation and inter-operability amongst companies.
+
+## Fin Tech Current players:
+1. Traditional incumbent finance ( big banks )
+2. Technical startups (monzo, etc)
+3. Incumbent big tech - Google, Microsoft apple etc.
+
+Traditional banks:
+- Added tech to streamline their business
+- lead to a form of **incremental innovation**
+
+Start-up tech:
+- Used tech to introduce new services
+- Finance designed from the ground-up (eg cryptocurrencies)
+
+Incumbent tech companies:
+- Use current tech dominance to move into FinTech
+- Streamline tech and lock in users (apple pay)
+- Leverage +ve network externalities
+- Leverage Customer data.
+
+## TechFin / Tech comapnies into finance
+
+There's no **direct definition**, for techfin, and it's basically just giant technologies company , "BigTech" moving into finance as part of their service offerings.
+
+For example, Apple's Apple Pay, Amazon Pay, Android Pay etc.
+
+Altering defintions:
+
+There's two main definitions here, fintech and techfin.
+
+FinTech: When companies take the financial processes, and apply it to technology o make something new. for example building the app to be good first then building the financial models etc. (monzo)
+
+TechFin is when companies take the technology they have, and move it towards finance, for example creating an app on an old backend system. (banks making apps for themselves, ex: Barclays app)
+
+## Digital Finance Cube stuff:
+
+The visuals make no sense (Why are they a cube?)
+But the descriptions are:
+- Blockchain: Ordered and timestamped distributed public ledger, contains history of verified and valid transactions
+- Social Networks: Web-based services, that allow individuals to construct public porfiles, share with their other users and traverse connections within the system
+- NFC: Near Field Communication, short wireless point-to-point interconnection.
+- Peer to Peer: Self organising system of equal autonomous entities. Aims for shared usage of resources in a networked environment. Avoids central dependencies
+- Big Data Analytics: Characterised by enormous volumes of data, high processing and a lot of data sources to be taken into account.
+- Further Enablers: Things like Ai, Mobile internet worldwide, UI and Security.
+
+## LASIC: The Princples of Success:
+
+There are many factos that contribute towards the success of a company.
+There are a few outlined key factors:
+
+LASIC:
+- Low margin
+- Asset light
+- Scalable
+- Innovative
+- and Compliance Easy.
+
+### Low Profit Margin
+- Internet age, services are expected to be basically free
+- High network effects, so build critical mass ASAP.
+- Once critical mass achieved, monitise as quickly as possible.
+- Ensure customer lock-in.
+- Profit margins will remain low at the user level, so you _need high margins_
+
+### Asset Light:
+- Enables a low profit margin and is asset light
+- it's able to scale without incurring large fixed costs
+- This means that the marginal costs are low again
+- Free ride on existing tech (using SMS paymetns)
+
+### Scalability:
+- Technology must scale to reap benefits of network externalities.
+- Ensure scale doesn't comprimise efficiency / increase costs
+
+### Innovative:
+- Products and operations must be innovative
+- Widespread use of mobile phones and internet service enables much innovation in the FinTech / TechFin space.
+
+### Compliance Easy:
+- Low Regulatory complains enables innovation
+- businesses that recieve incentives to aid inclusion have an advantage.
+- development led regulation is better than development lagged regulation.
+
+## Case Studies
+There are a lot of case studies, check AleenaCodes' notes
+
+# Lectuer 18: Blockchain
+
+Evolution of payments:
+- From barter & direct exchange to single goldsmith banks with a central bank and a central ledger.
+
+Flow of Money:
+- There are intermediaries between the buyers and sellers, which means there's a transaction cost at each step, often meaning that the final seller gets lesser than the item is being sold for.
+- The risk intermediaries take, is offset by imposing penalties on the seller when transactions go bad via a system of _chargeback_.
+- Having a centralised bank can expose customers to risk.
+
+
+The steps for a blockchain / bitcoin based transaction are:
+1. Agree on the transaction
+2. Create the transaction message
+3. Sign the transactions message
+4. broadcast the transaction
+5. verify the transaction
+6. success!!
+
+
+### Step 1:
+Agreeing on the transaction:
+- Accept the price of the object
+- Add a price above that for any small fee that's needed to be made to incentivise the bitcoin miners.
+
+### Step 2:
+Create the transaction `message` which has 3 components:
+1. A reference to the earlier transaction that paid her the 10 btc
+2. a list of addresses of recipients to the payments, i.e addresses of those involved on both sides, since the transaction pays the sender money back
+3. a list of amounts to pay the addresses.
+
+### Step 3:
+Sign the message:
+1. Encrypt it with the private key.
+
+### Step 4:
+Broadcasting the transaction
+1. Broadcast the encrypted message along with the public key.
+2. Initiate the broadcast by spreading message to the sender's peers in the peer2peer network
+3. Before broadcasting it, they verify the message so that inputs >= outputs.
+4. Sender's transaction still hasn't been included in the blocckhain yet.
+
+### Step 5:
+Verifying the transaction
+1. Miners compete to be the first to "mine" a "block".
+2. Winner keeps the fee from _every_ transaction.
+3. This is meant to incentivise the transactions.
+
+
+## Anatomy of a block
+- Each block has a header that contains
+  - timestamp and version number
+  - hash of the previous block
+  - merkle root that summarises the new transactions.
+  - `nonce` (randomness) value that the miners header is hashed with sha256.
+- After the header is a list of transactions recorded in the block, and it includes the miner's fees.
+
+
+--- THIS IS TOO BORING ---
+
+# Lecture 19: Malware & Cybercrime
+
+There's an economic market that is focused on ensuring that there's no computer crime. and there are companies making money from combating it.
+
+Ransomwear is no longer lucrative, so attackers have shifted to cryptomining now, where they infect computers with bitcoin and other mining software, and mine that instead.
+
+Email is still one of the biggest, if not the biggest ways that Malware is delivered on computers. The most common method of email malware is phishing attacks using fake websites and fake login forms.
+
+Terminology:
+1. Virus: Program tha copies itself via attachement to a host code.
+2. Worm: Self replicating program that needs no host and no user intervention
+3. Trojan: Malware that masquarades as something else, invites the users to run it.
+4. RootKit: Malware concealed from normal user-processing.
+5. Backdoor: root into the system that bypasses security measures.
+6. Zombie: Machine controlled via backdoor/rootkits
+7. BotNet: network of zombies / bots.
+8. Randomware: malware that encrypts files and demans a ransom to unencrypt it.
+9. Phishing: fake emails that appear to come from trusted sources.
+10. Whitehat: good boi hackers.
