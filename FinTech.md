@@ -1053,3 +1053,8 @@ Terminology:
 8. Randomware: malware that encrypts files and demans a ransom to unencrypt it.
 9. Phishing: fake emails that appear to come from trusted sources.
 10. Whitehat: good boi hackers.
+
+
+# Lecture 20: InsureTech and RegTech
+
+[Read from here](https://github.com/AleenaCodes/IEFTNotes2018/blob/master/Notes/Lecture21.md)
