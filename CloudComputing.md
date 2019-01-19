@@ -727,9 +727,9 @@ Meta-data records _where_ a chunk is stored, so GFS knwos where they are.
 
 GFS consists of these three core processess
 
-    1. GFS Master Server (single) - Maintains all file system metadata
-    2. GFS Chunkserver (multiple)
-    3. GFS Clinet (multiple)
+1. GFS Master Server (single) - Maintains all file system metadata
+2. GFS Chunkserver (multiple)
+3. GFS Clinet (multiple)
 
 The application being run with GFS would talk to the GFS client, which would then deal with GFS as a whole, specifically going in contact with the GFS master
 
@@ -774,9 +774,9 @@ Erasure coding is a "forward error correction" code. It's basically used to see 
 
 EC can kinda be understood with this line
 
-    When written, data bits are encoded along with additional bits
-    When read back, data missing from erasures can be reconstructed from the extra bits
-    It can reduce / eliminate need to maintain `n` identical replicas.
+When written, data bits are encoded along with additional bits
+When read back, data missing from erasures can be reconstructed from the extra bits
+It can reduce / eliminate need to maintain `n` identical replicas.
 
 # Lecture 13: Theory of Distributed Systems (CAP, Byzantine Generals)
 
@@ -810,9 +810,9 @@ Paxos guarantees saftey (consistency) and the conditions that could prevent it f
 
 The Paxos algorithms is for systems that must
 
-    Achieve consensus on an order in which to carry out actions
-    Ensure that actions that are agreed upon cannot be forgotten
-    Despite system messages being duplicated, delayed or lost
+Achieve consensus on an order in which to carry out actions
+Ensure that actions that are agreed upon cannot be forgotten
+Despite system messages being duplicated, delayed or lost
 
 Here **Paxos makes an assumption that the messages are not deliberately malicious, which is different form the Byzantine Generals Problemo**
 
@@ -824,7 +824,7 @@ A set of replicas handle a series of Async requests that relate to the same reso
 
 So what happens if replicas fail or become paritioned?
 
-    All surviving replicas must remain identical despite replica failure and message loss.
+All surviving replicas must remain identical despite replica failure and message loss.
 
 Paxos treats `value` to be any of {reading, writing, roll-backs, commits} that the system might choose to make.
 
@@ -861,9 +861,9 @@ P asks some majority of acceptors to prepare for a proposal N. A "majority" is a
 An acceptor A, gets a `prepare please` message from P with an ID `N`.
 Acceptor has these possible options
 
-    1. A promises to ignore future proposals with ID lesser than `N`
-    2. A has already accepted a proposal P, and then sends the value to P with the ID of the last proposal that was accepted.
-    3. If N is too low, (N is behind the last ID she accepted), then acceptor can reject the `prepare please` message.
+1. A promises to ignore future proposals with ID lesser than `N`
+2. A has already accepted a proposal P, and then sends the value to P with the ID of the last proposal that was accepted.
+3. If N is too low, (N is behind the last ID she accepted), then acceptor can reject the `prepare please` message.
 
 #### Interaction once Acceptors prepare:
 
@@ -875,10 +875,10 @@ Acceptor has these possible options
 
 #### How does an acceptor choose a value?
 
-    1. Acceptor will accept the first proposal it sees
-    2. Acceptor will accept the proposal with the highest ID number it sees
-    3. A majority of acceptors must accept the same value.
-    4. Once a value is chosen, all proposals with a higher ID coose to recommend the same chosen value.
+1. Acceptor will accept the first proposal it sees
+2. Acceptor will accept the proposal with the highest ID number it sees
+3. A majority of acceptors must accept the same value.
+4. Once a value is chosen, all proposals with a higher ID coose to recommend the same chosen value.
 
 ## Byzantine Generals or Byzantine Fault Tolerance (BFT)
 
@@ -905,8 +905,8 @@ However, the problem arrises when the traitors send different messages to differ
 
 ### Results of the Byzantine Generals:
 
-    Byzantine generals can achieve consensuss when n > 3*m + 1
-    To do so, they must engage in m+1 rounds of message passing
+Byzantine generals can achieve consensuss when n > 3*m + 1
+To do so, they must engage in m+1 rounds of message passing
 
 ### Solution to a simplied version of the problem
 
@@ -927,9 +927,9 @@ Problem becomes relatively straightfoward.
 
 If OM(M) & M>0:
 
-    1. The commander sends a vote `v_i` to n-1 lieutenants
-    2. Each lieutenant, `i` acts as a Commander for a new call OM(m-1), sending `v_i`  to the other n-2 lieutenants.
-    3. If `V_i` is the set of the values that Lieutenant `i` receives during the above step, then Lieutenant `i` uses the value majority (`V_i`)
+1. The commander sends a vote `v_i` to n-1 lieutenants
+2. Each lieutenant, `i` acts as a Commander for a new call OM(m-1), sending `v_i`  to the other n-2 lieutenants.
+3. If `V_i` is the set of the values that Lieutenant `i` receives during the above step, then Lieutenant `i` uses the value majority (`V_i`)
 
 If OM(0):
 
