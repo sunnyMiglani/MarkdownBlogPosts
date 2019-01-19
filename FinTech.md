@@ -381,12 +381,9 @@ The steps are as follows:
 
 [Better explanation of the double irish dutch](https://github.com/AleenaCodes/IEFTNotes2018/blob/master/Notes/Lecture6.md)
 
-
 # Lecture 7: Cloud Computing - Ignored
 
 [Check this out](https://github.com/AleenaCodes/IEFTNotes2018/blob/master/Notes/Lecture7.md)
-
-
 
 # Lecture 8: Market & Economic Agents
 
@@ -443,7 +440,6 @@ However **in reality**:
 - Giving different limits to people meant that different types of supply/demand curves could be introduced into the market.
 - Vernon Smith won a nobel prize for his lab style studies of human market-trading.
 
-
 ## Some Market Metrics:
 
 - Smith's alpha : Root mean square deviation of transaction prices around the theoretical equilibrium price, expressed as a percentage.
@@ -455,6 +451,7 @@ The allocative efficiency of a market cannot be over 100%, but one of a single a
 ### Gode and Sunder experimental studies
 
 Gode and Sunder set a series of experiements with humans and software to see whethe the allocative efficiency came from the traders or from the market.
+
 1. ZI- U (Zero Intelligence) Unconstrained traders quote random prices and an overall maximum price to trade. They didn't reach close to equilibrium and the market were not effective
 2. ZI - C Constrained traders, quoted random prices but were told to not make a loss producing deal, and that meant they had similar results to those of humans
 
@@ -581,12 +578,14 @@ Some results of the algroithms being tested:
 # Lecture 12: Economic Agents and Market Based Systems IV
 
 Market Terminology:
+
 - **Go long**: Buy X, expecting the price to rise (**bullish**)
 - **Go short**: Sell X, expecting the price to fall (**bearish**)
 
-
 ## Short Selling
+
 Short-Selling: (How to make money as the price is falling)
+
 1. Borrow n units from a lender
 2. Sell n units at sometime from now at price `P1` ( to a different buyer)
 3. Price of XYZ falls to `P2`.
@@ -594,26 +593,27 @@ Short-Selling: (How to make money as the price is falling)
 5. Profit = `P1 - P2 - LenderFee - Costs`
 
 ## Derivative Contracts:
+
 1. Contract derives its value from other assets.
 2. Those assets are known as **underlyings**.
 3. **Future** contracts:
-  1. **WILL** be executed on a certain date **aka a delivery date**.
-  2. At a **forward price**
-  3. Buyer of this is bullish (long) and the seller is (bearish)
-  4. Buyer thinks prices will rise, seller thinks they will fall.
-  5. (Forward price > current Price) < priceAtDeliveryDate (if buyer wins)
-4. **Option** Contracts:
-  1. **MAY** be executed on/by the **expiry** date.
-  2. The contract specifies at _strike price_, or the _exercise price_
-  3. Options to sell are **puts**, options to buy are **calls**
-5. Both of the above are standardized, and exchange-traded.
-  1. Standardized: Size of contract, delivery/expiry date are prespecified
-  2. Traded in a secondary market, or an exchange like stocks and shares.
+4. **WILL** be executed on a certain date **aka a delivery date**.
+5. At a **forward price**
+6. Buyer of this is bullish (long) and the seller is (bearish)
+7. Buyer thinks prices will rise, seller thinks they will fall.
+8. (Forward price > current Price) < priceAtDeliveryDate (if buyer wins)
+9. **Option** Contracts:
+10. **MAY** be executed on/by the **expiry** date.
+11. The contract specifies at _strike price_, or the _exercise price_
+12. Options to sell are **puts**, options to buy are **calls**
+13. Both of the above are standardized, and exchange-traded.
+14. Standardized: Size of contract, delivery/expiry date are prespecified
+15. Traded in a secondary market, or an exchange like stocks and shares.
 
 ## Options Basics
 
 - Right to buy or sell N shares.
-- Price of option depends on the underlying  risk premium
+- Price of option depends on the underlying risk premium
 - Strike Price: Price at which you can buy / sell
 - Expiry: Last date on which you can exercise the options
   - American-Style: **exercise can happen any date up to expiry**
@@ -625,18 +625,18 @@ Short-Selling: (How to make money as the price is falling)
   - Time Volatility: Potential risk-free return on money saved.
 
 ### Calls Vs Puts:
-|Calls|Puts|
-|---|---|
-|Right to buy N units of underlying| Right to sell N units of underlying|
-|Option-holder can buy at strike-price   |Optionholder sells at price|
-|"in-the-money" if the underlying price > strike price   | if the underlying price < strike price|
-|"out-of-the-money" underlying < strike| underlying > strike|
-|"at the money" if the underlying = strike| underlying = strike|
+
+| Calls                                                 | Puts                                   |
+| ----------------------------------------------------- | -------------------------------------- |
+| Right to buy N units of underlying                    | Right to sell N units of underlying    |
+| Option-holder can buy at strike-price                 | Optionholder sells at price            |
+| "in-the-money" if the underlying price > strike price | if the underlying price < strike price |
+| "out-of-the-money" underlying < strike                | underlying > strike                    |
+| "at the money" if the underlying = strike             | underlying = strike                    |
 
 Calls like the underlying price being greater than the strike price (they buy for cheaper than market)
 
 Puts like the underlying price being lesser than the strike price (they sell higher than the market )
-
 
 ### Options
 
@@ -648,11 +648,13 @@ Puts like the underlying price being lesser than the strike price (they sell hig
 4. Short Put: "I think the price is going down, so I'm SELLING the **option** to BUY me **stock** at some price K"
 
 ## Betting Exchanges:
+
 - Electronic marketplace for gambling.
 
 # Lecture 13
 
 ## Definitions:
+
 1. MUD - Multi User Dungeon
 2. Twinking - Experienced player helping a newbie.
 3. Ninja - Stealing / looting from a monster
@@ -661,7 +663,6 @@ Puts like the underlying price being lesser than the strike price (they sell hig
 6. Bind on Pickup: Once a player has picked up a BoP item, it can't be used by another player.
 7. Multi Unique User Logins - MUUL - Monthly active players / subscribers
 8. PCU - Peak Concurrent Users: Highest number of players online at the same time.
-
 
 ## Mirroring between Virtual and Real Economics
 
@@ -673,14 +674,14 @@ High skill players can create their own metagame currencies, such as Dragon Kill
 
 Virual crime is totally a thing, PvP as an example.
 
-
 ### Mixing Real and virtual
-- first example was seen in Everquest, which had an exchange rate going between EQ gold and US$
+
+- first example was seen in Everquest, which had an exchange rate going between EQ gold and US\$
 - EQ's GDP was actually more than the game.
 - People started producing this at scale, so there would be genuine bot farms and human farms that had people playing the game just to get cash.
 
-
 #### Corrupted Blood Plague:
+
 - September 13, 2005: Virtual plague in WoW
 - Boss would cast a hit point draining spell "Corrupted Blood"
 - The spell spread accross the world.
@@ -689,6 +690,7 @@ Virual crime is totally a thing, PvP as an example.
 - Anti-terrorism officials took notice of the event, noting the implication of players to join and spread the epidemic.
 
 ## Gamification:
+
 - Mechanisms in gameplay that drive players to keep playing the games due to the addictive nature of the games. Some examples: Visible goals, rankings etc.
 - This has been adopted by a lot of different companies, for example Location Based- Foursquare, MyTown.
 - Fitness: WiiFit, Nike+, FitBit.
@@ -700,7 +702,7 @@ Web 1.0: Few content creates, personal web pages are common. Often static pages.
 
 Web 2.0: User contributions, user generated content (youtube, wikipedia), SaaS started becoming a thing. Dynamic programming languages became a thing. Social networks etc.
 
-## Prediction Markets:
+## Prediction Markets
 
 - Trading units that pay based on real world events (such as an election):
   - Winner Take All Systems
@@ -723,6 +725,7 @@ Essentially it's just people placing "bets" on the chances of something happenin
 - You can use fake money / points in other prediction markets.
 
 ### how do prediction markets work?:
+
 - Binary answers (mutually exlusive)
 - Create two futures contracts, C_a, C_b
   - Each share of C_a pays out £1 if A wins, same for C_b.
@@ -731,7 +734,8 @@ Essentially it's just people placing "bets" on the chances of something happenin
 - You can only buy shares with money **you have**.
 - CDA is used to trade securities.
 
-### CrowdSourcing:
+### CrowdSourcing
+
 - Enlist a crowd of humans to help solve a problem defined by the system's owners.
 - Can build some artifact together, like wikipedia articles.
 - Can execute one task (amazon turk)
@@ -739,6 +743,119 @@ Essentially it's just people placing "bets" on the chances of something happenin
 - Can be implicit: Ad Behaviour!
 
 You need to recruit and retain contributers:
+
 - Pay them ££ -> Mechanical Turk
 - Crowd Source as a side effect, like using reCAPTCHA
 - Recruit Volunteers!
+
+# Lecture 15: Sentiment Analysis
+
+Twitter sentiment is good because it is relatively live and can show the group / crowd sentiment / opinions / views faster than predictive markets. It can be automated from user content.
+
+### Case Studies
+
+Twitter Monitoring of Flue Pandemic:
+
+- Monitered twitter for "flu marker" words, such as Temprature, throat, etc.
+- Weight of the tweets depended on how many stems there were in it.
+- True positive results, but there are also false positives.
+
+Disaster Relief:
+
+- Helped people figure out which parts of the city and world needed support during a distaster.
+
+## Types of Sentiment Analysis
+
+1. Document Level Sentiment Analysis: For a given document, identify it's overall attitude towards an object for discussion
+
+2. Sentence or Phrase Level: For a given sentence, identify if it is +ve or -ve.
+
+3. Aspect Level: Identify all opinions expressed with regard to any aspect of any object.
+
+### Document Level Sentiment Analysis
+
+- +ve or -ve
+- Supervised learning using bag-of-words.
+- Outperformed human generated feature set of opinion words
+- Unsupervised learning:
+  - Uses interesting pair of words, like "part-of-speech" tags.
+  - Look at the probability of the terms appearing in the doc / probability of them appearing in total.
+  - Tested on search engines.
+
+### Aspect Level Sentiment Analysis:
+- Multiple expressions of sentiment with regard to different objects / aspects.
+- Starts positive, ends negative
+- Given a document, identify every "quintiple" of sentiment using
+  - Object being discussed
+  - Aspect of the object being disucssed
+  - Sentiment expressed about it
+  - Who has the Sentiment
+  - when was it said
+
+Problem Decomposition for Aspect Level :
+1. Aspect Extraction:
+  - Extract the target ("Phone")
+2. Grouping Aspects into categories:
+  - Find synonyms for aspects ("battery", "signal") etc.
+3. Aspect sentiment classification (the actual algorithm)
+4. Find meta data for entity holders and time extraction.
+
+Algorithm Example:
+- Mark sentiment words using a lexicon (+1 for +ve, -1 for -ve)
+- Identify sentiment shifters (negations like "not, never, cannot") and swap sentiment for shifted words
+- Identify "but" phrases, this helps mark sentiments for phrases that can't be identified (since they're usually the opposite of the other side of the but)
+- Sum sentiment scores, weighted by word distance to aspect word.
+
+## Applications of Sentiment Analysis
+
+Automated Trading:
+  - Montioring blogs, tweets and posts in investment forums, identify "bullish" and "bearish" statements, and use that to buy/sell.
+  - Identify experts in these (based on trend prediction) and weigh their opinions more.
+
+## Crud Factor
+
+The Crud Factor is described as the **phenomenon that ultimately everything correlates to some extent with everything else**.
+
+## Opinion Spamming
+
+Act of organisations or individuals influencing the sentiment tools via fake reviews or "sock puppet" commenting.
+
+This is mostly done on review websites, where the sentiment can affect a business, and therfore has a monetary incentive.
+
+
+## Fake Reviews
+- Yelp has fake reviews, they filter about 25% of the posts as they think it's fake.
+- Governments have gotten involved in fining companies that post false reviews.
+
+## Sock Puppertry
+
+When one person uses a lot of fake accounts to post fake reviews. This can be both positive and negative.
+
+Often these can be found out by just looking at how similar their tweets are, or meta data about location / time.
+
+They aren't meant to shift the sentiment, just convince others to shift it instead.
+
+## Persona Management Software
+
+Software built to help do sock puppertry easier.
+- Consists of diverse plausible, and geographically consistent online personas.
+- Static IP addresses are assigned to personas, so it seems real.
+- Puppeteers are randomly selected, and the traffic is blended with outside users.
+- Can be (and has been) used by goverments to influence the crowd sentiment in foreign nations.
+
+## Online Spam Detection
+- Spotting **sentiment** spam is difficult and requires effort.
+- It's relatively easy to spot duplicate / very very similar reviews, and mark them as fakes.
+- Someone used a ML approach to find fake reviews / spam sentiment via dataset of "removed reviews".
+- They used word n-grams, subject focused data.
+
+These researchers observed:
+- Negative outlier reviews are heavily spammed, positive outliers less so.
+- Singleton reviews are often fake.
+- Top ranked reviews are more likely to post fake reviews.
+
+Some spam detection on atypical behaviours is :
+- Promiting or victimising only a few target products
+- Targetting a group of products in a short period of time
+- Often giving v high or v low scores
+- Giving ratings wihch deviate from other reviewrs of a product.

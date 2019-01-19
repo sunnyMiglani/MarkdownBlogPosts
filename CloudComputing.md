@@ -421,14 +421,14 @@ It's service discovery and load balancing is good
 
 It's good for horizontal scaling: which means basically adding in more parallel roads to handle more traffic, but not increasing the length or width of a single road.
 
-This means the hardware per instance isn't scaled up, but the number of instances being run are. 
+This means the hardware per instance isn't scaled up, but the number of instances being run are.
 
 ### Kubernetes in detail ( what is this degree legit?)
 
 Some components are:
 
 1. Master
-2. Etcd
+2. Etcd - Distributed key-value store. (Primary datastore of kubernetes)
 3. Nodes
    - Pods
    - Kubelet
@@ -441,21 +441,21 @@ Some components are:
 
 1. Manages the cluster state
 2. Subcomponents include
-   - API server,
-   - controller,
-   - scheduler
+   - API server, - Gateway to the outside
+   - controller, - Regulates state from current to desired state
+   - scheduler - Schedules pods to worker nodes, with constraints
 3. Possibly redundant
-4. Writes to etcd
+4. Writes to etcd - etcd: key-value store.
 
 ##### Nodes:
 
 1. Run work in pods
 2. Pods are the scheduling unit
-   - Contain one or more containers
+   - Contain **one or more containers**
    - scheduled together on the same host
    - mount the same external storage
 3. Container at runtime
-4. Kubelete - Agent that communicates with the big boi master
+4. Kubelet - Agent that communicates with the big boi master
 5. kube-proxy: Network agent, overlays network routes.
 
 Kubernetes has some Runetime Objects, such as
@@ -481,7 +481,19 @@ The steps to run kubernetes:
 - Rollback with the deployement revision
 - Scale it up with the Deployment to handle more load.
 
---- You know what, I'm just not going to write down the kubernetes details because this is shit ----
+
+[Quickly read this as it's a really good summary of each service](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes)
+
+Master: Primary control, it is the main contact point of the Admins and deals with any issues in the cluster. It's good for determining how to schedule workload, authenticate nodes and manage scaling + health checks.
+
+etcd: Since Kubernetes depends so much on the containers and how they work, the etcd provides the _configurations_ in the cluster. This is used for service discovery and helps components configure or reconfigure themselves with the new information.
+
+Nodes are the platform that run the containers in the system.  
+
+Deployments in Kubernetes:
+- ReplicaSets: Balances the number of scheduled and running pods.
+- Deployments  provide declerative updates for pods and ReplicaSets.
+
 
 # Lecture 09 Serverless
 
@@ -542,7 +554,7 @@ However the lock-in has the advantage of easy integration with other processess 
 
 #### Monitoring and Debugging
 
-It's harder to test the lambdas in production unless you test locally, it's harder to enusre that the tworktimes will be the same etc.
+It's harder to test the lambdas in production unless you test locally, it's harder to enusre that the worktimes will be the same etc.
 It's a new field to learn how to monitor and debug serverless applications / functions
 
 #### Serverless Security:
@@ -559,7 +571,7 @@ The normal vulnerabilities that apply to code would still be valid.
 
 Definitions:
 
-1.  Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines 2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
+Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines 2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
 
 X Axis Split Horizontal Duplication with unbiased cloning of services and data: - Each clone can do the work of all the other clones, and the work is distributed among clons without bias - Inefficient compared to alternatives - But EASY to do
 
