@@ -6,10 +6,10 @@ Author: Sunny Miglani
 
 **I wrote this from the slides, didn't watch the lectures unless it was needed! So this may not have _all_ the information**
 
-
 **NOTE:** This **will** be missing some information, and is NOT a substitute for studying the lectures!
 
 # Table of Contents
+
 - [Cloud Computing](#cloud-computing)
 - [Lecture 1:](#lecture-1)
   - [\*AAS abreviations:](#aas-abreviations)
@@ -17,39 +17,39 @@ Author: Sunny Miglani
   - [Technical side of scaling a warehouse of computers](#technical-side-of-scaling-a-warehouse-of-computers)
 - [Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)](#lecture-5-public-clouds-infrastructure-and-platform-iaas-paas)
   - [How is the Cloud (aws) structured?](#how-is-the-cloud-aws-structured)
-      - [Availability Zones:](#availability-zones)
-      - [Regions:](#regions)
-      - [Why regions though?](#why-regions-though)
-      - [High availability & fault tolerance:](#high-availability--fault-tolerance)
+    - [Availability Zones:](#availability-zones)
+    - [Regions:](#regions)
+    - [Why regions though?](#why-regions-though)
+    - [High availability & fault tolerance:](#high-availability--fault-tolerance)
     - [Examples of IaaS Services on AWS:](#examples-of-iaas-services-on-aws)
-        - [VPC: Virtual Private cloud (IaaS example)](#vpc-virtual-private-cloud-iaas-example)
-        - [EC2: Virtual Machines (IaaS example)](#ec2-virtual-machines-iaas-example)
-        - [S3 Storage](#s3-storage)
+      - [VPC: Virtual Private cloud (IaaS example)](#vpc-virtual-private-cloud-iaas-example)
+      - [EC2: Virtual Machines (IaaS example)](#ec2-virtual-machines-iaas-example)
+      - [S3 Storage](#s3-storage)
       - [Examples of PaaS:](#examples-of-paas)
         - [RDS](#rds)
         - [Elastic Beanstalk:](#elastic-beanstalk)
       - [IaaS vs PaaS](#iaas-vs-paas)
 - [Lecture 07: Virtualisation, Containers and Container Orchestration](#lecture-07-virtualisation-containers-and-container-orchestration)
-    - [Virtualization:](#virtualization)
-    - [Containers](#containers)
+  - [Virtualization:](#virtualization)
+  - [Containers](#containers)
   - [Virtualisation and Containerisation:](#virtualisation-and-containerisation)
     - [Docker in Detail (WHY THO??!?)](#docker-in-detail-why-tho)
   - [Container Orchestration (Kubernetes)](#container-orchestration-kubernetes)
     - [Kubernetes in detail ( what is this degree legit?)](#kubernetes-in-detail--what-is-this-degree-legit)
-        - [Master:](#master)
-        - [Nodes:](#nodes)
+      - [Master:](#master)
+      - [Nodes:](#nodes)
       - [Deployments:](#deployments)
 - [Lecture 09 Serverless](#lecture-09-serverless)
-    - [Case Study: AWS Lambda](#case-study-aws-lambda)
-      - [Performance Limitations:](#performance-limitations)
-      - [Vendor Lock-in](#vendor-lock-in)
-      - [Monitoring and Debugging](#monitoring-and-debugging)
-      - [Serverless Security:](#serverless-security)
+  - [Case Study: AWS Lambda](#case-study-aws-lambda)
+    - [Performance Limitations:](#performance-limitations)
+    - [Vendor Lock-in](#vendor-lock-in)
+    - [Monitoring and Debugging](#monitoring-and-debugging)
+    - [Serverless Security:](#serverless-security)
 - [Lecture 11 : Developing Scalable Cloud Applications](#lecture-11--developing-scalable-cloud-applications)
-    - [How to scale out these architectures? (Example, blackboard)](#how-to-scale-out-these-architectures-example-blackboard)
-      - [X Axis Scaling:](#x-axis-scaling)
-      - [Y Axis Scaling:](#y-axis-scaling)
-      - [Z Axis Scaling:](#z-axis-scaling)
+  - [How to scale out these architectures? (Example, blackboard)](#how-to-scale-out-these-architectures-example-blackboard)
+    - [X Axis Scaling:](#x-axis-scaling)
+    - [Y Axis Scaling:](#y-axis-scaling)
+    - [Z Axis Scaling:](#z-axis-scaling)
   - [Software Architectures in Cloud](#software-architectures-in-cloud)
   - [Architectural Components & Patterns for Scalable Systems (Basically keywords and buzzwords)](#architectural-components--patterns-for-scalable-systems-basically-keywords-and-buzzwords)
     - [Decoupled Components](#decoupled-components)
@@ -58,7 +58,7 @@ Author: Sunny Miglani
       - [Message Queues](#message-queues)
       - [Service Registries](#service-registries)
 - [Lecture 13 : MapReduce and Distributed File Systems](#lecture-13--mapreduce-and-distributed-file-systems)
-    - [MapReduce fault tolerance](#mapreduce-fault-tolerance)
+  - [MapReduce fault tolerance](#mapreduce-fault-tolerance)
   - [Google File System (GFS)](#google-file-system-gfs)
     - [GFS explained](#gfs-explained)
     - [Leases and Mutation in GFS](#leases-and-mutation-in-gfs)
@@ -75,26 +75,24 @@ Author: Sunny Miglani
   - [Byzantine Generals or Byzantine Fault Tolerance (BFT)](#byzantine-generals-or-byzantine-fault-tolerance-bft)
     - [Results of the Byzantine Generals:](#results-of-the-byzantine-generals)
     - [Solution to a simplied version of the problem](#solution-to-a-simplied-version-of-the-problem)
-        - [If there are 3 armies, 1 traitor](#if-there-are-3-armies-1-traitor)
-        - [Now if there are 9 armies and only 1 traitor](#now-if-there-are-9-armies-and-only-1-traitor)
+      - [If there are 3 armies, 1 traitor](#if-there-are-3-armies-1-traitor)
+      - [Now if there are 9 armies and only 1 traitor](#now-if-there-are-9-armies-and-only-1-traitor)
     - [Actual Algorithm "Oral Message Algorithm": OM(m)](#actual-algorithm-oral-message-algorithm-omm)
     - [Solving the BG problem with traitors](#solving-the-bg-problem-with-traitors)
 - [Lecture 15: Hadoop and Related Technologies (Hadoop ecosystem)](#lecture-15-hadoop-and-related-technologies-hadoop-ecosystem)
 - [Lecture 17: NoSQL Databases](#lecture-17-nosql-databases)
   - [Key-Value DBs:](#key-value-dbs)
     - [Examples of DBs](#examples-of-dbs)
-        - [Amazon SimpleDB:](#amazon-simpledb)
-        - [GAE's Datastore (Google's version)](#gaes-datastore-googles-version)
-        - [Document DB (AWS DynamoDB)](#document-db-aws-dynamodb)
+      - [Amazon SimpleDB:](#amazon-simpledb)
+      - [GAE's Datastore (Google's version)](#gaes-datastore-googles-version)
+      - [Document DB (AWS DynamoDB)](#document-db-aws-dynamodb)
     - [Columnar DBs](#columnar-dbs)
-- [Lecture 18 (Graph Processing and Graph DBs)](#lecture-18-graph-processing-and-graph-dbs)
-      - [Case Study - Web Pages](#case-study---web-pages)
+- [Lecture 18 (Graph Processing and Graph DBs)](#lecture-18-graph-processing-and-graph-dbs) - [Case Study - Web Pages](#case-study---web-pages)
   - [Graph Processing](#graph-processing)
     - [Execution of a "Pregel" program:](#execution-of-a-pregel-program)
   - [Examples of other graph based applications](#examples-of-other-graph-based-applications)
-- [Lecture 19: NewSQL and Stream Processing](#lecture-19-newsql-and-stream-processing)
-      - [Challenges with NoSQL](#challenges-with-nosql)
-    - [NewSQL:](#newsql)
+- [Lecture 19: NewSQL and Stream Processing](#lecture-19-newsql-and-stream-processing) - [Challenges with NoSQL](#challenges-with-nosql)
+  - [NewSQL:](#newsql)
   - [Case Study : Google AdWords / Ads](#case-study--google-adwords--ads)
   - [Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)](#google-spanner-in-more-detail-because-why-not-you-know)
     - [SpanServers:](#spanservers)
@@ -105,7 +103,7 @@ Author: Sunny Miglani
     - [Case Study: Apache Storm](#case-study-apache-storm)
       - [Structure of Apache Storm:](#structure-of-apache-storm)
 - [Lecture 20: Cloud Security & Cloud Research](#lecture-20-cloud-security--cloud-research)
-    - [Academic Side of Cloud Security / Cloud Research](#academic-side-of-cloud-security--cloud-research)
+  - [Academic Side of Cloud Security / Cloud Research](#academic-side-of-cloud-security--cloud-research)
 - [Lecture 21 Public Clouds for Software Dev - DevOps](#lecture-21-public-clouds-for-software-dev---devops)
   - [DevOps](#devops)
 - [End of Lectures](#end-of-lectures)
@@ -122,22 +120,22 @@ That's why **Scalability** is very important!
 These are some characteristics of Cloud Computing (**NIST DEFINITION**):
 
 1.  On-Demand Self Service: Consumer can unilaterally obtain computing capabilities automatically without needing human interaction with each service provider.
-2. Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client
-platforms.
-3. Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand.
-4. Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically.
-5. Measured service: Automatically control and optimize resource by leveraging a meter capability.
+2.  Broad Network Access: Capabilities are accessed through standard mechanisims and networks to promote heterogenous client
+    platforms.
+3.  Resource Pooling: Providers's computing resources are pooled to serve multiple consumers with resources reassigned according to demand.
+4.  Rapid Elasticity: Resources can be elastically provided and released, hopefully automatically.
+5.  Measured service: Automatically control and optimize resource by leveraging a meter capability.
 
 ## \*AAS abreviations:
 
-  1. SaaS : Software as a Service
-      - Application software functionality served remotely. Imagine a program from a CD.
-  2. PaaS: Platform as a Service
-      - Middlewear functionality, remotely accessible.
-      Provices a combination of OS, Server, Data-base etc.
-      **Example:** LAMP : Linux, Apache, MySQL, PHP/Python-- GOOGLE APP ENGINE, RDS, DYNAMODB
-  3. IaaS: Infrastructure as a Service
-      - IT Infrastructure, almost virtualised and remotely accessible. Basically bare metal given to you. -- AMAZON EC2, S3, etc.
+1. SaaS : Software as a Service
+   - Application software functionality served remotely. Imagine a program from a CD.
+2. PaaS: Platform as a Service
+   - Middlewear functionality, remotely accessible.
+     Provices a combination of OS, Server, Data-base etc.
+     **Example:** LAMP : Linux, Apache, MySQL, PHP/Python-- GOOGLE APP ENGINE, RDS, DYNAMODB
+3. IaaS: Infrastructure as a Service
+   - IT Infrastructure, almost virtualised and remotely accessible. Basically bare metal given to you. -- AMAZON EC2, S3, etc.
 
 # Lecture 3 : Economics of Cloud
 
@@ -145,13 +143,14 @@ Economies of Scale are why cloud works!
 ["Required Reading"](https://cacm.acm.org/magazines/2013/2/160173-the-tail-at-scale/abstract)
 
 Definitions:
+
 1. Capital Expenditure: One time cost, to get the infrastructure built for your system (servers, building, etc)
 2. Operating Expenditure: Electricity, man power, cooling, marketing etc.
 
 Some Amazon Propogranda:
 EC2 is a virtual server, it uses Amazon Machine Image, and you can build your own AMIs. Amazon has some prebuilt AMIs and now third party AMIs as well.
 
-Cooling is v v v important for data centres
+Cooling is very important for data centres
 
 1. Open the window: small scale
 2. Two-loop cooling: Bigger scale, but not BIG
@@ -168,12 +167,13 @@ In WSCs, the main building blocks are server hardware, network and storage compo
 
 WSCs are now built from low-end servers, there used to be something called SMPs (symmetric multi-processing ) systems, but they were too expensive on scaling.
 
-**Communication efficinecy is very important for scaling**. That's why there is a focus in loading time efficiency.
+**Communication efficiency is very important for scaling**. That's why there is a focus in loading time efficiency.
 
 Fault-Tolerant computing is well developed:
 Having an N-Plex Redundancy deals with "normal failure", however Latency-tolerant is a new field.
 
 ## Key Insights from "Tail at Scale":
+
 - Localised performance "hiccups" can radiate out to affect a significant fraction of all requests.
 - Some sources of variablity are:
   - Woken Daemons
@@ -183,18 +183,17 @@ Having an N-Plex Redundancy deals with "normal failure", however Latency-toleran
 - Having even probability of a system being slow at 0.01% can have a huge impact when you're running thousands of computers.
 - Latency **Tail-tolerant** software techniques, have been developed to smooth out unpredictability.
 
-
 # Lecture 5: Public Clouds, Infrastructure and Platform (IaaS, PaaS)
 
 [Good resource for quick explanation](https://apprenda.com/library/paas/iaas-paas-saas-explained-compared/)
 
 \*aaS's allow for Undifferentiated heavy lifting, they're usually done with a dedicated service provider.
 
-Undifferentiated Heavy Lifting: Doing things that doesn't really differentiate us from the other companies, and it doesn't help the people stand out. Things like running and building boilerplate code that could be just built by someone else.
+**Undifferentiated Heavy Lifting**: Doing things that doesn't really differentiate us from the other companies, and it doesn't help the company stand out. Things like running and building boilerplate code that could be just built by someone else.
 
 1. IaaS: Infrastructure as a Service (IaaS): Provides automted and scalable environments. (eg EC2)
 2. Platform as a Service (PaaS): Provides a framework for quickly developing and deploying applications ex: AWS Beanstalk, Google App engine
-3. Software as a Service (Software as a Service):  Makes applications available through the internet, Gmail, Office365 etc.
+3. Software as a Service (Software as a Service): Makes applications available through the internet, Gmail, Office365 etc.
 
 With an IaaS - You only get the physical hardware from the cloud, you install and manage the OS, it's often just the bare metal!
 With a PaaS - You get the OS, physical hardware, and runtime management all from the cloud. You need to handle the data and Applications.
@@ -227,10 +226,12 @@ With a SaaS - You get everything from the cloud, and only have to run the actual
 #### High availability & fault tolerance:
 
 High Availablity:
+
 - Ability to minimise service downtime by using redundant components.
 - Requires service components in **atleast 2 AZs**
 
 Fault Tolerance:
+
 - High Availablity is included.
 - Ability to ensure no service disruption by using active-active architectures.
 - Requires service components in 3 AZs.
@@ -266,18 +267,20 @@ Optionally (additional):
 4. Easy automated deployment for scaling and delivery
 
 EC2 for HA configuration:
+
 - Duplicate VMs in differnet AZs with a custom AMI for easier deployement
 - Configuration can be applied manually, or automatically via templates scripts or PaaS services.
 
 Elastic Block Store:
+
 - Net Attached Storage
 - SSD, Magnetic system
 
 Instance Storage:
+
 - On-host storage
 - Very fast / transient
 - Available on certain instance types / caching
-
 
 ##### S3 Storage
 
@@ -481,19 +484,18 @@ The steps to run kubernetes:
 - Rollback with the deployement revision
 - Scale it up with the Deployment to handle more load.
 
-
 [Quickly read this as it's a really good summary of each service](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes)
 
 Master: Primary control, it is the main contact point of the Admins and deals with any issues in the cluster. It's good for determining how to schedule workload, authenticate nodes and manage scaling + health checks.
 
 etcd: Since Kubernetes depends so much on the containers and how they work, the etcd provides the _configurations_ in the cluster. This is used for service discovery and helps components configure or reconfigure themselves with the new information.
 
-Nodes are the platform that run the containers in the system.  
+Nodes are the platform that run the containers in the system.
 
 Deployments in Kubernetes:
-- ReplicaSets: Balances the number of scheduled and running pods.
-- Deployments  provide declerative updates for pods and ReplicaSets.
 
+- ReplicaSets: Balances the number of scheduled and running pods.
+- Deployments provide declerative updates for pods and ReplicaSets.
 
 # Lecture 09 Serverless
 
