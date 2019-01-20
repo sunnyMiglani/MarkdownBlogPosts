@@ -266,21 +266,25 @@ Optionally (additional):
 3. Default Elastic Block Store with network attached SSDs
 4. Easy automated deployment for scaling and delivery
 
+EC2s are not HA by default
 EC2 for HA configuration:
 
 - Duplicate VMs in differnet AZs with a custom AMI for easier deployement
 - Configuration can be applied manually, or automatically via templates scripts or PaaS services.
 
-Elastic Block Store:
+EC2 Storage options:
+
+1. Elastic Block Store:
 
 - Net Attached Storage
 - SSD, Magnetic system
 
-Instance Storage:
+2. Instance Storage:
 
 - On-host storage
 - Very fast / transient
-- Available on certain instance types / caching
+- Available on certain instance types
+- useful for caching
 
 ##### S3 Storage
 
@@ -304,8 +308,9 @@ Instance Storage:
 5. RDS has multi AZs and uses Master/Slave DBs
 
 ##### Elastic Beanstalk:
+It's a software built by AWS for you to be able to upload your project, and not have to worry about how the infrastructure of those applications is going to run. It will use scalable services from the AWS Free Tier
 
-1. deploy scalable applications
+1. Deploy scalable applications
 2. Custom docker containers
 3. Load balances, scales etc automatically for you
 4. Can define various environments yourself.
@@ -318,7 +323,7 @@ IaaS:
 
 1. Used by Sys Admins
 2. Provides infrastructures, and storage services
-3. Offers flexibility in config and lowers risk of lockin.
+3. Offers flexibility in config and lowers risk of lock-in.
 4. Lowers cloud resources needed, and lower costs needed.
 
 PaaS:
@@ -349,18 +354,18 @@ The two types are defined as
 
 Full virtualization is a complete or almost complete simulation of the guest machine hardware, and the virtualized guest OS (VM) runs as if it was on the bare machine.
 
-Paravirtualisation : Guest OS is edited to make system calls to the hypervisor API, and executes safe rewrites of the sensitive instructions. hypervisor wont emulate the hardware.
+Paravirtualisation : Guest OS is edited to make system calls to the hypervisor API, and executes safe rewrites of the sensitive instructions. hypervisor doesn't simulate the hardware.
 
 **Xen is an example of a hypervisor**:
 
-1. Developed in cambridge
+1. Developed in Cambridge
 2. Paravirtualisation
 3. Open Source
 4. Hardware-Assisted Virtualisation (Intel x86, ARM)
 
-The flow of Xen is as follows:
+The flow of Xen is as follows (top to bottom):
 
-> Application->Domain Guest ->TCP/IP Stack->Split Device Driver-> Xen -> Shared Meemory segment -> Split Device Driver of Domain 0 guest, -> tcp then -> REAL device driver, THEN to the PHYSICAL device.
+> Application->Domain U Guest ->TCP/IP Stack->Split Device Driver-> Xen -> Shared Meemory segment -> Split Device Driver of Domain 0 guest, -> tcp then -> REAL device driver, THEN to the PHYSICAL device.
 
 The domain 0 guest is the domain management and control.
 Domain U guest, is the virtualised OS.
@@ -377,6 +382,11 @@ Docker allows for :
 2. Managed by docker engine, that uses a REST api.
 3. Small footprint for running on Linux based servers.
 4. Runs user processes in an isolated mode.
+5. **Operating system level virtualisation with a shared kernel**
+
+Advantage of Docker: No need to boot an operating system (faster to boot up in clouds)
+
+Disadvantage: Isolation not as complete as with virtualisation, potentially not as secure for critical apps
 
 Docker Definitions
 
@@ -405,7 +415,7 @@ Focusing on the distinction between Containers and Images:
 
 1. Containers running images
 2. Images are publically displayed / deployed on docker hub
-3. you can pull various images int oa repository/dev machine
+3. you can pull various images into a repository/dev machine
 4. cloud operators have container servecies for your images.
 
 Images in docker are basically composed of layers, similar to git, where they only keep track of changes to ensure that the data used is light and it's easily scalable.
@@ -426,7 +436,7 @@ It's good for horizontal scaling: which means basically adding in more parallel 
 
 This means the hardware per instance isn't scaled up, but the number of instances being run are.
 
-### Kubernetes in detail ( what is this degree legit?)
+### Kubernetes in more detail
 
 Some components are:
 
@@ -461,7 +471,7 @@ Some components are:
 4. Kubelet - Agent that communicates with the big boi master
 5. kube-proxy: Network agent, overlays network routes.
 
-Kubernetes has some Runetime Objects, such as
+Kubernetes has some Runtime Objects, such as
 
 1. Pods
 2. Deployments
@@ -573,13 +583,25 @@ The normal vulnerabilities that apply to code would still be valid.
 
 Definitions:
 
-Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines 2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
+1. Horizontal Scaling: add more machines to the process, this would require scaling the architecture to handle more machines
+2. Vertical Scaling: Add better and bigger machines to the network. This requires no change in architecture
 
-X Axis Split Horizontal Duplication with unbiased cloning of services and data: - Each clone can do the work of all the other clones, and the work is distributed among clons without bias - Inefficient compared to alternatives - But EASY to do
+X Axis
+- Split Horizontal Duplication with unbiased cloning of services and data:
+- Each clone can do the work of all the other clones, and the work is distributed among clons without bias
+- Inefficient compared to alternatives
+- But EASY to do
 
-Y Axis Split refers to isolating and making scalable individual responsibility of components - Needs to be split on the code base - More costly than x-Axis
+Y Axis
+- Split refers to isolating and making scalable individual responsibility of components
+- Needs to be split on the code base
+- More costly than x-Axis
 
-Z Axis - Partitioning the domain of incoming requests - Data partitioning, split relative to client - Improves fault tolerance and cache performances - Most costly system
+Z Axis
+- Partitioning the domain of incoming requests
+- Data partitioning, split relative to client
+- Improves fault tolerance and cache performances
+- Most costly system
 
 Simpler explanation of the above
 If you split on X axis, imagine adding more clones of the system
@@ -681,6 +703,10 @@ Essentially use a Pub/Sub system, and handle that not like an idiot.
 
 Also handles things like Databasing and logging, as it _should_ have a sight of all the services being run
 
+### Automation of Scaling:
+Scaling cannot be manual, you need to use some form of **auto scalers!**
+
+
 # Lecture 13 : MapReduce and Distributed File Systems
 
 How do you store, process and analyse such large quantities of data on the cloud? (From the perspective of a cloud provider)
@@ -697,7 +723,7 @@ MapReduce operates independent of storage systems and doens't require the data t
 
 ### MapReduce fault tolerance
 
-Tbh, MapReduce is usually done over hundreds or thousands of worker machines, so normal failure is a significant issue.
+MapReduce is usually done over hundreds or thousands of worker machines, so normal failure is a significant issue.
 
 To handle normal failure, there exists a "master" worker, which would ping the worker threads periodically and if the worker does not reply in time, the master assumes that it's failed and marks it as such.
 
@@ -766,7 +792,7 @@ HDFS has new features, specifically high availability for the NameNodes, Snapsho
 
 and something called a **Federation**
 
-**Federation:** Horizontal scaling of namenodes, with multiple independent namenodes instead of one + backuo. The namenodes talk to a generic block-pool layer that further seperates namespace from storage. Basically handles data flow and manages workload.
+**Federation:** Horizontal scaling of namenodes, with multiple independent namenodes instead of one + backup. The namenodes talk to a generic block-pool layer that further seperates namespace from storage. Basically handles data flow and manages workload.
 
 The `blockpool` layers help communicate with various `datanodes` and maps better data.
 
@@ -782,7 +808,7 @@ It can reduce / eliminate need to maintain `n` identical replicas.
 
 # Lecture 13: Theory of Distributed Systems (CAP, Byzantine Generals)
 
-A goood cloud system should aim to achieve these three things
+A good cloud system should aim to achieve these three things
 
 1. Consitency (C): All nodes should see the same data at the same time
 2. Availability (A): Node failures shouldn't prevent survivors from working
@@ -791,6 +817,7 @@ A goood cloud system should aim to achieve these three things
 However, there's no chance a service can provide all three of the above simultaneously, and there will be some trade-off betweeen them. It's upto the service to pick which tradeoff they prefer.
 
 Imagine a scenario with A, B servers and they suffer a partition:
+
 A must decide
 
 - Wait to hear back from B sacrificing Availability of A
@@ -816,7 +843,7 @@ Achieve consensus on an order in which to carry out actions
 Ensure that actions that are agreed upon cannot be forgotten
 Despite system messages being duplicated, delayed or lost
 
-Here **Paxos makes an assumption that the messages are not deliberately malicious, which is different form the Byzantine Generals Problemo**
+Here **Paxos makes an assumption that the messages are not deliberately malicious, which is different form the Byzantine Generals Problem**
 
 A set of replicas handle a series of Async requests that relate to the same resource
 
@@ -840,7 +867,7 @@ For each attempt to agree on a `value`, Paxos must ensure that
 
 ## So, how does this damn Paxos actually work???
 
-There are a set of `replicas` tha handle a series of synchronus requests that deal with **the same resource**. We remember that a `value` can be {reading, writing, roll-backs or commits}.
+There are a set of `replicas` that handle a series of synchronus requests that deal with **the same resource**. We remember that a `value` can be {reading, writing, roll-backs or commits}.
 
 There are three main roles a `replica` or `process` can play:
 
@@ -849,6 +876,8 @@ There are three main roles a `replica` or `process` can play:
 - `Learners`: Become aware of the chosen proposal/value and _act on it_.
 
 Replicas can play **more than one** of these roles at different times. Often a replica is _elected_ to be a priviliged learner and or proposer. This means that they're the ONLY one allowed to play the role.
+
+[This is a really good video on Paxos](https://youtu.be/s8JqcZtvnsM), it gets a bit confusing at points, but with the explanation and the idea of "integrity is important" in mind, it makes a lot more sense.
 
 ### -- FLOW: --
 
@@ -907,7 +936,7 @@ However, the problem arrises when the traitors send different messages to differ
 
 ### Results of the Byzantine Generals:
 
-Byzantine generals can achieve consensuss when n > 3*m + 1
+Byzantine generals can achieve consensuss when n > 3\*m + 1
 To do so, they must engage in m+1 rounds of message passing
 
 ### Solution to a simplied version of the problem
@@ -930,7 +959,7 @@ Problem becomes relatively straightfoward.
 If OM(M) & M>0:
 
 1. The commander sends a vote `v_i` to n-1 lieutenants
-2. Each lieutenant, `i` acts as a Commander for a new call OM(m-1), sending `v_i`  to the other n-2 lieutenants.
+2. Each lieutenant, `i` acts as a Commander for a new call OM(m-1), sending `v_i` to the other n-2 lieutenants.
 3. If `V_i` is the set of the values that Lieutenant `i` receives during the above step, then Lieutenant `i` uses the value majority (`V_i`)
 
 If OM(0):
