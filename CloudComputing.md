@@ -1294,6 +1294,8 @@ It's used in GCP, Google Photos, Adwords!
 
 ## Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)
 
+Google spanner is their newSQL db
+
 The google spanner universe has
 
 1. `Zonemaster`: Assigns data to span servers
