@@ -1294,6 +1294,14 @@ It's used in GCP, Google Photos, Adwords!
 
 ## Google Spanner (in MORE DETAIL BECAUSE WHY NOT YOU KNOW!!?!?)
 
+- showed up in 2012.
+- it's AP (from CAP)
+- ACID transactions => SQL.
+- HA throguh synchronus replication.
+- It uses Schemas.
+- SQL queries
+- scales horizontally.
+
 Google spanner is their newSQL db
 
 The google spanner universe has
