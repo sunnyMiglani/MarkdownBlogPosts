@@ -1031,6 +1031,11 @@ There are 4 main classes of a NoSQL DB:
 Relational Databases was great when you wanted to keep _relations_ (suprise suprise) between the data and easily access them based on these relations.
 
 Relational databases are great for **ACID**: **Atomicity, Consistency, Isolation and Durability**
+1. Atomicity: It's indivisible / irreducible series of database operations, such that either **all** occur, or **nothing** occurs.
+2. Consistency: Requirment that any given database transaction must change affected data only in allowed ways.
+3. Isolation: How transaction integrity is visible to toher user and systems.  (Low isolation means more people can read, high isolation means less people can read and affect)
+4. Durability: Guarantess that the transactions that have commited, will survive permanently.
+
 
 But, this isn't what we always want,
 sometimes we want **CRUD: Create/Read/Update/Delete**
