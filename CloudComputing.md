@@ -1340,6 +1340,8 @@ Clients can poll the TimeMaster, and they use "Marzullo's algorithm" which can d
 
 ### Google F1 (F-one) Deployment Structure:
 
+It's a SQL database that _scales_
+
 - Five replicas needed for High Availability
 - Geography-> it's spread accross the world to survive regional natural distasters, approx 100ms apart
 - Performance: High commit latency, have high throughput (bandwidth kinda)
