@@ -3,6 +3,7 @@
 At University of Bristol, 4th year MEng
 
 These are not detailed notes!
+This isnt all you need to pass
 
 - [Internet Econ and FinTech](#internet-econ-and-fintech)
   - [Lecture 1 - Intro && Who wants to be a billionaire?](#lecture-1---intro--who-wants-to-be-a-billionaire)
